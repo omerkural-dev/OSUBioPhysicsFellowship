@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kural Research Workshop | The Ohio State University Inspired Theme</title>
-  <meta name="description" content="A modern Ohio State inspired summer research workshop website with Home, Meet the Team, and Apply sections." />
+  <title>Kural Research Workshop | Ohio State Inspired Theme</title>
+  <meta name="description" content="A modern Ohio State inspired summer research workshop website with separate Home, Meet the Team, and Apply tabs in one HTML file." />
   <style>
     :root {
       --scarlet: #ba0c2f;
@@ -21,16 +21,14 @@
       --white: #ffffff;
       --max: 1220px;
       --radius: 22px;
-      --radius-sm: 14px;
       --shadow-lg: 0 24px 60px rgba(33, 35, 37, 0.12);
       --shadow-md: 0 14px 34px rgba(33, 35, 37, 0.08);
       --shadow-sm: 0 8px 22px rgba(33, 35, 37, 0.06);
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; }
     body {
-      margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--gray-dark-80);
       background: linear-gradient(180deg, var(--gray-light-90), var(--white));
@@ -55,8 +53,6 @@
 
     .osu-strip .wrap,
     .site-nav .wrap,
-    .hero-grid,
-    .section,
     .footer-wrap {
       display: flex;
       align-items: center;
@@ -69,14 +65,12 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.94);
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--gray-light-60);
     }
 
-    .site-nav .wrap {
-      min-height: 82px;
-    }
+    .site-nav .wrap { min-height: 82px; }
 
     .brand {
       display: flex;
@@ -97,10 +91,6 @@
       font-size: 1.3rem;
       box-shadow: var(--shadow-md);
       flex-shrink: 0;
-    }
-
-    .brand-text {
-      min-width: 0;
     }
 
     .brand-kicker {
@@ -127,6 +117,9 @@
     }
 
     .nav-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 0;
       background: transparent;
       color: var(--gray-dark-80);
@@ -141,6 +134,21 @@
     .nav-link.active {
       background: var(--gray-light-80);
       color: var(--scarlet);
+    }
+
+    h1, h2, h3, h4 { line-height: 1.12; margin: 0 0 14px; }
+    h1 { font-size: clamp(2.6rem, 5vw, 4.6rem); letter-spacing: -0.03em; }
+    h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); letter-spacing: -0.03em; }
+    h3 { font-size: 1.2rem; }
+    p { margin: 0 0 16px; }
+
+    .view {
+      display: none;
+      min-height: calc(100vh - 180px);
+    }
+
+    .view.active {
+      display: block;
     }
 
     .hero {
@@ -164,14 +172,15 @@
     .hero-grid {
       position: relative;
       z-index: 1;
+      display: flex;
       align-items: stretch;
+      justify-content: space-between;
       gap: 28px;
+      flex-wrap: wrap;
     }
 
     .hero-copy,
-    .hero-visual {
-      flex: 1 1 460px;
-    }
+    .hero-visual { flex: 1 1 460px; }
 
     .eyebrow {
       display: inline-flex;
@@ -187,13 +196,6 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
-
-    h1, h2, h3, h4 { line-height: 1.12; margin: 0 0 14px; }
-    h1 { font-size: clamp(2.6rem, 5vw, 4.7rem); letter-spacing: -0.03em; }
-    h2 { font-size: clamp(1.9rem, 3vw, 2.9rem); letter-spacing: -0.03em; }
-    h3 { font-size: 1.2rem; }
-    h4 { font-size: 1rem; }
-    p { margin: 0 0 16px; }
 
     .hero-copy p {
       color: rgba(255,255,255,0.92);
@@ -244,11 +246,10 @@
     }
 
     .hero-photo,
-    .placeholder-image,
-    .gallery-card {
+    .gallery-card,
+    .placeholder-image {
       border-radius: 26px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
       box-shadow: var(--shadow-lg);
     }
 
@@ -261,6 +262,7 @@
       display: flex;
       align-items: flex-end;
       padding: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .hero-photo-note {
@@ -283,6 +285,7 @@
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 20px;
       padding: 18px;
+      color: var(--white);
     }
 
     .hero-stat strong {
@@ -291,18 +294,11 @@
       margin-bottom: 4px;
     }
 
-    main { padding-bottom: 70px; }
-    .page-section { display: none; }
-    .page-section.active { display: block; }
-
     .section {
       padding: 72px 0 0;
-      align-items: flex-start;
-      justify-content: initial;
     }
 
     .section-head {
-      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: end;
@@ -318,14 +314,21 @@
     }
 
     .grid {
-      width: 100%;
       display: grid;
       gap: 22px;
+      width: 100%;
     }
 
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      width: 100%;
+    }
 
     .card {
       background: var(--white);
@@ -335,7 +338,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .card.soft {
+    .soft {
       background: linear-gradient(180deg, var(--white), var(--gray-light-90));
     }
 
@@ -348,9 +351,7 @@
 
     .accent-card p,
     .accent-card li,
-    .accent-card .meta {
-      color: rgba(255,255,255,0.92);
-    }
+    .accent-card .meta { color: rgba(255,255,255,0.92); }
 
     .meta {
       color: var(--gray-dark-60);
@@ -452,19 +453,23 @@
     }
 
     .gallery {
-      width: 100%;
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
+      width: 100%;
     }
 
-    .gallery-card {
+    .gallery-card,
+    .placeholder-image {
+      position: relative;
       min-height: 220px;
       background:
         linear-gradient(rgba(33,35,37,0.16), rgba(33,35,37,0.16)),
         linear-gradient(145deg, var(--gray-light-60), var(--gray-light-80));
-      position: relative;
+      border: 1px solid var(--gray-light-60);
     }
+
+    .placeholder-image { min-height: 250px; }
 
     .gallery-card::after,
     .placeholder-image::after {
@@ -479,22 +484,6 @@
       font-weight: 800;
       font-size: 0.86rem;
       box-shadow: var(--shadow-sm);
-    }
-
-    .placeholder-image {
-      position: relative;
-      min-height: 250px;
-      background:
-        linear-gradient(rgba(33,35,37,0.12), rgba(33,35,37,0.12)),
-        linear-gradient(145deg, var(--gray-light-60), var(--gray-light-80));
-      border: 1px solid var(--gray-light-60);
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
-      width: 100%;
     }
 
     .apply-form {
@@ -525,7 +514,7 @@
     select,
     textarea {
       width: 100%;
-      border: 1px solid var(--gray-light-40);
+      border: 1px solid var(--gray-light-20);
       background: var(--white);
       color: var(--gray-dark-80);
       border-radius: 14px;
@@ -543,12 +532,6 @@
 
     textarea { min-height: 150px; resize: vertical; }
 
-    .footnote,
-    .disclaimer {
-      color: var(--gray-dark-60);
-      font-size: 0.94rem;
-    }
-
     footer {
       margin-top: 82px;
       border-top: 1px solid var(--gray-light-60);
@@ -560,14 +543,9 @@
       align-items: flex-start;
     }
 
-    .footer-brand {
-      max-width: 700px;
-    }
-
-    .footer-brand strong {
-      display: block;
-      margin-bottom: 8px;
-    }
+    .footer-brand { max-width: 700px; }
+    .footer-brand strong { display: block; margin-bottom: 8px; }
+    .disclaimer, .footnote { color: var(--gray-dark-60); font-size: 0.94rem; }
 
     @media (max-width: 1080px) {
       .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -603,14 +581,14 @@
 <body>
   <div class="osu-strip">
     <div class="wrap">
-      <div>The Ohio State University inspired workshop website theme</div>
+      <div>Ohio State inspired academic workshop website</div>
       <div>Physics • Biophysics • Research • Summer Program</div>
     </div>
   </div>
 
   <header class="site-nav">
     <div class="wrap">
-      <a href="#home" class="brand" onclick="showPage('home')">
+      <a href="#home" class="brand" data-page-link="home">
         <div class="brand-mark">O</div>
         <div class="brand-text">
           <span class="brand-kicker">Summer Research Program</span>
@@ -619,57 +597,57 @@
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
-        <button class="nav-link active" data-page="home" onclick="showPage('home')">Home</button>
-        <button class="nav-link" data-page="team" onclick="showPage('team')">Meet the Team</button>
-        <button class="nav-link" data-page="apply" onclick="showPage('apply')">Apply</button>
+        <a href="#home" class="nav-link active" data-page-link="home">Home</a>
+        <a href="#team" class="nav-link" data-page-link="team">Meet the Team</a>
+        <a href="#apply" class="nav-link" data-page-link="apply">Apply</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow">Modern research experience for high school students</div>
-        <h1>Hands-on summer science in an Ohio State inspired setting.</h1>
-        <p>
-          The Kural Research Workshop is designed to introduce high school students to authentic scientific thinking through guided laboratory experiences, quantitative analysis, scientific discussion, and mentorship from researchers across multiple training levels.
-        </p>
-        <p>
-          The program will offer two separate five-day sessions in July 2026. Each session runs Monday through Friday and follows the same core experience, allowing students to choose the week that best matches their summer schedule.
-        </p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" onclick="showPage('apply')">Start Application</button>
-          <button class="btn btn-secondary" onclick="showPage('team')">Meet the Team</button>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-photo">
-          <div class="hero-photo-note">
-            <strong>Replace with your featured workshop image</strong>
-            <div class="meta">Suggested options: lab photo, microscopy photo, classroom photo, or past program group image.</div>
-          </div>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <strong>2</strong>
-            <span>separate July sessions</span>
-          </div>
-          <div class="hero-stat">
-            <strong>5 days</strong>
-            <span>Monday through Friday</span>
-          </div>
-          <div class="hero-stat">
-            <strong>Halal lunch</strong>
-            <span>available each program day</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <main>
-    <div id="home" class="page-section active">
+    <section id="home" class="view active" aria-labelledby="home-title">
+      <div class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Modern research experience for high school students</div>
+            <h1 id="home-title">Hands-on summer science in an Ohio State inspired setting.</h1>
+            <p>
+              The Kural Research Workshop is designed to introduce high school students to authentic scientific thinking through guided laboratory experiences, quantitative analysis, scientific discussion, and mentorship from researchers across multiple training levels.
+            </p>
+            <p>
+              The program will offer two separate five-day sessions in July 2026. Each session runs Monday through Friday and follows the same core experience, allowing students to choose the week that best matches their summer schedule.
+            </p>
+            <div class="hero-actions">
+              <a href="#apply" class="btn btn-primary" data-page-link="apply">Start Application</a>
+              <a href="#team" class="btn btn-secondary" data-page-link="team">Meet the Team</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-photo">
+              <div class="hero-photo-note">
+                <strong>Replace with your featured workshop image</strong>
+                <div class="meta">Suggested options: lab photo, microscopy photo, classroom photo, or past program group image.</div>
+              </div>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <strong>2</strong>
+                <span>separate July sessions</span>
+              </div>
+              <div class="hero-stat">
+                <strong>5 days</strong>
+                <span>Monday through Friday</span>
+              </div>
+              <div class="hero-stat">
+                <strong>Halal lunch</strong>
+                <span>available each program day</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section class="section wrap">
         <div class="section-head">
           <div>
@@ -799,13 +777,13 @@
           <div class="gallery-card" data-label="Photo placeholder 8"></div>
         </div>
       </section>
-    </div>
+    </section>
 
-    <div id="team" class="page-section">
+    <section id="team" class="view" aria-labelledby="team-title">
       <section class="section wrap">
         <div class="section-head">
           <div>
-            <h2>Meet the team</h2>
+            <h2 id="team-title">Meet the team</h2>
             <p>
               Researchers from different stages of training come together to help students experience science in a serious but welcoming environment. Faculty leadership, research mentorship, and practical instruction all work together to create the workshop experience.
             </p>
@@ -903,13 +881,13 @@
           </article>
         </div>
       </section>
-    </div>
+    </section>
 
-    <div id="apply" class="page-section">
+    <section id="apply" class="view" aria-labelledby="apply-title">
       <section class="section wrap">
         <div class="section-head">
           <div>
-            <h2>Apply</h2>
+            <h2 id="apply-title">Apply</h2>
             <p>
               This form is already set up for Formspree. Replace the placeholder endpoint with your real Formspree ID and the site will be ready to receive submissions.
             </p>
@@ -1006,7 +984,7 @@
           </p>
         </div>
       </section>
-    </div>
+    </section>
   </main>
 
   <footer>
@@ -1024,20 +1002,39 @@
   </footer>
 
   <script>
-    function showPage(pageId) {
-      const pages = document.querySelectorAll('.page-section');
-      const links = document.querySelectorAll('.nav-link');
+    function showView(pageId, updateHash = true) {
+      const views = document.querySelectorAll('.view');
+      const links = document.querySelectorAll('[data-page-link]');
+      const targetId = document.getElementById(pageId) ? pageId : 'home';
 
-      pages.forEach(page => {
-        page.classList.toggle('active', page.id === pageId);
+      views.forEach((view) => {
+        view.classList.toggle('active', view.id === targetId);
       });
 
-      links.forEach(link => {
-        link.classList.toggle('active', link.dataset.page === pageId);
+      links.forEach((link) => {
+        link.classList.toggle('active', link.dataset.pageLink === targetId);
       });
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (updateHash) {
+        history.replaceState(null, '', '#' + targetId);
+      }
+
+      window.scrollTo(0, 0);
     }
+
+    document.querySelectorAll('[data-page-link]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        showView(link.dataset.pageLink);
+      });
+    });
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#', '');
+      showView(hash || 'home', false);
+    });
+
+    showView(window.location.hash.replace('#', '') || 'home', false);
   </script>
 </body>
 </html>
