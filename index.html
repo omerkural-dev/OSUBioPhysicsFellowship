@@ -889,86 +889,184 @@
           <div>
             <h2 id="apply-title">Apply</h2>
             <p>
-              This form is already set up for Formspree. Replace the placeholder endpoint with your real Formspree ID and the site will be ready to receive submissions.
+              Please complete the application form below. This version is structured around the exact application sections you requested, while keeping the design polished and professional. Replace the Formspree endpoint with your real form ID before publishing.
             </p>
           </div>
         </div>
 
         <div class="split">
           <article class="card soft">
-            <h3>Application notes</h3>
+            <h3>Application overview</h3>
             <ul class="profile-list">
-              <li>Students choose one of the two available July sessions.</li>
-              <li>Both sessions deliver the same core workshop experience.</li>
-              <li>Lunch will be provided each day.</li>
-              <li>Halal lunch is available.</li>
-              <li>Applicants may include optional dietary restrictions or food notes.</li>
+              <li><strong>Information about the student</strong></li>
+              <li><strong>Information about parent or guardian #1</strong></li>
+              <li><strong>Information about parent or guardian #2</strong> (optional)</li>
+              <li><strong>Preferred workshop session</strong></li>
+              <li><strong>Backup session flexibility</strong></li>
+              <li><strong>Scholarship request option</strong></li>
+              <li><strong>Essay response</strong> in 300 words or less</li>
             </ul>
             <div class="pill-row">
               <span class="pill">Session 1: July 13 to July 17, 2026</span>
               <span class="pill">Session 2: July 20 to July 24, 2026</span>
+              <span class="pill">Lunch provided</span>
+              <span class="pill">Halal available</span>
             </div>
+            <p style="margin-top:16px;">
+              Students should choose the session that works best for their schedule. If one session fills, applicants may indicate whether they are willing to attend the other available week instead.
+            </p>
           </article>
 
           <article class="card">
-            <form class="apply-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-              <div class="field-grid">
+            <form class="apply-form" action="https://formspree.io/f/xdaygorb" method="POST">
+              <div class="card soft" style="padding:20px; margin-bottom:8px;">
+                <h3>Information about the student</h3>
+                <p class="meta">Please answer this question.</p>
+
+                <div class="field-grid">
+                  <label>
+                    Student first name
+                    <input type="text" name="student_first_name" required />
+                  </label>
+                  <label>
+                    Student last name
+                    <input type="text" name="student_last_name" required />
+                  </label>
+                </div>
+
+                <div class="field-grid">
+                  <label>
+                    Student email
+                    <input type="email" name="student_email" required />
+                  </label>
+                  <label>
+                    Student phone number
+                    <input type="tel" name="student_phone" required />
+                  </label>
+                </div>
+
+                <div class="field-grid">
+                  <label>
+                    Current school
+                    <input type="text" name="student_school" required />
+                  </label>
+                  <label>
+                    Grade level for upcoming school year
+                    <select name="grade_level" required>
+                      <option value="">Select grade</option>
+                      <option>9th grade</option>
+                      <option>10th grade</option>
+                      <option>11th grade</option>
+                      <option>12th grade</option>
+                    </select>
+                  </label>
+                </div>
+
                 <label>
-                  Student first name
-                  <input type="text" name="student_first_name" required />
-                </label>
-                <label>
-                  Student last name
-                  <input type="text" name="student_last_name" required />
+                  Dietary restrictions <span class="hint">Optional</span>
+                  <textarea name="dietary_restrictions" placeholder="You may list allergies, halal preference, vegetarian requests, or any other dietary restrictions."></textarea>
                 </label>
               </div>
 
-              <div class="field-grid">
-                <label>
-                  Student email
-                  <input type="email" name="student_email" required />
-                </label>
-                <label>
-                  Parent or guardian email
-                  <input type="email" name="guardian_email" required />
-                </label>
+              <div class="card soft" style="padding:20px; margin-bottom:8px;">
+                <h3>Information about parent or guardian #1</h3>
+
+                <div class="field-grid">
+                  <label>
+                    Full name
+                    <input type="text" name="guardian1_name" required />
+                  </label>
+                  <label>
+                    Relationship to student
+                    <input type="text" name="guardian1_relationship" required />
+                  </label>
+                </div>
+
+                <div class="field-grid">
+                  <label>
+                    Email address
+                    <input type="email" name="guardian1_email" required />
+                  </label>
+                  <label>
+                    Phone number
+                    <input type="tel" name="guardian1_phone" required />
+                  </label>
+                </div>
               </div>
 
-              <div class="field-grid">
+              <div class="card soft" style="padding:20px; margin-bottom:8px;">
+                <h3>Information about parent or guardian #2 <span class="hint">Optional</span></h3>
+                <p class="meta">Please answer this question.</p>
+
+                <div class="field-grid">
+                  <label>
+                    Full name
+                    <input type="text" name="guardian2_name" />
+                  </label>
+                  <label>
+                    Relationship to student
+                    <input type="text" name="guardian2_relationship" />
+                  </label>
+                </div>
+
+                <div class="field-grid">
+                  <label>
+                    Email address
+                    <input type="email" name="guardian2_email" />
+                  </label>
+                  <label>
+                    Phone number
+                    <input type="tel" name="guardian2_phone" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="card soft" style="padding:20px; margin-bottom:8px;">
+                <h3>Please select which session of the workshop you would like to attend.</h3>
+                <p class="meta">Please answer this question.</p>
+
                 <label>
-                  Parent or guardian phone
-                  <input type="tel" name="guardian_phone" required />
-                </label>
-                <label>
-                  Grade level for upcoming school year
-                  <select name="grade_level" required>
-                    <option value="">Select grade</option>
-                    <option>9th grade</option>
-                    <option>10th grade</option>
-                    <option>11th grade</option>
-                    <option>12th grade</option>
+                  Preferred session
+                  <select name="preferred_session" required>
+                    <option value="">Choose one session</option>
+                    <option>Session 1: July 13 to July 17, 2026</option>
+                    <option>Session 2: July 20 to July 24, 2026</option>
                   </select>
                 </label>
               </div>
 
-              <label>
-                Preferred session
-                <select name="preferred_session" required>
-                  <option value="">Choose one session</option>
-                  <option>Session 1: July 13 to July 17, 2026</option>
-                  <option>Session 2: July 20 to July 24, 2026</option>
-                </select>
-              </label>
+              <div class="card soft" style="padding:20px; margin-bottom:8px;">
+                <h3>If your first choice session is full, are you willing to attend the other session?</h3>
+                <p class="meta">Please answer this question.</p>
 
-              <label>
-                Why are you interested in this workshop?
-                <textarea name="interest_statement" placeholder="Tell us about your interest in science, research, or what you hope to gain from the program." required></textarea>
-              </label>
+                <label>
+                  Alternate session availability
+                  <select name="alternate_session_ok" required>
+                    <option value="">Select one</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </label>
+              </div>
 
-              <label>
-                Dietary restrictions or food notes <span class="hint">Optional</span>
-                <textarea name="dietary_restrictions" placeholder="You may note allergies, halal preference, vegetarian requests, or any other dietary restrictions."></textarea>
-              </label>
+              <div class="card soft" style="padding:20px; margin-bottom:8px;">
+                <h3>Please check this box if you would like to receive a scholarship to cover the full participation cost of $450.</h3>
+                <p class="meta">Please answer this question.</p>
+
+                <label style="display:flex; align-items:flex-start; gap:12px; font-weight:700;">
+                  <input type="checkbox" name="scholarship_requested" value="Yes" style="width:auto; margin-top:4px;" />
+                  <span>I would like to be considered for a scholarship covering the full $450 participation cost.</span>
+                </label>
+              </div>
+
+              <div class="card soft" style="padding:20px; margin-bottom:8px;">
+                <h3>Essay Question: Please answer, in 300 words or less, why you are interested in attending the workshop.</h3>
+
+                <label>
+                  Essay response
+                  <textarea name="interest_statement" maxlength="2200" placeholder="Write your response here."></textarea>
+                </label>
+              </div>
 
               <input type="hidden" name="_subject" value="New Kural Research Workshop Application" />
 
@@ -980,11 +1078,11 @@
         <div class="card" style="margin-top:22px; width:100%;">
           <h3>Before you publish</h3>
           <p class="footnote">
-            Replace <strong>YOUR_FORMSPREE_ID</strong> with your real Formspree form ID. You can also update the session dates later, add program fees if needed, insert real photos, and expand the team list.
+            Replace <strong>xdaygorb</strong> with your real Formspree form ID. You can update the wording, session dates, and scholarship language later if needed.
           </p>
         </div>
       </section>
-    </section>
+    </section></section>
   </main>
 
   <footer>
