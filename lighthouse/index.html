@@ -1,1 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lighthouse Research Workshop | The Lighthouse Schools</title>
+  <meta name="description" content="A Lighthouse Schools research workshop for students, featuring instruction by Hermes Hermes and physics lectures by Comert Kural." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --tlh-red:#c50227;
+      --tlh-red-dark:#78091e;
+      --tlh-red-deeper:#5e0718;
+      --tlh-dark:#191919;
+      --tlh-text:#3b3b3b;
+      --tlh-muted:#666;
+      --tlh-soft:#f6f6f6;
+      --tlh-soft-2:#ececec;
+      --tlh-white:#ffffff;
+      --tlh-border:#e5e5e5;
+      --tlh-shadow:0 14px 35px rgba(0,0,0,.10);
+      --container:1200px;
+    }
 
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      color:var(--tlh-text);
+      background:#fff;
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button,input,select,textarea{font:inherit}
+
+    .container{
+      width:min(var(--container), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:var(--tlh-red-dark);
+      color:#fff;
+      font-size:13px;
+    }
+    .topbar-inner{
+      min-height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      padding:10px 0;
+    }
+    .topbar-left,
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .portal-btn{
+      background:#fff;
+      color:var(--tlh-red-dark);
+      padding:10px 16px;
+      border-radius:2px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+    .portal-btn:hover{background:#f2f2f2}
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.98);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(0,0,0,.06);
+      box-shadow:0 4px 18px rgba(0,0,0,.05);
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      min-height:92px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+    .brand-mark{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--tlh-red),var(--tlh-red-dark));
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:800;
+      font-size:18px;
+      box-shadow:var(--tlh-shadow);
+      flex:0 0 auto;
+    }
+    .brand-text{
+      min-width:0;
+    }
+    .brand-text .eyebrow{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--tlh-red);
+      font-weight:700;
+      line-height:1.2;
+      margin-bottom:4px;
+    }
+    .brand-text .title{
+      font-family:'Roboto',sans-serif;
+      font-size:26px;
+      font-weight:900;
+      line-height:1;
+      color:#1a1a1a;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .nav-link{
+      padding:14px 18px;
+      border-radius:2px;
+      font-weight:600;
+      color:#1f1f1f;
+      position:relative;
+      transition:.2s ease;
+    }
+    .nav-link:hover,
+    .nav-link.active{
+      color:var(--tlh-red);
+      background:#faf4f5;
+    }
+    .nav-apply{
+      background:var(--tlh-red);
+      color:#fff !important;
+      box-shadow:0 12px 24px rgba(197,2,39,.22);
+    }
+    .nav-apply:hover,
+    .nav-apply.active{
+      background:var(--tlh-red-dark);
+    }
+
+    .mobile-toggle{
+      display:none;
+      background:none;
+      border:none;
+      width:44px;
+      height:44px;
+      border-radius:8px;
+      cursor:pointer;
+      padding:0;
+    }
+    .mobile-toggle span,
+    .mobile-toggle span::before,
+    .mobile-toggle span::after{
+      display:block;
+      width:24px;
+      height:2px;
+      background:#1c1c1c;
+      margin:auto;
+      position:relative;
+      transition:.25s ease;
+      content:"";
+    }
+    .mobile-toggle span::before{position:absolute;top:-7px}
+    .mobile-toggle span::after{position:absolute;top:7px}
+
+    .hero{
+      position:relative;
+      min-height:680px;
+      display:flex;
+      align-items:center;
+      color:#fff;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(14,14,14,.82) 0%, rgba(14,14,14,.65) 38%, rgba(14,14,14,.18) 100%),
+        radial-gradient(circle at top left, rgba(197,2,39,.22), transparent 30%),
+        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.18));
+      pointer-events:none;
+    }
+    .hero-content{
+      position:relative;
+      z-index:1;
+      width:min(720px,100%);
+      padding:72px 0;
+    }
+    .hero-kicker{
+      font-family:'Poppins',sans-serif;
+      font-style:italic;
+      font-size:24px;
+      margin-bottom:18px;
+      color:#f1f1f1;
+    }
+    .hero h1{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(42px,7vw,72px);
+      line-height:.95;
+      margin:0 0 18px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+    .hero p{
+      font-size:19px;
+      max-width:650px;
+      color:#f1f1f1;
+      margin:0 0 28px;
+    }
+    .hero-cta{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:28px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px 24px;
+      border-radius:3px;
+      border:none;
+      cursor:pointer;
+      font-weight:700;
+      transition:.2s ease;
+    }
+    .btn-primary{
+      background:var(--tlh-red);
+      color:#fff;
+      box-shadow:0 12px 28px rgba(197,2,39,.24);
+    }
+    .btn-primary:hover{background:var(--tlh-red-dark)}
+    .btn-secondary{
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.3);
+    }
+    .btn-secondary:hover{background:rgba(255,255,255,.2)}
+
+    .hero-facts{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:14px;
+      margin-top:34px;
+    }
+    .fact{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(10px);
+      border-radius:4px;
+      padding:18px 16px;
+    }
+    .fact-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#e9dede;
+      margin-bottom:6px;
+    }
+    .fact-value{
+      font-size:18px;
+      font-weight:700;
+      line-height:1.3;
+    }
+
+    main{display:block}
+    .page{
+      display:none;
+      animation:fadeIn .28s ease;
+    }
+    .page.active{display:block}
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(6px)}
+      to{opacity:1;transform:none}
+    }
+
+    .section{
+      padding:78px 0;
+    }
+    .section.gray{background:var(--tlh-soft)}
+    .section.dark{
+      background:var(--tlh-dark);
+      color:#fff;
+    }
+    .section-title{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(30px,4vw,44px);
+      font-weight:800;
+      line-height:1.05;
+      margin:0 0 14px;
+      color:#1b1b1b;
+    }
+    .section.dark .section-title{color:#fff}
+    .section-subtitle{
+      color:var(--tlh-muted);
+      font-size:17px;
+      margin:0 0 24px;
+      max-width:760px;
+    }
+    .section.dark .section-subtitle{color:#dddddd}
+
+    .grid-2,
+    .grid-3,
+    .grid-4{
+      display:grid;
+      gap:26px;
+    }
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+    .card{
+      background:#fff;
+      border:1px solid var(--tlh-border);
+      border-radius:4px;
+      box-shadow:var(--tlh-shadow);
+      overflow:hidden;
+    }
+    .card-body{padding:26px}
+    .card h3,
+    .card h4{
+      margin:0 0 10px;
+      color:#1e1e1e;
+      font-family:'Roboto',sans-serif;
+    }
+    .card p{margin:0;color:#5f5f5f}
+
+    .feature-card{
+      background:#fff;
+      padding:28px;
+      border-radius:4px;
+      border-top:4px solid var(--tlh-red);
+      box-shadow:var(--tlh-shadow);
+    }
+    .feature-card:nth-child(2){border-top-color:var(--tlh-red-dark)}
+    .feature-card:nth-child(3){border-top-color:#a32139}
+    .feature-card:nth-child(4){border-top-color:#d13f5b}
+    .feature-card h3{
+      font-size:23px;
+      margin:0 0 10px;
+    }
+    .feature-card p{margin:0;color:#666}
+
+    .highlight-band{
+      margin-top:-48px;
+      position:relative;
+      z-index:2;
+    }
+    .highlight-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:0;
+      border-radius:4px;
+      overflow:hidden;
+      box-shadow:0 22px 48px rgba(0,0,0,.18);
+    }
+    .highlight-item{
+      padding:30px 28px;
+      color:#fff;
+    }
+    .highlight-item:nth-child(1){background:var(--tlh-red)}
+    .highlight-item:nth-child(2){background:var(--tlh-red-dark)}
+    .highlight-item:nth-child(3){background:var(--tlh-dark)}
+    .highlight-item h3{
+      margin:0 0 8px;
+      font-size:21px;
+      font-family:'Roboto',sans-serif;
+    }
+    .highlight-item p{margin:0;color:rgba(255,255,255,.9)}
+
+    .info-split{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:34px;
+      align-items:start;
+    }
+    .panel{
+      background:#fff;
+      border:1px solid var(--tlh-border);
+      border-radius:4px;
+      box-shadow:var(--tlh-shadow);
+      padding:30px;
+    }
+    .panel h3{
+      margin:0 0 14px;
+      font-size:28px;
+      font-family:'Roboto',sans-serif;
+      color:#1d1d1d;
+    }
+    .bullet-list{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+    .bullet{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:#555;
+    }
+    .bullet-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      margin-top:10px;
+      background:var(--tlh-red);
+      flex:0 0 auto;
+    }
+
+    .timeline{
+      display:grid;
+      gap:18px;
+    }
+    .timeline-item{
+      border-left:4px solid var(--tlh-red);
+      padding:6px 0 6px 18px;
+    }
+    .timeline-item h4{
+      margin:0 0 6px;
+      font-size:19px;
+      color:#1c1c1c;
+    }
+    .timeline-item p{margin:0;color:#5f5f5f}
+
+    .team-card{
+      background:#fff;
+      border:1px solid var(--tlh-border);
+      border-radius:4px;
+      overflow:hidden;
+      box-shadow:var(--tlh-shadow);
+    }
+    .team-photo{
+      aspect-ratio:1/1;
+      background:linear-gradient(135deg,#f7d7dd,#f2f2f2);
+      display:grid;
+      place-items:center;
+      color:var(--tlh-red-dark);
+      font-size:44px;
+      font-weight:800;
+      font-family:'Roboto',sans-serif;
+    }
+    .team-content{padding:24px}
+    .team-role{
+      color:var(--tlh-red);
+      font-weight:700;
+      text-transform:uppercase;
+      font-size:12px;
+      letter-spacing:.14em;
+      margin-bottom:8px;
+    }
+    .team-name{
+      font-size:26px;
+      margin:0 0 10px;
+      font-family:'Roboto',sans-serif;
+      color:#1a1a1a;
+    }
+    .team-content p{margin:0;color:#5f5f5f}
+
+    .stats-band{
+      background:
+        linear-gradient(90deg, rgba(25,25,25,.88), rgba(25,25,25,.76)),
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color:#fff;
+    }
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:24px;
+    }
+    .stat{
+      text-align:center;
+      padding:20px 12px;
+    }
+    .stat-number{
+      font-size:44px;
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      line-height:1;
+      margin-bottom:8px;
+    }
+    .stat-label{
+      color:#d9d9d9;
+      font-size:15px;
+    }
+
+    .form-shell{
+      background:#fff;
+      border:1px solid var(--tlh-border);
+      border-radius:4px;
+      box-shadow:var(--tlh-shadow);
+      overflow:hidden;
+    }
+    .form-head{
+      background:linear-gradient(135deg,var(--tlh-red),var(--tlh-red-dark));
+      color:#fff;
+      padding:28px;
+    }
+    .form-head h2{
+      margin:0 0 8px;
+      font-family:'Roboto',sans-serif;
+      font-size:34px;
+    }
+    .form-head p{margin:0;color:#f6dfe4}
+    .form-body{padding:30px}
+    .form-section{
+      margin-bottom:30px;
+      border-bottom:1px solid var(--tlh-border);
+      padding-bottom:24px;
+    }
+    .form-section:last-child{
+      margin-bottom:0;
+      border-bottom:none;
+      padding-bottom:0;
+    }
+    .form-section h3{
+      margin:0 0 18px;
+      font-size:22px;
+      font-family:'Roboto',sans-serif;
+      color:#1a1a1a;
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+    .field{display:grid;gap:8px}
+    .field.full{grid-column:1/-1}
+    label{
+      font-size:14px;
+      font-weight:600;
+      color:#333;
+    }
+    input,
+    select,
+    textarea{
+      width:100%;
+      border:1px solid #d6d6d6;
+      border-radius:3px;
+      padding:14px 14px;
+      background:#fff;
+      color:#222;
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus{
+      outline:none;
+      border-color:var(--tlh-red);
+      box-shadow:0 0 0 4px rgba(197,2,39,.08);
+    }
+    textarea{min-height:150px;resize:vertical}
+    .check-row{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      margin-top:6px;
+    }
+    .check-row input{
+      width:18px;
+      height:18px;
+      margin-top:3px;
+      flex:0 0 auto;
+    }
+    .small-note{
+      font-size:13px;
+      color:#666;
+      margin-top:6px;
+    }
+
+    .faq-list{
+      display:grid;
+      gap:16px;
+    }
+    details{
+      background:#fff;
+      border:1px solid var(--tlh-border);
+      border-radius:4px;
+      padding:18px 20px;
+      box-shadow:var(--tlh-shadow);
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight:700;
+      color:#1d1d1d;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin:12px 0 0;color:#5f5f5f}
+
+    .footer{
+      background:#141414;
+      color:#fff;
+      padding-top:56px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
+      gap:28px;
+      padding-bottom:40px;
+    }
+    .footer h4{
+      margin:0 0 14px;
+      font-size:18px;
+      font-family:'Roboto',sans-serif;
+    }
+    .footer p,
+    .footer li,
+    .footer a{
+      color:#d4d4d4;
+      font-size:15px;
+    }
+    .footer ul{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:18px 0 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:#cfcfcf;
+      font-size:14px;
+    }
+
+    @media (max-width: 1080px){
+      .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid-3{grid-template-columns:1fr}
+      .hero-facts,
+      .stats-grid,
+      .highlight-grid,
+      .footer-grid,
+      .grid-2,
+      .info-split{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 860px){
+      .mobile-toggle{display:inline-flex;align-items:center;justify-content:center}
+      .nav{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:#fff;
+        padding:14px 16px 18px;
+        border-bottom:1px solid rgba(0,0,0,.08);
+        box-shadow:0 12px 24px rgba(0,0,0,.06);
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .nav.open{display:flex}
+      .nav-link{padding:14px 12px}
+      .header-inner{min-height:78px}
+      .brand-text .title{font-size:22px}
+      .hero{min-height:auto}
+      .hero-kicker{font-size:18px}
+      .topbar{display:none}
+    }
+
+    @media (max-width: 640px){
+      .container{width:min(var(--container), calc(100% - 20px))}
+      .section{padding:58px 0}
+      .hero-content{padding:58px 0}
+      .hero p{font-size:16px}
+      .fact-value{font-size:16px}
+      .panel,
+      .card-body,
+      .team-content,
+      .form-body,
+      .feature-card{padding:22px}
+      .form-head{padding:24px}
+      .hero-facts{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span>info@tlhschools.org</span>
+        <span>+1 (563) 249 4566</span>
+      </div>
+      <div class="topbar-right">
+        <span>The Lighthouse Schools Student Program</span>
+        <a href="#apply" class="portal-btn" data-page-link="apply">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" data-page-link="home" aria-label="Lighthouse Research Workshop home">
+        <div class="brand-mark">TLS</div>
+        <div class="brand-text">
+          <div class="eyebrow">The Lighthouse Schools</div>
+          <div class="title">Research Workshop</div>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+
+      <nav class="nav" id="siteNav">
+        <a class="nav-link active" href="#home" data-page-link="home">Home</a>
+        <a class="nav-link" href="#team" data-page-link="team">Meet the Team</a>
+        <a class="nav-link nav-apply" href="#apply" data-page-link="apply">Apply</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-kicker">For Lighthouse students</div>
+            <h1>Research workshop applications are now open</h1>
+            <p>
+              A summer academic experience built for students of The Lighthouse Schools, led by Hermes Hermes, with physics lectures by Comert Kural. Students apply for admission, but there is no participation fee for accepted Lighthouse students.
+            </p>
+            <div class="hero-cta">
+              <a href="#apply" class="btn btn-primary" data-page-link="apply">Apply Now</a>
+              <a href="#team" class="btn btn-secondary" data-page-link="team">Meet the Team</a>
+            </div>
+            <div class="hero-facts">
+              <div class="fact">
+                <div class="fact-label">Program Type</div>
+                <div class="fact-value">Lighthouse student workshop</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Lead Instructor</div>
+                <div class="fact-value">Hermes Hermes</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Physics Lectures</div>
+                <div class="fact-value">Comert Kural</div>
+              </div>
+              <div class="fact">
+                <div class="fact-label">Cost</div>
+                <div class="fact-value">No charge</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container highlight-band">
+        <div class="highlight-grid">
+          <div class="highlight-item">
+            <h3>Hands-on learning</h3>
+            <p>Students will explore scientific thinking, guided inquiry, and research-style problem solving in a focused summer setting.</p>
+          </div>
+          <div class="highlight-item">
+            <h3>Same daily times</h3>
+            <p>The daily schedule remains aligned with the workshop structure already established for the standard program.</p>
+          </div>
+          <div class="highlight-item">
+            <h3>Lighthouse-only track</h3>
+            <p>This version is specifically for The Lighthouse Schools students and uses an application-based selection process.</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">A workshop built in the spirit of The Lighthouse Schools</h2>
+          <p class="section-subtitle">
+            This page is styled to closely match the visual identity of The Lighthouse Schools with a strong red palette, white space, bold typography, and structured academic presentation.
+          </p>
+          <div class="grid-4">
+            <div class="feature-card">
+              <h3>Application only</h3>
+              <p>Students submit an application and are reviewed based on interest, readiness, and fit for the workshop.</p>
+            </div>
+            <div class="feature-card">
+              <h3>No participation fee</h3>
+              <p>Accepted Lighthouse students attend at no cost, so the application focuses on commitment and motivation.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Research exposure</h3>
+              <p>Students gain early exposure to scientific research style thinking, communication, and analytical habits.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Mentorship and lectures</h3>
+              <p>The program combines direct instruction, guided activities, and physics lectures from Comert Kural.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section gray">
+        <div class="container info-split">
+          <div class="panel">
+            <h3>Program overview</h3>
+            <p>
+              The Lighthouse Schools Research Workshop is a summer opportunity for students who want a more serious academic experience centered on scientific curiosity, structured learning, and exposure to advanced ideas.
+            </p>
+            <div class="bullet-list">
+              <div class="bullet"><span class="bullet-dot"></span><span>Lead instruction by Hermes Hermes.</span></div>
+              <div class="bullet"><span class="bullet-dot"></span><span>Physics lectures by Comert Kural.</span></div>
+              <div class="bullet"><span class="bullet-dot"></span><span>Same daily times as the main workshop structure.</span></div>
+              <div class="bullet"><span class="bullet-dot"></span><span>Separate Lighthouse Schools dates.</span></div>
+              <div class="bullet"><span class="bullet-dot"></span><span>No charge for accepted Lighthouse students.</span></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Important details</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>Who can apply</h4>
+                <p>Current students of The Lighthouse Schools who are interested in science, research, or advanced summer learning.</p>
+              </div>
+              <div class="timeline-item">
+                <h4>Selection basis</h4>
+                <p>Applications are reviewed based on seriousness, interest, and the written response in the application form.</p>
+              </div>
+              <div class="timeline-item">
+                <h4>Cost</h4>
+                <p>There is no participation cost for the Lighthouse Schools student track.</p>
+              </div>
+              <div class="timeline-item">
+                <h4>Dates</h4>
+                <p>Update the session dates below to the Lighthouse-specific summer dates you want to use.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section stats-band">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-number">2</div>
+              <div class="stat-label">instructors and lecture leaders highlighted</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Lighthouse student-only application track</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">0</div>
+              <div class="stat-label">dollars for accepted Lighthouse students</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">focused on academic growth and readiness</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="team" class="page">
+      <section class="section gray" style="padding-top:70px;">
+        <div class="container">
+          <h2 class="section-title">Meet the team</h2>
+          <p class="section-subtitle">
+            The Lighthouse Schools workshop team brings together instruction, subject exposure, and mentorship in a format designed for motivated students.
+          </p>
+          <div class="grid-3">
+            <article class="team-card">
+              <div class="team-photo">HH</div>
+              <div class="team-content">
+                <div class="team-role">Lead Instructor</div>
+                <h3 class="team-name">Hermes Hermes</h3>
+                <p>
+                  Hermes Hermes serves as the primary instructor for the Lighthouse Schools student track, guiding the core workshop experience and student learning throughout the program.
+                </p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-photo">CK</div>
+              <div class="team-content">
+                <div class="team-role">Physics Lecturer</div>
+                <h3 class="team-name">Comert Kural</h3>
+                <p>
+                  Comert Kural will deliver physics lectures as part of the program, giving students exposure to high-level scientific ideas and deeper conceptual understanding.
+                </p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-photo">TLS</div>
+              <div class="team-content">
+                <div class="team-role">Host Institution</div>
+                <h3 class="team-name">The Lighthouse Schools</h3>
+                <p>
+                  This workshop is structured for Lighthouse students and presented in a format that fits the school’s academic identity, disciplined environment, and high expectations.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container info-split">
+          <div class="panel">
+            <h3>What students should expect</h3>
+            <div class="bullet-list">
+              <div class="bullet"><span class="bullet-dot"></span><span>Academic sessions that emphasize scientific thinking and organized inquiry.</span></div>
+              <div class="bullet"><span class="bullet-dot"></span><span>Structured workshop leadership under Hermes Hermes.</span></div>
+              <div class="bullet"><span class="bullet-dot"></span><span>Physics exposure through dedicated lectures by Comert Kural.</span></div>
+              <div class="bullet"><span class="bullet-dot"></span><span>A selective environment focused on serious participation.</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Ideal applicant</h3>
+            <p>
+              The strongest applicants are students who are genuinely curious, open to challenge, ready to work carefully, and interested in using summer time for something intellectually meaningful.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="apply" class="page">
+      <section class="section gray" style="padding-top:70px;">
+        <div class="container">
+          <div class="form-shell">
+            <div class="form-head">
+              <h2>Apply to the Lighthouse student workshop</h2>
+              <p>
+                This application is for The Lighthouse Schools student version of the workshop. Accepted students attend at no cost.
+              </p>
+            </div>
+            <div class="form-body">
+              <form action="https://formspree.io/f/xnjoppqk" method="POST">
+                <div class="form-section">
+                  <h3>Student information</h3>
+                  <div class="form-grid">
+                    <div class="field">
+                      <label for="studentFirstName">First name</label>
+                      <input id="studentFirstName" name="Student First Name" type="text" required />
+                    </div>
+                    <div class="field">
+                      <label for="studentLastName">Last name</label>
+                      <input id="studentLastName" name="Student Last Name" type="text" required />
+                    </div>
+                    <div class="field">
+                      <label for="studentEmail">Student email</label>
+                      <input id="studentEmail" name="Student Email" type="email" required />
+                    </div>
+                    <div class="field">
+                      <label for="studentPhone">Student phone</label>
+                      <input id="studentPhone" name="Student Phone" type="tel" />
+                    </div>
+                    <div class="field">
+                      <label for="studentGrade">Current grade</label>
+                      <select id="studentGrade" name="Current Grade" required>
+                        <option value="">Select grade</option>
+                        <option>6th</option>
+                        <option>7th</option>
+                        <option>8th</option>
+                        <option>9th</option>
+                        <option>10th</option>
+                        <option>11th</option>
+                        <option>12th</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="studentCampusStatus">Enrollment status</label>
+                      <select id="studentCampusStatus" name="Enrollment Status" required>
+                        <option value="">Select option</option>
+                        <option>Current Lighthouse student</option>
+                        <option>Incoming Lighthouse student</option>
+                      </select>
+                    </div>
+                    <div class="field full">
+                      <label for="studentInterests">Academic interests</label>
+                      <input id="studentInterests" name="Academic Interests" type="text" placeholder="Physics, biology, engineering, math, research, etc." />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>Parent or guardian information</h3>
+                  <div class="form-grid">
+                    <div class="field">
+                      <label for="parentName">Parent or guardian name</label>
+                      <input id="parentName" name="Parent or Guardian Name" type="text" required />
+                    </div>
+                    <div class="field">
+                      <label for="parentRelation">Relation to student</label>
+                      <input id="parentRelation" name="Relation to Student" type="text" required />
+                    </div>
+                    <div class="field">
+                      <label for="parentEmail">Parent or guardian email</label>
+                      <input id="parentEmail" name="Parent or Guardian Email" type="email" required />
+                    </div>
+                    <div class="field">
+                      <label for="parentPhone">Parent or guardian phone</label>
+                      <input id="parentPhone" name="Parent or Guardian Phone" type="tel" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>Session selection</h3>
+                  <div class="form-grid">
+                    <div class="field full">
+                      <label for="sessionChoice">Preferred session</label>
+                      <select id="sessionChoice" name="Preferred Session" required>
+                        <option value="">Select a session</option>
+                        <option>Session 1  |  Replace with Lighthouse date range</option>
+                        <option>Session 2  |  Replace with Lighthouse date range</option>
+                      </select>
+                      <div class="small-note">The daily times remain the same as the main workshop version. Replace the placeholder date text with your Lighthouse-specific dates.</div>
+                    </div>
+                    <div class="field full">
+                      <label for="transportationNote">Anything we should know about scheduling or attendance?</label>
+                      <input id="transportationNote" name="Scheduling Notes" type="text" placeholder="Optional" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>Student response</h3>
+                  <div class="form-grid">
+                    <div class="field full">
+                      <label for="essay">In 300 words or less, why are you interested in attending this workshop?</label>
+                      <textarea id="essay" name="Student Essay" maxlength="2000" required placeholder="Write your response here"></textarea>
+                    </div>
+                    <div class="field full">
+                      <label for="goals">What do you hope to gain from this experience?</label>
+                      <textarea id="goals" name="Workshop Goals" placeholder="Optional"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>Confirmation</h3>
+                  <div class="check-row">
+                    <input id="confirmInfo" name="Information Confirmed" type="checkbox" required />
+                    <label for="confirmInfo">I confirm that the information in this application is accurate.</label>
+                  </div>
+                  <div class="check-row">
+                    <input id="confirmParticipation" name="Understands No Fee Track" type="checkbox" required />
+                    <label for="confirmParticipation">I understand that this Lighthouse Schools track has no participation fee for accepted students.</label>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Frequently asked questions</h2>
+          <div class="faq-list">
+            <details open>
+              <summary>Who is this application for?</summary>
+              <p>This application is for The Lighthouse Schools student version of the workshop.</p>
+            </details>
+            <details>
+              <summary>Is there a cost?</summary>
+              <p>No. There is no charge for accepted Lighthouse students in this track.</p>
+            </details>
+            <details>
+              <summary>Who leads the program?</summary>
+              <p>Hermes Hermes is the lead instructor, and Comert Kural provides physics lectures.</p>
+            </details>
+            <details>
+              <summary>Are the times the same as the main workshop?</summary>
+              <p>Yes. The daily times remain the same. Only the date ranges are different for the Lighthouse student version.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>The Lighthouse Schools</h4>
+        <p>
+          400 N Bluff Blvd<br />
+          Clinton, IA 52732
+        </p>
+        <p>
+          +1 (563) 249 4566<br />
+          info@tlhschools.org
+        </p>
+      </div>
+      <div>
+        <h4>Workshop</h4>
+        <ul>
+          <li><a href="#home" data-page-link="home">Home</a></li>
+          <li><a href="#team" data-page-link="team">Meet the Team</a></li>
+          <li><a href="#apply" data-page-link="apply">Apply</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Program</h4>
+        <ul>
+          <li>Lead Instructor: Hermes Hermes</li>
+          <li>Physics Lectures: Comert Kural</li>
+          <li>No-charge student track</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Notes</h4>
+        <ul>
+          <li>Update the two placeholder session date labels</li>
+          <li>Keep the daily times the same</li>
+          <li>Form is ready to receive submissions</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>Copyright 2026 | Lighthouse Research Workshop</div>
+      <div>Styled to closely match The Lighthouse Schools visual identity</div>
+    </div>
+  </footer>
+
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const links = document.querySelectorAll('[data-page-link]');
+    const nav = document.getElementById('siteNav');
+    const mobileToggle = document.getElementById('mobileToggle');
+
+    function showPage(pageId){
+      pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+      links.forEach(link => link.classList.toggle('active', link.dataset.pageLink === pageId));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      nav.classList.remove('open');
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const pageId = link.dataset.pageLink;
+        if(pageId){
+          e.preventDefault();
+          history.replaceState(null, '', `#${pageId}`);
+          showPage(pageId);
+        }
+      });
+    });
+
+    mobileToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.replace('#','');
+      if(hash && document.getElementById(hash)){
+        showPage(hash);
+      }
+    });
+  </script>
+</body>
+</html>
