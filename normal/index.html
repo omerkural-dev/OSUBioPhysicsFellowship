@@ -710,8 +710,78 @@ document.getElementById("appForm").addEventListener("submit", function(e){
       body:new FormData(form),
       headers:{'Accept':'application/json'}
     }).then(function(){
-      document.body.innerHTML =
-        '<h1 style="text-align:center;margin-top:40vh;color:white;background:#0d0d0d;">Congratulations. You got a scholarship.</h1>';
+      document.body.innerHTML = `
+        <div style="
+    min-height:100vh;
+    background:#0d0d0d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Sora',sans-serif;
+    color:white;
+    text-align:center;
+    padding:40px;
+  ">
+    <div style="max-width:700px">
+      
+      <div style="
+        font-size:12px;
+        letter-spacing:2px;
+        text-transform:uppercase;
+        color:#BA0C2F;
+        margin-bottom:20px;
+        font-weight:700;
+      ">
+        Special Selection
+      </div>
+
+      <h1 style="
+        font-size:48px;
+        font-weight:800;
+        margin-bottom:20px;
+        line-height:1.1;
+      ">
+        Congratulations.
+      </h1>
+
+      <p style="
+        font-size:18px;
+        color:rgba(255,255,255,0.7);
+        margin-bottom:30px;
+        line-height:1.6;
+      ">
+        You have been awarded a full scholarship to attend<br>
+        <strong>Seeing the Invisible: Exploring Cells with Light</strong>.
+      </p>
+
+      <div style="
+        background:rgba(255,255,255,0.05);
+        border:1px solid rgba(255,255,255,0.1);
+        border-radius:12px;
+        padding:20px;
+        font-size:14px;
+        color:rgba(255,255,255,0.6);
+      ">
+        This page is not publicly accessible.<br>
+        Please contact the program team to claim your placement.
+      </div>
+
+      <button onclick="location.reload()" style="
+        margin-top:30px;
+        padding:12px 24px;
+        border:none;
+        border-radius:999px;
+        background:#BA0C2F;
+        color:white;
+        font-weight:700;
+        cursor:pointer;
+      ">
+        Return
+      </button>
+
+    </div>
+  </div>
+`;
     });
     return;
   }
