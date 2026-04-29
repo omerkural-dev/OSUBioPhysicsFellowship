@@ -3,1376 +3,657 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Seeing the Invisible: Exploring Cells with Light | Ohio State University</title>
-<meta name="description" content="Seeing the Invisible: Exploring Cells with Light is a week-long live-cell imaging workshop for high school students at The Ohio State University, led by Prof. Comert Kural and Dr. Omer Kural."/>
+<title>Seeing the Invisible: Exploring Cells with Light | Ohio State</title>
+<meta name="description" content="A week-long live-cell imaging workshop for high school students at The Ohio State University, led by Prof. Comert Kural and Dr. Omer Kural."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --scarlet:#BA0C2F;
-  --scarlet-deep:#8A0920;
-  --scarlet-light:#d4143a;
-  --gray:#a7b1b7;
-  --offwhite:#F5F3EF;
-  --dark:#0f0f0f;
-  --mid:#2a2a2a;
-  --text:#1a1a1a;
+  --red:#BA0C2F;
+  --red-dark:#8A0920;
+  --dark:#0d0d0d;
+  --mid:#1a1a1a;
+  --off:#F4F2EE;
+  --text:#1c1c1c;
   --muted:#666;
-  --border:#e2ddd8;
-  --card:#fff;
-  --radius:16px;
-  --radius-sm:10px;
-  --max:1240px;
+  --border:#e0dbd4;
+  --r:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--offwhite);
-  color:var(--text);
-  line-height:1.65;
-  overflow-x:hidden;
-}
+body{font-family:'Sora',sans-serif;background:var(--off);color:var(--text);line-height:1.65;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
 
-/* ---- UTILITY ---- */
-.wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-/* ---- TOPBAR ---- */
-.topbar{
-  background:var(--dark);
-  color:rgba(255,255,255,.55);
-  font-size:.78rem;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  padding:9px 0;
-  font-weight:500;
-}
-.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.topbar span{color:var(--scarlet)}
-
-/* ---- NAV ---- */
-nav.main{
-  position:sticky;top:0;z-index:999;
-  background:rgba(245,243,239,.96);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-bottom:1.5px solid var(--border);
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:900;
+  background:rgba(244,242,238,.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
 }
 .nav-inner{
+  max-width:1140px;margin:0 auto;
+  padding:0 24px;
   display:flex;align-items:center;justify-content:space-between;
-  height:76px;gap:24px;
+  height:68px;gap:16px;
 }
-.logo{display:flex;align-items:center;gap:14px;cursor:pointer}
-.logo-block{
-  width:46px;height:46px;
-  background:var(--scarlet);
-  border-radius:10px;
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-sq{
+  width:38px;height:38px;border-radius:8px;
+  background:var(--red);
   display:grid;place-items:center;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.55rem;
-  color:#fff;
-  letter-spacing:.04em;
-  flex-shrink:0;
-  transition:background .2s;
+  font-weight:800;font-size:.85rem;color:#fff;letter-spacing:.04em;flex-shrink:0;
 }
-.logo:hover .logo-block{background:var(--scarlet-deep)}
-.logo-text{line-height:1.15}
-.logo-kicker{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--scarlet);font-weight:700;display:block}
-.logo-name{font-family:'Bebas Neue',sans-serif;font-size:1.12rem;letter-spacing:.06em;color:var(--dark)}
-
+.logo-text .sub{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--red);font-weight:700;display:block}
+.logo-text .name{font-size:.95rem;font-weight:700;color:var(--dark)}
 .nav-links{display:flex;gap:4px;align-items:center}
-.nav-btn{
+.nb{
   border:none;background:transparent;cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-  font-size:.92rem;font-weight:500;
-  color:var(--muted);
-  padding:10px 18px;
-  border-radius:99px;
-  transition:all .2s;
+  font-family:'Sora',sans-serif;font-size:.88rem;font-weight:600;
+  color:var(--muted);padding:9px 16px;border-radius:99px;transition:all .18s;
 }
-.nav-btn:hover{color:var(--dark);background:rgba(0,0,0,.05)}
-.nav-btn.active{color:var(--scarlet);background:rgba(186,12,47,.07);font-weight:700}
-.nav-apply{
-  background:var(--scarlet);
-  color:#fff!important;
-  padding:10px 22px;
-  border-radius:99px;
-  font-weight:700;
-  font-size:.92rem;
-  border:none;cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-  transition:background .2s,transform .15s;
-  margin-left:8px;
-}
-.nav-apply:hover{background:var(--scarlet-deep);transform:translateY(-1px)}
+.nb:hover,.nb.active{color:var(--dark);background:rgba(0,0,0,.06)}
+.nb.apply{background:var(--red);color:#fff;margin-left:6px}
+.nb.apply:hover{background:var(--red-dark)}
+.ham{display:none;border:none;background:transparent;cursor:pointer;padding:6px}
+.mob-nav{display:none;flex-direction:column;gap:4px;padding:10px 24px 16px;border-top:1px solid var(--border)}
+.mob-nav.open{display:flex}
+.mn{border:none;background:transparent;cursor:pointer;font-family:'Sora',sans-serif;font-size:.95rem;font-weight:600;color:var(--text);padding:12px 14px;border-radius:10px;text-align:left;transition:background .18s}
+.mn:hover{background:rgba(0,0,0,.05)}
+.mn.apply{background:var(--red);color:#fff;margin-top:4px}
 
-/* ---- HAMBURGER ---- */
-.hamburger{
-  display:none;border:none;background:transparent;cursor:pointer;
-  width:40px;height:40px;align-items:center;justify-content:center;
-  border-radius:8px;transition:background .2s;
-}
-.hamburger:hover{background:rgba(0,0,0,.06)}
-.hamburger svg{width:22px;height:22px}
-.mobile-menu{
-  display:none;
-  flex-direction:column;gap:4px;
-  padding:12px 0 18px;
-  border-top:1px solid var(--border);
-  animation:slideDown .2s ease;
-}
-@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.mobile-menu.open{display:flex}
-.mob-btn{
-  border:none;background:transparent;cursor:pointer;
-  font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;
-  color:var(--text);padding:13px 18px;border-radius:10px;
-  text-align:left;transition:background .2s;
-}
-.mob-btn:hover{background:rgba(0,0,0,.05)}
-.mob-btn.active{color:var(--scarlet);font-weight:700}
-.mob-apply{
-  background:var(--scarlet);color:#fff;
-  border:none;cursor:pointer;font-family:'DM Sans',sans-serif;
-  font-size:1rem;font-weight:700;
-  padding:14px 18px;border-radius:10px;text-align:left;
-  transition:background .2s;margin-top:4px;
-}
-.mob-apply:hover{background:var(--scarlet-deep)}
+/* ── PAGES ── */
+.pg{display:none}
+.pg.active{display:block}
 
-/* ---- PAGE SYSTEM ---- */
-.page{display:none}
-.page.active{display:block}
-
-/* ===== HOME PAGE ===== */
-
-/* --- HERO --- */
+/* ── HERO ── */
 .hero{
-  background:var(--dark);
-  position:relative;
-  overflow:hidden;
-  padding:100px 0 80px;
-  min-height:88vh;
-  display:flex;align-items:center;
-}
-.hero-bg-num{
-  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(280px,40vw,520px);
-  color:rgba(255,255,255,.03);
-  line-height:1;user-select:none;pointer-events:none;
-  letter-spacing:-.02em;
-}
-.hero-stripe{
-  position:absolute;top:0;left:0;width:6px;height:100%;
-  background:var(--scarlet);
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr 420px;
-  gap:60px;align-items:center;
-}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(186,12,47,.18);
-  border:1px solid rgba(186,12,47,.35);
-  color:rgba(255,255,255,.85);
-  font-size:.76rem;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  padding:7px 14px;border-radius:99px;
-  margin-bottom:22px;
-}
-.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--scarlet-light);flex-shrink:0}
-h1.hero-title{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(2.8rem,5.5vw,5rem);
-  color:#fff;line-height:1.05;
-  letter-spacing:-.02em;
-  margin-bottom:22px;
-}
-h1.hero-title em{color:var(--scarlet-light);font-style:italic}
-.hero-body{
-  color:rgba(255,255,255,.65);
-  font-size:1.06rem;
-  max-width:60ch;
-  margin-bottom:32px;
-  font-weight:300;
-  line-height:1.8;
-}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
-.btn-primary{
-  background:var(--scarlet);color:#fff;
-  border:none;cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-  font-size:.95rem;font-weight:700;
-  padding:15px 28px;border-radius:99px;
-  transition:background .2s,transform .15s;
-  display:inline-flex;align-items:center;gap:8px;
-}
-.btn-primary:hover{background:var(--scarlet-light);transform:translateY(-2px)}
-.btn-ghost{
-  background:transparent;
-  color:rgba(255,255,255,.8);
-  border:1.5px solid rgba(255,255,255,.2);
-  cursor:pointer;font-family:'DM Sans',sans-serif;
-  font-size:.95rem;font-weight:500;
-  padding:15px 28px;border-radius:99px;
-  transition:all .2s;
-  display:inline-flex;align-items:center;gap:8px;
-}
-.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
-
-.hero-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:14px;overflow:hidden;
-}
-.h-stat{
-  background:rgba(255,255,255,.05);
-  padding:20px 18px;
-}
-.h-stat strong{
-  display:block;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2rem;color:#fff;
-  letter-spacing:.04em;margin-bottom:4px;
-}
-.h-stat span{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.4}
-
-.info-panel{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:20px;
-  overflow:hidden;
-}
-.info-panel-header{
-  background:var(--scarlet);
-  padding:18px 24px;
-  display:flex;align-items:center;gap:12px;
-}
-.info-panel-header svg{width:20px;height:20px;color:#fff;flex-shrink:0}
-.info-panel-header span{
-  font-family:'Bebas Neue',sans-serif;
-  color:#fff;font-size:1rem;letter-spacing:.08em;
-}
-.info-row{
-  padding:18px 24px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  display:flex;gap:16px;align-items:flex-start;
-}
-.info-row:last-child{border-bottom:none}
-.info-icon{
-  width:36px;height:36px;border-radius:8px;
-  background:rgba(186,12,47,.2);
-  display:grid;place-items:center;flex-shrink:0;
-  color:var(--scarlet-light);font-size:.9rem;
-}
-.info-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:3px}
-.info-value{color:rgba(255,255,255,.9);font-size:.95rem;font-weight:500}
-.info-sub{color:rgba(255,255,255,.45);font-size:.82rem;margin-top:2px}
-
-/* --- SECTION COMMONS --- */
-section.sec{padding:88px 0 0}
-.sec-eyebrow{
-  font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;
-  color:var(--scarlet);font-weight:700;margin-bottom:10px;
-  display:flex;align-items:center;gap:8px;
-}
-.sec-eyebrow::before{content:'';width:24px;height:2px;background:var(--scarlet)}
-h2.sec-title{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(2rem,3.5vw,3.2rem);
-  letter-spacing:-.02em;line-height:1.1;
-  margin-bottom:14px;
-}
-.sec-sub{color:var(--muted);font-size:1.02rem;max-width:68ch;line-height:1.75;font-weight:300}
-
-/* --- ABOUT SECTION --- */
-.about-grid{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:20px;margin-top:48px;
-}
-.about-card{
-  background:var(--card);
-  border:1.5px solid var(--border);
-  border-radius:20px;
-  padding:30px 26px;
-  transition:transform .25s,box-shadow .25s;
+  background:var(--dark);color:#fff;
+  padding:88px 0 72px;
   position:relative;overflow:hidden;
 }
-.about-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--scarlet);transform:scaleX(0);transform-origin:left;
-  transition:transform .3s ease;
+.hero::before{
+  content:'2026';
+  position:absolute;right:-24px;top:50%;transform:translateY(-50%);
+  font-size:clamp(200px,30vw,400px);font-weight:800;
+  color:rgba(255,255,255,.025);line-height:1;
+  pointer-events:none;letter-spacing:-.04em;
 }
-.about-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.09)}
-.about-card:hover::before{transform:scaleX(1)}
-.card-num{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:3rem;color:rgba(186,12,47,.12);
-  line-height:1;margin-bottom:12px;
-  letter-spacing:.04em;
+.w{max-width:1140px;margin:0 auto;padding:0 24px}
+.tag{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(186,12,47,.2);border:1px solid rgba(186,12,47,.35);
+  color:rgba(255,255,255,.8);font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:99px;margin-bottom:20px;
 }
-.about-card h3{font-size:1.1rem;font-weight:700;margin-bottom:10px;line-height:1.3}
-.about-card p{font-size:.93rem;color:var(--muted);line-height:1.7}
-.about-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.pill{
-  font-size:.78rem;font-weight:600;
-  padding:6px 12px;border-radius:99px;
-  background:var(--offwhite);color:var(--text);
-  border:1px solid var(--border);
+.tag-dot{width:5px;height:5px;border-radius:50%;background:#d4143a;flex-shrink:0}
+h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
+h1 em{color:#d4143a;font-style:italic}
+.hero-sub{color:rgba(255,255,255,.6);font-size:1rem;font-weight:300;max-width:58ch;margin-bottom:28px;line-height:1.8}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn{
+  border:none;cursor:pointer;font-family:'Sora',sans-serif;
+  font-size:.92rem;font-weight:700;
+  padding:13px 26px;border-radius:99px;transition:all .18s;
+  display:inline-flex;align-items:center;gap:8px;
 }
-.pill-red{background:rgba(186,12,47,.08);color:var(--scarlet);border-color:rgba(186,12,47,.2)}
+.btn-r{background:var(--red);color:#fff}
+.btn-r:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-g{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn-g:hover{background:rgba(255,255,255,.18)}
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;overflow:hidden;background:rgba(255,255,255,.07);
+  max-width:480px;
+}
+.stat{background:rgba(255,255,255,.04);padding:18px 16px}
+.stat strong{display:block;font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:3px}
+.stat span{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.4}
 
-/* --- TIMELINE SECTION --- */
-.timeline-sec{padding:88px 0 0;background:var(--dark);margin-top:88px}
-.timeline-sec .sec-eyebrow::before{background:var(--scarlet-light)}
-.timeline-sec .sec-eyebrow{color:var(--scarlet-light)}
-.timeline-sec h2.sec-title{color:#fff}
-.timeline-sec .sec-sub{color:rgba(255,255,255,.5)}
-.tl-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:0;
-  margin-top:52px;
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:20px;overflow:hidden;
+/* ── SECTION ── */
+.sec{padding:72px 0 0}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);font-weight:700;margin-bottom:10px}
+h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:12px}
+.sub{color:var(--muted);font-size:.97rem;max-width:64ch;line-height:1.75;font-weight:300}
+
+/* ── CARDS ── */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.card{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--r);
+  padding:28px 24px;transition:transform .22s,box-shadow .22s;
+  position:relative;overflow:hidden;
 }
-.tl-item{
-  padding:28px 24px;
-  border-right:1px solid rgba(255,255,255,.08);
-  position:relative;
-  transition:background .25s;
+.card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .28s}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
+.card:hover::after{transform:scaleX(1)}
+.card-n{font-size:2.4rem;font-weight:800;color:rgba(186,12,47,.12);line-height:1;margin-bottom:10px}
+.card h3{font-size:1rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+.card p{font-size:.88rem;color:var(--muted);line-height:1.65}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.pill{font-size:.74rem;font-weight:600;padding:5px 11px;border-radius:99px;background:var(--off);border:1px solid var(--border)}
+.pill-r{background:rgba(186,12,47,.08);color:var(--red);border-color:rgba(186,12,47,.2)}
+
+/* ── DARK SECTION ── */
+.dark-sec{background:var(--dark);padding:72px 0;margin-top:72px}
+.dark-sec h2,.dark-sec .eyebrow{color:#fff}
+.dark-sec .eyebrow{color:#d4143a}
+.dark-sec .sub{color:rgba(255,255,255,.45)}
+.tl{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;margin-top:44px;
+  border:1px solid rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden;
 }
+.tl-item{padding:24px 20px;border-right:1px solid rgba(255,255,255,.07)}
 .tl-item:last-child{border-right:none}
-.tl-item:hover{background:rgba(255,255,255,.04)}
-.tl-day{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.05rem;letter-spacing:.08em;
-  color:var(--scarlet-light);margin-bottom:12px;
-  display:flex;align-items:center;gap:8px;
-}
-.tl-day-num{
-  width:28px;height:28px;background:var(--scarlet);
-  border-radius:6px;display:grid;place-items:center;
-  color:#fff;font-size:.85rem;font-family:'DM Sans',sans-serif;font-weight:700;
-  flex-shrink:0;
-}
-.tl-item h4{color:#fff;font-size:.92rem;font-weight:700;margin-bottom:8px;line-height:1.3}
-.tl-item p{color:rgba(255,255,255,.45);font-size:.83rem;line-height:1.6}
+.tl-day{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#d4143a;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.tl-n{width:22px;height:22px;background:var(--red);border-radius:5px;display:grid;place-items:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0}
+.tl-item h4{color:#fff;font-size:.88rem;font-weight:700;margin-bottom:6px;line-height:1.35}
+.tl-item p{color:rgba(255,255,255,.4);font-size:.8rem;line-height:1.6}
 
-/* --- HIGHLIGHTS --- */
-.highlights-grid{
-  display:grid;grid-template-columns:1.2fr 1fr;
-  gap:20px;margin-top:48px;align-items:start;
-}
-.hi-list{
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:20px;padding:32px 30px;
-}
-.hi-list h3{
-  font-family:'DM Serif Display',serif;
-  font-size:1.5rem;margin-bottom:24px;
-}
-.hi-item{
-  display:flex;gap:16px;align-items:flex-start;
-  padding:16px 0;
-  border-bottom:1px solid var(--border);
-}
+/* ── HIGHLIGHTS ── */
+.hi-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-top:44px;align-items:start}
+.hi-list{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:28px 26px}
+.hi-list h3{font-size:1.2rem;font-weight:700;margin-bottom:20px}
+.hi-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border)}
 .hi-item:last-child{border-bottom:none;padding-bottom:0}
-.hi-icon{
-  width:38px;height:38px;border-radius:10px;
-  background:rgba(186,12,47,.08);border:1px solid rgba(186,12,47,.15);
-  display:grid;place-items:center;flex-shrink:0;font-size:1rem;
-}
-.hi-text h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
-.hi-text p{font-size:.87rem;color:var(--muted);line-height:1.6}
-.hi-aside{display:flex;flex-direction:column;gap:20px}
-.hi-scarlet{
-  background:var(--scarlet);color:#fff;
-  border-radius:20px;padding:32px 28px;
-}
-.hi-scarlet h3{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;margin-bottom:14px}
-.hi-scarlet p{color:rgba(255,255,255,.8);font-size:.93rem;line-height:1.75;margin-bottom:16px}
-.hi-scarlet p:last-child{margin-bottom:0}
-.hi-dark{
-  background:var(--dark);color:#fff;
-  border-radius:20px;padding:28px;
-  display:flex;flex-direction:column;gap:16px;
-}
-.hi-dark-row{display:flex;align-items:center;gap:14px}
-.hi-dark-icon{
-  width:42px;height:42px;border-radius:10px;
-  background:rgba(255,255,255,.08);
-  display:grid;place-items:center;flex-shrink:0;
-  font-size:1.1rem;
-}
-.hi-dark-text strong{display:block;font-size:.9rem;color:#fff;font-weight:700}
-.hi-dark-text span{font-size:.82rem;color:rgba(255,255,255,.45)}
+.hi-icon{width:36px;height:36px;border-radius:9px;background:rgba(186,12,47,.08);border:1px solid rgba(186,12,47,.15);display:grid;place-items:center;flex-shrink:0;font-size:.95rem}
+.hi-text h4{font-size:.9rem;font-weight:700;margin-bottom:3px}
+.hi-text p{font-size:.83rem;color:var(--muted);line-height:1.6}
+.hi-side{display:flex;flex-direction:column;gap:16px}
+.hi-red{background:var(--red);color:#fff;border-radius:var(--r);padding:28px 24px}
+.hi-red h3{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:12px}
+.hi-red p{color:rgba(255,255,255,.8);font-size:.88rem;line-height:1.7;margin-bottom:12px}
+.hi-red p:last-child{margin-bottom:0}
+.hi-dark{background:var(--dark);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:13px}
+.hi-row{display:flex;align-items:center;gap:12px}
+.hi-ico{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.07);display:grid;place-items:center;flex-shrink:0;font-size:1rem}
+.hi-row strong{display:block;font-size:.88rem;color:#fff;font-weight:700}
+.hi-row span{font-size:.78rem;color:rgba(255,255,255,.4)}
 
-/* --- GALLERY PLACEHOLDER --- */
-.gallery-sec{padding:88px 0}
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-top:48px;
+/* ── GALLERY ── */
+.gal-sec{padding:72px 0 88px}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.gph{
+  border-radius:12px;background:linear-gradient(135deg,#d9d4ce,#c8c2ba);
+  aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:7px;font-size:.78rem;font-weight:600;color:#999;
+  border:1.5px dashed #bbb;
 }
-.gallery-ph{
-  border-radius:14px;
-  background:linear-gradient(135deg,#d4cfc9 0%,#c5bfb8 100%);
-  aspect-ratio:4/3;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:8px;font-size:.82rem;font-weight:600;
-  color:#888;border:1.5px dashed #bbb;
-  transition:background .25s;
-}
-.gallery-ph:hover{background:linear-gradient(135deg,#cac4be 0%,#bab3ab 100%)}
-.gallery-ph svg{width:28px;height:28px;opacity:.4}
+.gph svg{width:26px;height:26px;opacity:.35}
 
-/* ===== TEAM PAGE ===== */
-.page-hero{
-  background:var(--dark);padding:80px 0 72px;
-  position:relative;overflow:hidden;
-}
-.page-hero::after{
-  content:'';position:absolute;right:-60px;top:-40px;
-  width:380px;height:380px;
-  background:radial-gradient(circle,rgba(186,12,47,.18) 0%,transparent 70%);
-  pointer-events:none;
-}
-.page-hero .sec-eyebrow{color:var(--scarlet-light)}
-.page-hero .sec-eyebrow::before{background:var(--scarlet-light)}
-.page-hero h2{color:#fff}
-.page-hero .sec-sub{color:rgba(255,255,255,.5)}
+/* ── TEAM PAGE ── */
+.pg-hero{background:var(--dark);padding:72px 0 60px;position:relative;overflow:hidden}
+.pg-hero::after{content:'';position:absolute;right:-60px;top:-40px;width:320px;height:320px;background:radial-gradient(circle,rgba(186,12,47,.16) 0%,transparent 70%);pointer-events:none}
+.pg-hero h2,.pg-hero .eyebrow{color:#fff}
+.pg-hero .eyebrow{color:#d4143a}
+.pg-hero .sub{color:rgba(255,255,255,.45)}
 
-.director-sec{padding:72px 0 0}
-.director-card{
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:24px;overflow:hidden;
-  display:grid;grid-template-columns:280px 1fr;
+.dir-card{
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+  display:grid;grid-template-columns:260px 1fr;
+  margin-top:40px;
 }
-.director-photo{
+.dir-photo{
   background:linear-gradient(145deg,#c8c2bb,#b0a99f);
-  min-height:380px;
-  position:relative;display:flex;align-items:flex-end;padding:24px;
+  min-height:360px;position:relative;
 }
-.director-photo img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.director-body{padding:40px 40px}
-.director-body .role{
-  font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;
-  color:var(--scarlet);font-weight:700;margin-bottom:6px;
-}
-.director-body h3{
-  font-family:'DM Serif Display',serif;
-  font-size:2rem;margin-bottom:4px;line-height:1.1;
-}
-.director-body .dept{color:var(--muted);font-size:.95rem;margin-bottom:28px;font-weight:400}
-.cred-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.cred-list li{
-  display:flex;gap:12px;align-items:flex-start;
-  font-size:.9rem;color:var(--text);line-height:1.5;
-}
-.cred-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--scarlet);flex-shrink:0;margin-top:6px;
-}
-.director-quote{
-  background:var(--offwhite);border-left:3px solid var(--scarlet);
-  padding:16px 20px;border-radius:0 10px 10px 0;
-  font-size:.93rem;line-height:1.75;color:var(--muted);font-style:italic;
-}
+.dir-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dir-body{padding:36px}
+.dir-body .role{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--red);font-weight:700;margin-bottom:5px}
+.dir-body h3{font-size:1.7rem;font-weight:800;margin-bottom:3px;line-height:1.1}
+.dir-body .dept{color:var(--muted);font-size:.9rem;margin-bottom:22px}
+.creds{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.creds li{display:flex;gap:10px;align-items:flex-start;font-size:.87rem;line-height:1.5}
+.cd{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:6px}
+.quote{background:var(--off);border-left:3px solid var(--red);padding:14px 18px;border-radius:0 10px 10px 0;font-size:.9rem;line-height:1.75;color:var(--muted);font-style:italic}
 
-.team-sec{padding:72px 0 0}
-.team-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:18px;margin-top:40px;
-}
-.team-card{
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:18px;padding:26px 22px;
-  transition:transform .25s,box-shadow .25s;
-  display:flex;flex-direction:column;gap:14px;
-  position:relative;
-}
-.team-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
-.team-avatar{
-  width:60px;height:60px;border-radius:14px;
-  background:var(--scarlet);
-  display:grid;place-items:center;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.3rem;color:#fff;letter-spacing:.04em;
-}
-.team-name{font-weight:700;font-size:1rem;line-height:1.2}
-.team-role{
-  font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;
-  color:var(--scarlet);font-weight:700;
-}
-.team-desc{font-size:.87rem;color:var(--muted);line-height:1.65}
+.team-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.tc{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:24px;transition:transform .22s,box-shadow .22s}
+.tc:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,.07)}
+.ta{width:52px;height:52px;border-radius:12px;background:var(--red);display:grid;place-items:center;font-weight:800;font-size:1rem;color:#fff;letter-spacing:.04em;margin-bottom:12px}
+.tc .nm{font-weight:700;font-size:.97rem;margin-bottom:3px}
+.tc .rl{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--red);font-weight:700;margin-bottom:10px}
+.tc p{font-size:.84rem;color:var(--muted);line-height:1.6}
 
-.team-culture{
-  margin-top:20px;padding:72px 0 0;
-  display:grid;grid-template-columns:1fr 1fr;gap:18px;
-}
-.culture-card{
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:20px;padding:36px 32px;
-}
-.culture-dark{
-  background:var(--dark);color:#fff;
-}
-.culture-card h3{font-family:'DM Serif Display',serif;font-size:1.5rem;margin-bottom:16px}
-.culture-dark h3{color:#fff}
-.culture-card p{font-size:.95rem;color:var(--muted);line-height:1.75;margin-bottom:16px}
-.culture-dark p{color:rgba(255,255,255,.55)}
-.culture-card p:last-child{margin-bottom:0}
-.culture-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.culture-list li{
-  display:flex;gap:12px;align-items:center;
-  font-size:.93rem;
-}
-.culture-dark .culture-list li{color:rgba(255,255,255,.7)}
-.c-check{
-  width:22px;height:22px;border-radius:6px;
-  background:rgba(186,12,47,.15);
-  display:grid;place-items:center;flex-shrink:0;
-  color:var(--scarlet-light);font-size:.75rem;font-weight:900;
-}
-.culture-dark .c-check{background:rgba(186,12,47,.25);color:var(--scarlet-light)}
+.cult{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.cc{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:30px}
+.cc-dark{background:var(--dark)}
+.cc h3{font-size:1.1rem;font-weight:700;margin-bottom:14px}
+.cc-dark h3{color:#fff}
+.cc p{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.cc-dark p{color:rgba(255,255,255,.45)}
+.cl{list-style:none;display:flex;flex-direction:column;gap:9px}
+.cl li{display:flex;gap:10px;align-items:center;font-size:.88rem}
+.cc-dark .cl li{color:rgba(255,255,255,.65)}
+.ck{width:20px;height:20px;border-radius:5px;background:rgba(186,12,47,.12);display:grid;place-items:center;flex-shrink:0;color:var(--red);font-size:.72rem;font-weight:900}
+.cc-dark .ck{background:rgba(186,12,47,.25);color:#d4143a}
 
-/* ===== APPLY PAGE ===== */
-.apply-layout{
-  display:grid;grid-template-columns:360px 1fr;
-  gap:28px;align-items:start;
-  padding:72px 0 88px;
+/* ── APPLY PAGE ── */
+.apply-wrap{
+  max-width:1140px;margin:0 auto;padding:0 24px;
+  display:grid;grid-template-columns:320px 1fr;gap:24px;
+  padding-top:60px;padding-bottom:88px;align-items:start;
 }
-.apply-sidebar{position:sticky;top:100px;display:flex;flex-direction:column;gap:18px}
-.sidebar-card{
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:18px;padding:24px;
-}
-.sidebar-card h3{font-size:1rem;font-weight:700;margin-bottom:14px}
-.sidebar-item{
-  display:flex;gap:12px;padding:10px 0;
-  border-bottom:1px solid var(--border);
-  align-items:flex-start;
-}
-.sidebar-item:last-child{border-bottom:none;padding-bottom:0}
-.sidebar-icon{
-  width:32px;height:32px;border-radius:8px;
-  background:rgba(186,12,47,.08);
-  display:grid;place-items:center;flex-shrink:0;font-size:.9rem;
-}
-.sidebar-item-text strong{display:block;font-size:.88rem;font-weight:700;margin-bottom:2px}
-.sidebar-item-text span{font-size:.8rem;color:var(--muted)}
-.sidebar-dark{background:var(--dark);border-color:transparent}
-.sidebar-dark h3{color:#fff}
-.sidebar-dark p{color:rgba(255,255,255,.5);font-size:.88rem;line-height:1.65}
-.sidebar-dark strong{color:rgba(255,255,255,.9)}
+.sb{position:sticky;top:84px;display:flex;flex-direction:column;gap:16px}
+.sc{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:22px}
+.sc h3{font-size:.97rem;font-weight:700;margin-bottom:14px}
+.si{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.si:last-child{border-bottom:none;padding-bottom:0}
+.si-icon{width:30px;height:30px;border-radius:7px;background:rgba(186,12,47,.08);display:grid;place-items:center;flex-shrink:0;font-size:.85rem}
+.si-t strong{display:block;font-size:.84rem;font-weight:700;margin-bottom:1px}
+.si-t span{font-size:.78rem;color:var(--muted)}
+.sc-dark{background:var(--dark)}
+.sc-dark h3{color:#fff}
+.sc-dark p{color:rgba(255,255,255,.45);font-size:.84rem;line-height:1.7}
+.sc-dark strong{color:rgba(255,255,255,.8)}
 
-/* FORM */
-.form-container{
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:24px;padding:40px;
+.fc{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:36px}
+.fs{margin-bottom:30px}
+.fs-title{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+.fs-sub{font-size:.84rem;color:var(--muted);margin-bottom:18px}
+.fd{height:1px;background:var(--border);margin:28px 0}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.f:last-child{margin-bottom:0}
+.f label{font-size:.83rem;font-weight:700}
+.f label .opt{font-weight:400;color:var(--muted);margin-left:4px}
+.f input,.f select,.f textarea{
+  background:var(--off);border:1.5px solid var(--border);
+  border-radius:9px;padding:11px 13px;
+  font-family:'Sora',sans-serif;font-size:.9rem;color:var(--text);
+  transition:border-color .18s,box-shadow .18s;outline:none;
 }
-.form-section{margin-bottom:36px}
-.form-section:last-of-type{margin-bottom:0}
-.form-section-title{
-  font-family:'DM Serif Display',serif;
-  font-size:1.3rem;margin-bottom:6px;
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(186,12,47,.09);background:#fff}
+.f textarea{min-height:140px;resize:vertical;line-height:1.65}
+.submit-r{margin-top:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.btn-sub{
+  background:var(--red);color:#fff;border:none;cursor:pointer;
+  font-family:'Sora',sans-serif;font-size:.97rem;font-weight:700;
+  padding:14px 36px;border-radius:99px;transition:background .18s,transform .15s;
 }
-.form-section-sub{font-size:.87rem;color:var(--muted);margin-bottom:22px}
-.form-divider{height:1px;background:var(--border);margin:32px 0}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
-.field:last-child{margin-bottom:0}
-.field label{font-size:.86rem;font-weight:700;color:var(--text)}
-.field label .opt{font-weight:400;color:var(--muted);margin-left:4px}
-.field input,.field select,.field textarea{
-  background:var(--offwhite);
-  border:1.5px solid var(--border);
-  border-radius:10px;
-  padding:12px 14px;
-  font-family:'DM Sans',sans-serif;
-  font-size:.93rem;
-  color:var(--text);
-  transition:border-color .2s,box-shadow .2s;
-  outline:none;
-}
-.field input:focus,.field select:focus,.field textarea:focus{
-  border-color:var(--scarlet);
-  box-shadow:0 0 0 3px rgba(186,12,47,.1);
-  background:#fff;
-}
-.field textarea{min-height:140px;resize:vertical;line-height:1.65}
-.field select{cursor:pointer}
-.submit-row{margin-top:32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.btn-submit{
-  background:var(--scarlet);color:#fff;
-  border:none;cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-  font-size:1rem;font-weight:700;
-  padding:16px 40px;border-radius:99px;
-  transition:background .2s,transform .15s;
-}
-.btn-submit:hover{background:var(--scarlet-deep);transform:translateY(-2px)}
-.submit-note{font-size:.82rem;color:var(--muted);line-height:1.5;max-width:36ch}
+.btn-sub:hover{background:var(--red-dark);transform:translateY(-1px)}
+.submit-note{font-size:.8rem;color:var(--muted);line-height:1.5;max-width:34ch}
 
-/* ---- FOOTER ---- */
+/* ── FOOTER ── */
 footer{
-  background:var(--dark);color:rgba(255,255,255,.5);
-  padding:52px 0 36px;
-  border-top:1px solid rgba(255,255,255,.06);
+  background:var(--dark);color:rgba(255,255,255,.45);
+  padding:48px 0 30px;border-top:1px solid rgba(255,255,255,.05);
 }
-.footer-grid{
-  display:grid;grid-template-columns:1fr auto;
-  gap:32px;align-items:start;
-  margin-bottom:36px;
-}
-.footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.footer-logo-block{
-  width:40px;height:40px;background:var(--scarlet);
-  border-radius:8px;display:grid;place-items:center;
-  font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:#fff;
-}
-.footer-logo-name{
-  font-family:'Bebas Neue',sans-serif;
-  color:#fff;font-size:1.05rem;letter-spacing:.06em;
-}
-footer p{font-size:.85rem;line-height:1.7;max-width:60ch}
-.footer-links{display:flex;flex-direction:column;gap:10px;text-align:right}
-.footer-links button{
-  background:transparent;border:none;cursor:pointer;
-  color:rgba(255,255,255,.45);font-family:'DM Sans',sans-serif;
-  font-size:.88rem;transition:color .2s;text-align:right;
-}
-.footer-links button:hover{color:#fff}
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.08);
-  padding-top:24px;
-  display:flex;justify-content:space-between;
-  align-items:center;gap:20px;flex-wrap:wrap;
-  font-size:.78rem;
-}
-.footer-bottom a{color:rgba(255,255,255,.4);transition:color .2s}
-.footer-bottom a:hover{color:rgba(255,255,255,.8)}
+.foot{max-width:1140px;margin:0 auto;padding:0 24px}
+.fg{display:grid;grid-template-columns:1fr auto;gap:28px;margin-bottom:32px;align-items:start}
+.fl{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.fl-sq{width:34px;height:34px;background:var(--red);border-radius:7px;display:grid;place-items:center;font-weight:800;font-size:.8rem;color:#fff}
+.fl-name{font-weight:700;font-size:.95rem;color:#fff}
+footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
+.flinks{display:flex;flex-direction:column;gap:8px;text-align:right}
+.flinks button{background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-family:'Sora',sans-serif;font-size:.85rem;transition:color .18s;text-align:right}
+.flinks button:hover{color:#fff}
+.fb{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.76rem}
 
-/* ---- RESPONSIVE ---- */
-@media(max-width:1060px){
-  .hero-grid{grid-template-columns:1fr;gap:48px}
-  .hero-right{max-width:520px}
-  .hero-bg-num{font-size:220px;right:-20px}
-  .tl-grid{grid-template-columns:1fr 1fr;gap:0}
-  .tl-item{border-bottom:1px solid rgba(255,255,255,.08)}
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .tl{grid-template-columns:1fr 1fr}
+  .tl-item{border-bottom:1px solid rgba(255,255,255,.07)}
   .tl-item:nth-child(even){border-right:none}
-  .gallery-grid{grid-template-columns:repeat(3,1fr)}
-  .director-card{grid-template-columns:220px 1fr}
-  .apply-layout{grid-template-columns:1fr;gap:24px}
-  .apply-sidebar{position:static}
+  .hi-grid,.dir-card,.apply-wrap,.grid2,.cult{grid-template-columns:1fr}
+  .dir-photo{min-height:220px}
+  .sb{position:static}
+  .fg{grid-template-columns:1fr}
+  .flinks{text-align:left}
+  .flinks button{text-align:left}
+  .gallery{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:780px){
-  .hero{padding:70px 0 60px;min-height:auto}
-  .hero-stats{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr}
-  .highlights-grid{grid-template-columns:1fr}
-  .director-card{grid-template-columns:1fr}
-  .director-photo{min-height:220px}
-  .team-grid{grid-template-columns:1fr}
-  .team-culture{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .footer-links{text-align:left}
-  .footer-links button{text-align:left}
-  .gallery-grid{grid-template-columns:1fr 1fr}
-  .field-row{grid-template-columns:1fr}
-  .form-container{padding:24px}
-}
-@media(max-width:600px){
-  .wrap{width:calc(100% - 32px)}
+@media(max-width:640px){
   .nav-links{display:none}
-  .hamburger{display:flex}
-  .hero h1.hero-title{font-size:2.6rem}
-  .tl-grid{grid-template-columns:1fr}
-  .tl-item{border-right:none}
-  .gallery-grid{grid-template-columns:1fr}
-  .director-body{padding:24px}
-}
-@media(max-width:400px){
-  .hero-cta{flex-direction:column}
-  .btn-primary,.btn-ghost{width:100%;justify-content:center}
+  .ham{display:block}
+  .grid3,.team-g{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .fr{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr}
+  .fc{padding:22px}
+  .gallery{grid-template-columns:1fr}
+  h1{font-size:2.2rem}
 }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="wrap">
-    <span>The Ohio State University</span>
-    <span>Intracellular Dynamics Laboratory</span>
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="showPg('home')">
+      <div class="logo-sq">O</div>
+      <div class="logo-text">
+        <span class="sub">Summer Workshop</span>
+        <div class="name">Seeing the Invisible</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <button class="nb active" data-p="home" onclick="showPg('home')">Home</button>
+      <button class="nb" data-p="team" onclick="showPg('team')">Meet the Team</button>
+      <button class="nb apply" onclick="showPg('apply')">Apply Now →</button>
+    </div>
+    <button class="ham" onclick="toggleMob()" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="5" x2="20" y2="5"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="17" x2="20" y2="17"/></svg>
+    </button>
   </div>
-</div>
-
-<nav class="main">
-  <div class="wrap">
-    <div class="nav-inner">
-      <div class="logo" onclick="showPage('home')" role="button" tabindex="0" aria-label="Go to home">
-        <div class="logo-block">O</div>
-        <div class="logo-text">
-          <span class="logo-kicker">Summer Imaging Workshop</span>
-          <div class="logo-name">Seeing the Invisible</div>
-        </div>
-      </div>
-      <div class="nav-links">
-        <button class="nav-btn active" data-page="home" onclick="showPage('home')">Home</button>
-        <button class="nav-btn" data-page="team" onclick="showPage('team')">Meet the Team</button>
-        <button class="nav-apply" data-page="apply" onclick="showPage('apply')">Apply Now →</button>
-      </div>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" id="ham-btn">
-        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="2" y1="6" x2="20" y2="6"/>
-          <line x1="2" y1="11" x2="20" y2="11"/>
-          <line x1="2" y1="16" x2="20" y2="16"/>
-        </svg>
-      </button>
-    </div>
-    <div class="mobile-menu" id="mobile-menu">
-      <button class="mob-btn active" data-page="home" onclick="showPage('home');toggleMenu()">Home</button>
-      <button class="mob-btn" data-page="team" onclick="showPage('team');toggleMenu()">Meet the Team</button>
-      <button class="mob-apply" onclick="showPage('apply');toggleMenu()">Apply Now →</button>
-    </div>
+  <div class="mob-nav" id="mob">
+    <button class="mn" onclick="showPg('home');toggleMob()">Home</button>
+    <button class="mn" onclick="showPg('team');toggleMob()">Meet the Team</button>
+    <button class="mn apply" onclick="showPg('apply');toggleMob()">Apply Now →</button>
   </div>
 </nav>
 
 <main>
 
-<!-- ===== HOME PAGE ===== -->
-<div id="page-home" class="page active">
-
+<!-- HOME -->
+<div id="pg-home" class="pg active">
   <div class="hero">
-    <div class="hero-stripe"></div>
-    <div class="hero-bg-num">2026</div>
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <div class="hero-tag">
-            <span class="hero-tag-dot"></span>
-            Ohio State University · July 20 to 24, 2026
-          </div>
-          <h1 class="hero-title">
-            Seeing the Invisible:<br>
-            Exploring Cells<br>
-            <em>with Light</em>
-          </h1>
-          <p class="hero-body">
-            The Intracellular Dynamics Laboratory offers an intensive, week-long live-cell imaging bootcamp, guided by faculty and researchers, aimed at high school students interested in uncovering how living cells sense, move, and reorganize in real time using advanced microscopy.
-          </p>
-          <div class="hero-cta">
-            <button class="btn-primary" onclick="showPage('apply')">
-              Apply for July 20 to 24
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-            </button>
-            <button class="btn-ghost" onclick="showPage('team')">
-              Meet the Team
-            </button>
-          </div>
-          <div class="hero-stats">
-            <div class="h-stat">
-              <strong>5 Days</strong>
-              <span>July 20 through<br>July 24</span>
-            </div>
-            <div class="h-stat">
-              <strong>10 AM to 3 PM</strong>
-              <span>Daily schedule<br>with lunch included</span>
-            </div>
-            <div class="h-stat">
-              <strong>$200</strong>
-              <span>Per student<br>for the week</span>
-            </div>
-          </div>
-        </div>
+    <div class="w">
+      <div class="tag"><span class="tag-dot"></span>Ohio State University · July 20–24, 2026</div>
+      <h1>Seeing the Invisible:<br>Exploring Cells<br><em>with Light</em></h1>
+      <p class="hero-sub">A week-long live-cell imaging bootcamp at the Intracellular Dynamics Laboratory. High school students discover how living cells sense, move, and reorganize using advanced microscopy.</p>
+      <div class="btns">
+        <button class="btn btn-r" onclick="showPg('apply')">Apply for July 20–24 →</button>
+        <button class="btn btn-g" onclick="showPg('team')">Meet the Team</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>5 Days</strong><span>July 20–24, 2026</span></div>
+        <div class="stat"><strong>10AM–3PM</strong><span>Daily, lunch included</span></div>
+        <div class="stat"><strong>$200</strong><span>Per student</span></div>
+      </div>
+    </div>
+  </div>
 
-        <div class="hero-right">
-          <div class="info-panel">
-            <div class="info-panel-header">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <span>Program Details</span>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">📍</div>
-              <div>
-                <div class="info-label">Location</div>
-                <div class="info-value">The Ohio State University</div>
-                <div class="info-sub">Columbus, Ohio</div>
-              </div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">📅</div>
-              <div>
-                <div class="info-label">Workshop Dates</div>
-                <div class="info-value">July 20 to July 24, 2026</div>
-                <div class="info-sub">Monday through Friday</div>
-              </div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">🕙</div>
-              <div>
-                <div class="info-label">Daily Time</div>
-                <div class="info-value">10:00 AM to 3:00 PM</div>
-                <div class="info-sub">Lecture, lunch, and hands-on lab</div>
-              </div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">💰</div>
-              <div>
-                <div class="info-label">Program Cost</div>
-                <div class="info-value">$200 per student</div>
-                <div class="info-sub">Designed to cover food and lab materials</div>
-              </div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">🍽️</div>
-              <div>
-                <div class="info-label">Lunch</div>
-                <div class="info-value">Provided daily</div>
-                <div class="info-sub">Served from 12:00 PM to 1:00 PM</div>
-              </div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">🎓</div>
-              <div>
-                <div class="info-label">Eligibility</div>
-                <div class="info-value">Current high school students</div>
-                <div class="info-sub">Students interested in science and research</div>
-              </div>
-            </div>
-          </div>
+  <section class="sec w">
+    <div class="eyebrow">About the Program</div>
+    <h2>A focused week inside a real university lab.</h2>
+    <p class="sub">One week, one cohort, one immersive theme — cells, light, imaging, and discovery.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="card-n">01</div>
+        <h3>Official Program Theme</h3>
+        <p>Students explore live-cell imaging and the hidden dynamics inside living systems through <em>Seeing the Invisible: Exploring Cells with Light</em>.</p>
+        <div class="pills"><span class="pill pill-r">Live-cell imaging</span><span class="pill">Microscopy</span><span class="pill">Cell biology</span></div>
+      </div>
+      <div class="card">
+        <div class="card-n">02</div>
+        <h3>One Dedicated Week</h3>
+        <p>Students attend a single five-day program, July 20–24, 2026, with the same team, same schedule, and progressive learning throughout.</p>
+        <div class="pills"><span class="pill pill-r">July 20–24</span><span class="pill">Mon–Fri</span><span class="pill">10AM–3PM</span></div>
+      </div>
+      <div class="card">
+        <div class="card-n">03</div>
+        <h3>Balanced Structure</h3>
+        <p>Each day blends conceptual learning with hands-on work — scientific foundations in the morning, then cell culture and imaging in the afternoon.</p>
+        <div class="pills"><span class="pill">Lecture</span><span class="pill pill-r">Hands-on lab</span><span class="pill">Small group</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="dark-sec">
+    <div class="w">
+      <div class="eyebrow">Daily Schedule</div>
+      <h2 style="color:#fff">Hour by hour.</h2>
+      <p class="sub">A consistent daily rhythm lets students build confidence and go deeper each day.</p>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-day"><div class="tl-n">1</div>10AM–12PM</div>
+          <h4>Physics Lecture with Prof. Comert Kural</h4>
+          <p>Core scientific ideas, physical principles, and the foundations behind light, imaging, and living systems.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-day"><div class="tl-n">2</div>12–1PM</div>
+          <h4>Lunch</h4>
+          <p>Students eat together and have informal conversations with instructors and peers.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-day"><div class="tl-n">3</div>1–3PM</div>
+          <h4>Hands-On Class with Dr. Omer Kural</h4>
+          <p>Culturing and imaging cancer cells, with direct exposure to lab thinking and visual observation.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-day"><div class="tl-n">4</div>Mon–Thu</div>
+          <h4>Progressive Skill Building</h4>
+          <p>Students revisit techniques across the week, moving from guided explanation to confident practice.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-day"><div class="tl-n">5</div>Friday</div>
+          <h4>Final Reflection</h4>
+          <p>The last day brings everything together through discussion, synthesis, and reflection on the week.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <section class="sec wrap">
-    <div class="sec-eyebrow">About the Program</div>
-    <h2 class="sec-title">A focused week inside<br>a real university lab.</h2>
-    <p class="sec-sub">This version of the workshop is built around one single week, one small cohort, and one immersive experience centered on cells, light, imaging, and scientific observation.</p>
-
-    <div class="about-grid">
-      <article class="about-card">
-        <div class="card-num">01</div>
-        <h3>Official Program Theme</h3>
-        <p>Students join a workshop titled <strong>Seeing the Invisible: Exploring Cells with Light</strong>, designed to introduce them to the world of live-cell imaging and the hidden dynamics inside living systems.</p>
-        <div class="about-pills">
-          <span class="pill pill-red">Live-cell imaging</span>
-          <span class="pill">Microscopy</span>
-          <span class="pill">Cell biology</span>
-        </div>
-      </article>
-
-      <article class="about-card">
-        <div class="card-num">02</div>
-        <h3>One Dedicated Week</h3>
-        <p>This website is for the July 20 to July 24, 2026 workshop only. Students attend a single five-day program with the same team, same schedule, and same progression throughout the week.</p>
-        <div class="about-pills">
-          <span class="pill pill-red">July 20 to 24</span>
-          <span class="pill">Monday to Friday</span>
-          <span class="pill">10 AM to 3 PM</span>
-        </div>
-      </article>
-
-      <article class="about-card">
-        <div class="card-num">03</div>
-        <h3>Balanced Structure</h3>
-        <p>Each day combines conceptual learning with practical work. Students begin with scientific foundations, share lunch together, and then move into hands-on culture and imaging work in the afternoon.</p>
-        <div class="about-pills">
-          <span class="pill">Lecture</span>
-          <span class="pill pill-red">Hands-on lab</span>
-          <span class="pill">Small-group format</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="timeline-sec">
-    <div class="wrap">
-      <div class="sec-eyebrow">Daily Schedule</div>
-      <h2 class="sec-title">Hour by hour.</h2>
-      <p class="sec-sub">The week follows a consistent daily rhythm so students can build confidence, ask deeper questions, and gradually work more directly with real scientific tools and methods.</p>
-      <div class="tl-grid">
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-day-num">1</div>10 to 12</div>
-          <h4>Physics Lecture with Prof. Comert Kural</h4>
-          <p>A structured morning session focused on core scientific ideas, physical principles, and the conceptual foundations needed to understand light, imaging, and living systems.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-day-num">2</div>12 to 1</div>
-          <h4>Lunch</h4>
-          <p>Students eat together, reset for the afternoon, and continue informal conversations with instructors and peers in a relaxed setting.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-day-num">3</div>1 to 3</div>
-          <h4>Hands-On Class with Dr. Omer Kural</h4>
-          <p>Afternoon instruction centered on culturing and imaging cancer cells, with direct exposure to laboratory thinking, practical workflows, and visual observation.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-day-num">4</div>Mon to Thu</div>
-          <h4>Progressive Skill Building</h4>
-          <p>Students revisit techniques across the week, moving from guided explanation to more confident interaction with real procedures and scientific images.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-day-num">5</div>Friday</div>
-          <h4>Final Reflection and Closing</h4>
-          <p>The last day brings the week together through discussion, synthesis, and reflection on what students observed, learned, and discovered in the lab environment.</p>
-        </div>
-      </div>
-    </div>
-    <div style="height:88px"></div>
-  </section>
-
-  <section class="sec wrap">
-    <div class="sec-eyebrow">What Students Gain</div>
-    <h2 class="sec-title">A real introduction<br>to scientific imaging.</h2>
-    <p class="sec-sub">The goal is not simply to watch science happen, but to step into it. Students leave with a clearer picture of how research feels, how questions are explored, and how cells can be studied through light.</p>
-
-    <div class="highlights-grid">
+  <section class="sec w">
+    <div class="eyebrow">What Students Gain</div>
+    <h2>A real introduction to scientific imaging.</h2>
+    <p class="sub">Students don't just watch science happen — they step into it.</p>
+    <div class="hi-grid">
       <div class="hi-list">
         <h3>Program Highlights</h3>
-        <div class="hi-item">
-          <div class="hi-icon">🔬</div>
-          <div class="hi-text">
-            <h4>Live-cell imaging focus</h4>
-            <p>Students encounter how modern microscopy can reveal motion, structure, and change inside living cells.</p>
-          </div>
-        </div>
-        <div class="hi-item">
-          <div class="hi-icon">📚</div>
-          <div class="hi-text">
-            <h4>Daily physics instruction</h4>
-            <p>Morning lectures with Prof. Comert Kural give students the scientific framework behind what they will later observe and discuss.</p>
-          </div>
-        </div>
-        <div class="hi-item">
-          <div class="hi-icon">🧫</div>
-          <div class="hi-text">
-            <h4>Hands-on cancer cell work</h4>
-            <p>Afternoon sessions with Dr. Omer Kural introduce students to culturing and imaging cancer cells in a guided setting.</p>
-          </div>
-        </div>
-        <div class="hi-item">
-          <div class="hi-icon">👥</div>
-          <div class="hi-text">
-            <h4>Small-group atmosphere</h4>
-            <p>A focused cohort allows for close interaction with instructors, better questions, and a more personal learning experience.</p>
-          </div>
-        </div>
-        <div class="hi-item">
-          <div class="hi-icon">🏛️</div>
-          <div class="hi-text">
-            <h4>University research setting</h4>
-            <p>Students learn inside the culture of a real academic lab rather than through a simplified classroom simulation.</p>
-          </div>
-        </div>
+        <div class="hi-item"><div class="hi-icon">🔬</div><div class="hi-text"><h4>Live-cell imaging focus</h4><p>Modern microscopy reveals motion, structure, and change inside living cells.</p></div></div>
+        <div class="hi-item"><div class="hi-icon">📚</div><div class="hi-text"><h4>Daily physics instruction</h4><p>Morning lectures with Prof. Comert Kural give students the framework behind what they observe.</p></div></div>
+        <div class="hi-item"><div class="hi-icon">🧫</div><div class="hi-text"><h4>Hands-on cancer cell work</h4><p>Afternoon sessions with Dr. Omer Kural — culturing and imaging cancer cells in a guided setting.</p></div></div>
+        <div class="hi-item"><div class="hi-icon">👥</div><div class="hi-text"><h4>Small-group atmosphere</h4><p>Close interaction with instructors, better questions, and a personal learning experience.</p></div></div>
+        <div class="hi-item"><div class="hi-icon">🏛️</div><div class="hi-text"><h4>University research setting</h4><p>Students learn inside a real academic lab, not a simplified classroom simulation.</p></div></div>
       </div>
-
-      <div class="hi-aside">
-        <div class="hi-scarlet">
+      <div class="hi-side">
+        <div class="hi-red">
           <h3>Why this workshop?</h3>
-          <p>This program is designed for students who want something concrete, serious, and inspiring. It offers a direct look at how scientific questions are approached in a real lab.</p>
-          <p>Rather than overwhelming students with a huge program, this workshop keeps the schedule focused, approachable, and deeply connected to one compelling scientific theme.</p>
+          <p>Designed for students who want something concrete, serious, and inspiring. A direct look at how scientific questions are approached in a real lab.</p>
+          <p>Rather than overwhelming students with a huge program, this workshop keeps the schedule focused and deeply connected to one compelling scientific theme.</p>
         </div>
         <div class="hi-dark">
-          <div class="hi-dark-row">
-            <div class="hi-dark-icon">🕙</div>
-            <div class="hi-dark-text">
-              <strong>Clear daily structure</strong>
-              <span>10 AM to 3 PM each day</span>
-            </div>
-          </div>
-          <div class="hi-dark-row">
-            <div class="hi-dark-icon">💵</div>
-            <div class="hi-dark-text">
-              <strong>Accessible pricing</strong>
-              <span>$200 for the full week</span>
-            </div>
-          </div>
-          <div class="hi-dark-row">
-            <div class="hi-dark-icon">🔎</div>
-            <div class="hi-dark-text">
-              <strong>One strong theme</strong>
-              <span>Cells, light, imaging, and discovery</span>
-            </div>
-          </div>
+          <div class="hi-row"><div class="hi-ico">🕙</div><div><strong>Clear daily structure</strong><span>10AM to 3PM each day</span></div></div>
+          <div class="hi-row"><div class="hi-ico">💵</div><div><strong>Accessible pricing</strong><span>$200 for the full week</span></div></div>
+          <div class="hi-row"><div class="hi-ico">🔎</div><div><strong>One strong theme</strong><span>Cells, light, imaging, discovery</span></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="gallery-sec wrap">
-    <div class="sec-eyebrow">Program Photos</div>
-    <h2 class="sec-title">From the lab floor.</h2>
-    <p class="sec-sub">Replace these placeholders with photos of microscopy setups, cell imaging, lectures, student lab moments, and final group scenes from the July 20 to 24 workshop.</p>
-    <div class="gallery-grid">
-      <div class="gallery-ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Microscopy setup
-      </div>
-      <div class="gallery-ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Morning lecture
-      </div>
-      <div class="gallery-ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Cell culture work
-      </div>
-      <div class="gallery-ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Imaging session
-      </div>
-      <div class="gallery-ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Lunch break
-      </div>
-      <div class="gallery-ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Scientific discussion
-      </div>
-      <div class="gallery-ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Student observations
-      </div>
-      <div class="gallery-ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Closing day
-      </div>
+  <section class="gal-sec w">
+    <div class="eyebrow">Program Photos</div>
+    <h2>From the lab floor.</h2>
+    <p class="sub">Replace these placeholders with photos from the July 20–24 workshop.</p>
+    <div class="gallery">
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Microscopy setup</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Morning lecture</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Cell culture work</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Imaging session</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Lunch break</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Scientific discussion</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Student observations</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Closing day</div>
     </div>
   </section>
-
 </div>
 
-<!-- ===== TEAM PAGE ===== -->
-<div id="page-team" class="page">
-
-  <div class="page-hero">
-    <div class="wrap">
-      <div class="sec-eyebrow">Meet the Team</div>
-      <h2 class="sec-title" style="color:#fff">The people leading<br>the workshop.</h2>
-      <p class="sec-sub">This week-long program is led by a focused instructional team built around scientific depth, clear teaching, and hands-on mentorship.</p>
+<!-- TEAM -->
+<div id="pg-team" class="pg">
+  <div class="pg-hero">
+    <div class="w">
+      <div class="eyebrow">Meet the Team</div>
+      <h2>The people leading the workshop.</h2>
+      <p class="sub">A focused instructional team built around scientific depth, clear teaching, and hands-on mentorship.</p>
     </div>
   </div>
 
-  <section class="director-sec wrap">
-    <div class="sec-eyebrow">Workshop Director</div>
-    <h2 class="sec-title">Professor Comert Kural</h2>
-
-    <article class="director-card">
-      <div class="director-photo">
-        <img src="./comertkural.jpg" alt="Prof. Comert Kural"/>
-      </div>
-      <div class="director-body">
+  <section class="sec w">
+    <div class="eyebrow">Workshop Director</div>
+    <h2>Professor Comert Kural</h2>
+    <div class="dir-card">
+      <div class="dir-photo"><img src="./comertkural.jpg" alt="Prof. Comert Kural"/></div>
+      <div class="dir-body">
         <div class="role">Department of Physics · Ohio State University</div>
         <h3>Prof. Comert Kural</h3>
         <div class="dept">Associate Professor and Workshop Director</div>
-        <ul class="cred-list">
-          <li><span class="cred-dot"></span>Leads the scientific vision of the workshop</li>
-          <li><span class="cred-dot"></span>Teaches the daily 10:00 AM to 12:00 PM physics lecture</li>
-          <li><span class="cred-dot"></span>Guides students through the principles behind imaging and observation</li>
-          <li><span class="cred-dot"></span>B.Sc. | Bilkent University, Physics, 2002</li>
-          <li><span class="cred-dot"></span>Ph.D. | University of Illinois Urbana-Champaign, Biophysics and Computational Biology, 2007</li>
-          <li><span class="cred-dot"></span>Postdoctoral Training | Harvard Medical School, Immune Disease Institute, 2008 to 2012</li>
+        <ul class="creds">
+          <li><span class="cd"></span>Leads the scientific vision of the workshop</li>
+          <li><span class="cd"></span>Teaches the daily 10:00 AM–12:00 PM physics lecture</li>
+          <li><span class="cd"></span>B.Sc. — Bilkent University, Physics, 2002</li>
+          <li><span class="cd"></span>Ph.D. — University of Illinois Urbana-Champaign, Biophysics &amp; Computational Biology, 2007</li>
+          <li><span class="cd"></span>Postdoctoral Training — Harvard Medical School, Immune Disease Institute, 2008–2012</li>
         </ul>
-        <div class="director-quote">
-          "The goal is to help students experience science as a process of seeing carefully, asking questions honestly, and learning how discovery is built from observation and evidence."
-        </div>
+        <div class="quote">"The goal is to help students experience science as a process of seeing carefully, asking questions honestly, and learning how discovery is built from observation and evidence."</div>
       </div>
-    </article>
-  </section>
-
-  <section class="team-sec wrap">
-    <div class="sec-eyebrow">Instructors</div>
-    <h2 class="sec-title">The instructional team.</h2>
-    <p class="sec-sub">This version of the site is for the July 20 to 24 workshop and includes only the team for that week.</p>
-
-    <div class="team-grid">
-      <article class="team-card">
-        <div class="team-avatar">CK</div>
-        <div>
-          <div class="team-name">Prof. Comert Kural</div>
-          <div class="team-role">Director and Morning Lecturer</div>
-        </div>
-        <p class="team-desc">Leads the academic direction of the program and teaches the daily physics lecture from 10:00 AM to 12:00 PM.</p>
-      </article>
-
-      <article class="team-card">
-        <div class="team-avatar">OK</div>
-        <div>
-          <div class="team-name">Dr. Omer Kural</div>
-          <div class="team-role">Afternoon Instructor</div>
-        </div>
-        <p class="team-desc">Leads the hands-on class from 1:00 PM to 3:00 PM, introducing students to culturing and imaging cancer cells.</p>
-      </article>
-
-      <article class="team-card">
-        <div class="team-avatar">OSU</div>
-        <div>
-          <div class="team-name">Lab Support Team</div>
-          <div class="team-role">Research Environment Support</div>
-        </div>
-        <p class="team-desc">Additional lab support may assist with logistics, setup, and maintaining a welcoming and organized research experience for students.</p>
-      </article>
     </div>
   </section>
 
-  <section class="wrap" style="padding:72px 0 0">
-    <div class="team-culture">
-      <div class="culture-card">
+  <section class="sec w">
+    <div class="eyebrow">Instructors</div>
+    <h2>The instructional team.</h2>
+    <p class="sub">This site is for the July 20–24 workshop only.</p>
+    <div class="team-g">
+      <div class="tc"><div class="ta">CK</div><div class="nm">Prof. Comert Kural</div><div class="rl">Director &amp; Morning Lecturer</div><p>Leads the academic direction and teaches the daily physics lecture from 10:00 AM to 12:00 PM.</p></div>
+      <div class="tc"><div class="ta">OK</div><div class="nm">Dr. Omer Kural</div><div class="rl">Afternoon Instructor</div><p>Leads the hands-on class from 1:00–3:00 PM, introducing students to culturing and imaging cancer cells.</p></div>
+      <div class="tc"><div class="ta">OSU</div><div class="nm">Lab Support Team</div><div class="rl">Research Environment Support</div><p>Lab support assists with logistics, setup, and maintaining a welcoming, organized research experience.</p></div>
+    </div>
+  </section>
+
+  <section class="sec w" style="padding-bottom:88px">
+    <div class="cult">
+      <div class="cc">
         <h3>What students will experience</h3>
-        <p>Students will move between formal scientific instruction and guided practical work. The workshop is meant to feel serious, clear, and exciting without being overwhelming.</p>
-        <ul class="culture-list">
-          <li><span class="c-check">✓</span>Structured physics lectures each morning</li>
-          <li><span class="c-check">✓</span>Hands-on cell culture and imaging each afternoon</li>
-          <li><span class="c-check">✓</span>Small-group attention and discussion</li>
-          <li><span class="c-check">✓</span>Real academic lab atmosphere</li>
+        <p>Formal scientific instruction and guided practical work. Serious, clear, and exciting without being overwhelming.</p>
+        <ul class="cl">
+          <li><span class="ck">✓</span>Structured physics lectures each morning</li>
+          <li><span class="ck">✓</span>Hands-on cell culture and imaging each afternoon</li>
+          <li><span class="ck">✓</span>Small-group attention and discussion</li>
+          <li><span class="ck">✓</span>Real academic lab atmosphere</li>
         </ul>
       </div>
-      <div class="culture-card culture-dark">
+      <div class="cc cc-dark">
         <h3>Our commitment to students</h3>
-        <p>We want students to leave with stronger scientific curiosity, a more realistic understanding of research, and a memorable first encounter with how invisible biological processes can be made visible through light.</p>
-        <ul class="culture-list">
-          <li><span class="c-check">✓</span>Welcoming and serious environment</li>
-          <li><span class="c-check">✓</span>Clear teaching and direct mentorship</li>
-          <li><span class="c-check">✓</span>Focused one-week structure</li>
-          <li><span class="c-check">✓</span>Accessible introduction to advanced science</li>
+        <p>Students leave with stronger scientific curiosity, a realistic understanding of research, and a memorable first encounter with how invisible biological processes can be made visible through light.</p>
+        <ul class="cl">
+          <li><span class="ck">✓</span>Welcoming and serious environment</li>
+          <li><span class="ck">✓</span>Clear teaching and direct mentorship</li>
+          <li><span class="ck">✓</span>Focused one-week structure</li>
+          <li><span class="ck">✓</span>Accessible introduction to advanced science</li>
         </ul>
       </div>
     </div>
-    <div style="height:88px"></div>
   </section>
-
 </div>
 
-<!-- ===== APPLY PAGE ===== -->
-<div id="page-apply" class="page">
-  <div class="page-hero">
-    <div class="wrap">
-      <div class="sec-eyebrow">Applications</div>
-      <h2 class="sec-title" style="color:#fff">Apply for July 20 to 24, 2026.</h2>
-      <p class="sec-sub">Complete the form below to apply for this workshop week. This page is only for the July 20 to July 24 session.</p>
+<!-- APPLY -->
+<div id="pg-apply" class="pg">
+  <div class="pg-hero">
+    <div class="w">
+      <div class="eyebrow">Applications</div>
+      <h2>Apply for July 20–24, 2026.</h2>
+      <p class="sub">Complete the form below. This page is only for the July 20–24 session.</p>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="apply-layout">
-
-      <aside class="apply-sidebar">
-        <div class="sidebar-card">
-          <h3>Workshop Details</h3>
-          <div class="sidebar-item">
-            <div class="sidebar-icon">📅</div>
-            <div class="sidebar-item-text">
-              <strong>Dates</strong>
-              <span>July 20 to 24, 2026</span>
-            </div>
-          </div>
-          <div class="sidebar-item">
-            <div class="sidebar-icon">🕙</div>
-            <div class="sidebar-item-text">
-              <strong>Time</strong>
-              <span>10:00 AM to 3:00 PM daily</span>
-            </div>
-          </div>
-          <div class="sidebar-item">
-            <div class="sidebar-icon">💰</div>
-            <div class="sidebar-item-text">
-              <strong>Program Fee</strong>
-              <span>$200 per student</span>
-            </div>
-          </div>
-          <div class="sidebar-item">
-            <div class="sidebar-icon">🍽️</div>
-            <div class="sidebar-item-text">
-              <strong>Lunch</strong>
-              <span>Included daily from 12:00 PM to 1:00 PM</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="sidebar-card sidebar-dark">
-          <h3>Daily Structure</h3>
-          <p style="color:rgba(255,255,255,.5);font-size:.87rem;line-height:1.7">
-            <strong style="color:rgba(255,255,255,.85)">10:00 AM to 12:00 PM</strong>  physics lecture with Prof. Comert Kural<br><br>
-            <strong style="color:rgba(255,255,255,.85)">12:00 PM to 1:00 PM</strong>  lunch<br><br>
-            <strong style="color:rgba(255,255,255,.85)">1:00 PM to 3:00 PM</strong>  hands-on culturing and imaging cancer cells with Dr. Omer Kural
-          </p>
-        </div>
-      </aside>
-
-      <div class="form-container">
-        <form class="apply-form" action="https://formspree.io/f/xdaygorb" method="POST">
-
-          <div class="form-section">
-            <div class="form-section-title">About the Student</div>
-            <div class="form-section-sub">Tell us about yourself.</div>
-            <div class="field-row">
-              <div class="field">
-                <label for="s_first">First name</label>
-                <input type="text" id="s_first" name="student_first_name" placeholder="Jane" required/>
-              </div>
-              <div class="field">
-                <label for="s_last">Last name</label>
-                <input type="text" id="s_last" name="student_last_name" placeholder="Smith" required/>
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="s_email">Email address</label>
-                <input type="email" id="s_email" name="student_email" placeholder="jane@email.com" required/>
-              </div>
-              <div class="field">
-                <label for="s_phone">Phone number</label>
-                <input type="tel" id="s_phone" name="student_phone" placeholder="(614) 555-0100" required/>
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="s_school">Current school</label>
-                <input type="text" id="s_school" name="student_school" placeholder="Columbus High School" required/>
-              </div>
-              <div class="field">
-                <label for="s_grade">Grade</label>
-                <select id="s_grade" name="grade_level" required>
-                  <option value="">Select grade…</option>
-                  <option>9th grade</option>
-                  <option>10th grade</option>
-                  <option>11th grade</option>
-                  <option>12th grade</option>
-                </select>
-              </div>
-            </div>
-            <div class="field">
-              <label for="s_interest">Scientific interests <span class="opt">(optional)</span></label>
-              <textarea id="s_interest" name="student_interests" placeholder="Physics, biology, microscopy, medicine, cancer research, or other interests…"></textarea>
-            </div>
-          </div>
-
-          <div class="form-divider"></div>
-
-          <div class="form-section">
-            <div class="form-section-title">Parent / Guardian #1</div>
-            <div class="form-section-sub">Primary contact for the program.</div>
-            <div class="field-row">
-              <div class="field">
-                <label for="g1_name">Full name</label>
-                <input type="text" id="g1_name" name="guardian1_name" required/>
-              </div>
-              <div class="field">
-                <label for="g1_rel">Relationship to student</label>
-                <input type="text" id="g1_rel" name="guardian1_relationship" placeholder="Parent, Guardian…" required/>
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="g1_email">Email address</label>
-                <input type="email" id="g1_email" name="guardian1_email" required/>
-              </div>
-              <div class="field">
-                <label for="g1_phone">Phone number</label>
-                <input type="tel" id="g1_phone" name="guardian1_phone" required/>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-divider"></div>
-
-          <div class="form-section">
-            <div class="form-section-title">Parent / Guardian #2 <span style="font-size:.85rem;font-weight:400;color:var(--muted)">(optional)</span></div>
-            <div class="form-section-sub">Add a second contact if desired.</div>
-            <div class="field-row">
-              <div class="field">
-                <label for="g2_name">Full name <span class="opt">(optional)</span></label>
-                <input type="text" id="g2_name" name="guardian2_name"/>
-              </div>
-              <div class="field">
-                <label for="g2_rel">Relationship to student <span class="opt">(optional)</span></label>
-                <input type="text" id="g2_rel" name="guardian2_relationship"/>
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="g2_email">Email address <span class="opt">(optional)</span></label>
-                <input type="email" id="g2_email" name="guardian2_email"/>
-              </div>
-              <div class="field">
-                <label for="g2_phone">Phone number <span class="opt">(optional)</span></label>
-                <input type="tel" id="g2_phone" name="guardian2_phone"/>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-divider"></div>
-
-          <div class="form-section">
-            <div class="form-section-title">Workshop Session</div>
-            <div class="form-section-sub">This application is for one session only.</div>
-            <div class="field">
-              <label for="session_fixed">Selected session</label>
-              <input type="text" id="session_fixed" name="selected_session" value="July 20 to July 24, 2026" readonly/>
-            </div>
-          </div>
-
-          <div class="form-divider"></div>
-
-          <div class="form-section">
-            <div class="form-section-title">Short Essay</div>
-            <div class="form-section-sub">In 300 words or less, tell us why you are interested in attending Seeing the Invisible: Exploring Cells with Light.</div>
-            <div class="field">
-              <label for="essay">Your response <span class="opt">(300 words max)</span></label>
-              <textarea id="essay" name="interest_statement" maxlength="2200" placeholder="Write your response here. Tell us about your curiosity, what interests you about cells, light, imaging, or science, and what you hope to gain from this week…" style="min-height:180px" required></textarea>
-            </div>
-          </div>
-
-          <input type="hidden" name="_subject" value="New Seeing the Invisible Application - July 20 to 24, 2026"/>
-
-          <div class="submit-row">
-            <button type="submit" class="btn-submit">Submit Application →</button>
-            <p class="submit-note">Applications will be reviewed by the workshop team after submission.</p>
-          </div>
-
-        </form>
+  <div class="apply-wrap">
+    <aside class="sb">
+      <div class="sc">
+        <h3>Workshop Details</h3>
+        <div class="si"><div class="si-icon">📅</div><div class="si-t"><strong>Dates</strong><span>July 20–24, 2026</span></div></div>
+        <div class="si"><div class="si-icon">🕙</div><div class="si-t"><strong>Time</strong><span>10:00 AM – 3:00 PM daily</span></div></div>
+        <div class="si"><div class="si-icon">💰</div><div class="si-t"><strong>Program Fee</strong><span>$200 per student</span></div></div>
+        <div class="si"><div class="si-icon">🍽️</div><div class="si-t"><strong>Lunch</strong><span>Included daily, 12–1 PM</span></div></div>
       </div>
+      <div class="sc sc-dark">
+        <h3>Daily Structure</h3>
+        <p><strong>10AM–12PM</strong> physics lecture with Prof. Comert Kural<br><br><strong>12–1PM</strong> lunch<br><br><strong>1–3PM</strong> hands-on culturing &amp; imaging cancer cells with Dr. Omer Kural</p>
+      </div>
+    </aside>
+
+    <div class="fc">
+      <form action="https://formspree.io/f/xdaygorb" method="POST">
+        <div class="fs">
+          <div class="fs-title">About the Student</div>
+          <div class="fs-sub">Tell us about yourself.</div>
+          <div class="fr">
+            <div class="f"><label for="s_first">First name</label><input id="s_first" name="student_first_name" placeholder="Jane" required/></div>
+            <div class="f"><label for="s_last">Last name</label><input id="s_last" name="student_last_name" placeholder="Smith" required/></div>
+          </div>
+          <div class="fr">
+            <div class="f"><label for="s_email">Email</label><input type="email" id="s_email" name="student_email" required/></div>
+            <div class="f"><label for="s_phone">Phone</label><input type="tel" id="s_phone" name="student_phone" required/></div>
+          </div>
+          <div class="fr">
+            <div class="f"><label for="s_school">Current school</label><input id="s_school" name="student_school" required/></div>
+            <div class="f"><label for="s_grade">Grade</label>
+              <select id="s_grade" name="grade_level" required>
+                <option value="">Select…</option>
+                <option>9th grade</option><option>10th grade</option><option>11th grade</option><option>12th grade</option>
+              </select>
+            </div>
+          </div>
+          <div class="f"><label for="s_interest">Scientific interests <span class="opt">(optional)</span></label><textarea id="s_interest" name="student_interests" placeholder="Physics, biology, microscopy, medicine, cancer research…"></textarea></div>
+        </div>
+        <div class="fd"></div>
+        <div class="fs">
+          <div class="fs-title">Parent / Guardian #1</div>
+          <div class="fs-sub">Primary contact for the program.</div>
+          <div class="fr">
+            <div class="f"><label for="g1_name">Full name</label><input id="g1_name" name="guardian1_name" required/></div>
+            <div class="f"><label for="g1_rel">Relationship</label><input id="g1_rel" name="guardian1_relationship" placeholder="Parent, Guardian…" required/></div>
+          </div>
+          <div class="fr">
+            <div class="f"><label for="g1_email">Email</label><input type="email" id="g1_email" name="guardian1_email" required/></div>
+            <div class="f"><label for="g1_phone">Phone</label><input type="tel" id="g1_phone" name="guardian1_phone" required/></div>
+          </div>
+        </div>
+        <div class="fd"></div>
+        <div class="fs">
+          <div class="fs-title">Parent / Guardian #2 <span style="font-size:.82rem;font-weight:400;color:var(--muted)">(optional)</span></div>
+          <div class="fs-sub">Add a second contact if desired.</div>
+          <div class="fr">
+            <div class="f"><label for="g2_name">Full name <span class="opt">(optional)</span></label><input id="g2_name" name="guardian2_name"/></div>
+            <div class="f"><label for="g2_rel">Relationship <span class="opt">(optional)</span></label><input id="g2_rel" name="guardian2_relationship"/></div>
+          </div>
+          <div class="fr">
+            <div class="f"><label for="g2_email">Email <span class="opt">(optional)</span></label><input type="email" id="g2_email" name="guardian2_email"/></div>
+            <div class="f"><label for="g2_phone">Phone <span class="opt">(optional)</span></label><input type="tel" id="g2_phone" name="guardian2_phone"/></div>
+          </div>
+        </div>
+        <div class="fd"></div>
+        <div class="fs">
+          <div class="fs-title">Workshop Session</div>
+          <div class="fs-sub">This application is for one session only.</div>
+          <div class="f"><label>Selected session</label><input name="selected_session" value="July 20–24, 2026" readonly/></div>
+        </div>
+        <div class="fd"></div>
+        <div class="fs">
+          <div class="fs-title">Short Essay</div>
+          <div class="fs-sub">In 300 words or less, why are you interested in attending <em>Seeing the Invisible: Exploring Cells with Light</em>?</div>
+          <div class="f"><label for="essay">Your response <span class="opt">(300 words max)</span></label><textarea id="essay" name="interest_statement" maxlength="2200" style="min-height:180px" required placeholder="Tell us about your curiosity, what interests you about cells, light, imaging, or science, and what you hope to gain from this week…"></textarea></div>
+        </div>
+        <input type="hidden" name="_subject" value="New Application — Seeing the Invisible, July 20–24, 2026"/>
+        <div class="submit-r">
+          <button type="submit" class="btn-sub">Submit Application →</button>
+          <p class="submit-note">Applications will be reviewed by the workshop team after submission.</p>
+        </div>
+      </form>
     </div>
   </div>
-
 </div>
 
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-grid">
+  <div class="foot">
+    <div class="fg">
       <div>
-        <div class="footer-logo">
-          <div class="footer-logo-block">O</div>
-          <div class="footer-logo-name">Seeing the Invisible</div>
-        </div>
-        <p>A week-long summer workshop for high school students hosted at The Ohio State University through the Intracellular Dynamics Laboratory, focused on cells, light, imaging, and scientific discovery.</p>
+        <div class="fl"><div class="fl-sq">O</div><div class="fl-name">Seeing the Invisible</div></div>
+        <p>A week-long summer workshop for high school students at The Ohio State University through the Intracellular Dynamics Laboratory, focused on cells, light, imaging, and scientific discovery.</p>
       </div>
-      <div class="footer-links">
-        <button onclick="showPage('home')">Home</button>
-        <button onclick="showPage('team')">Meet the Team</button>
-        <button onclick="showPage('apply')">Apply</button>
+      <div class="flinks">
+        <button onclick="showPg('home')">Home</button>
+        <button onclick="showPg('team')">Meet the Team</button>
+        <button onclick="showPg('apply')">Apply</button>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="fb">
       <span>© 2026 Seeing the Invisible: Exploring Cells with Light</span>
       <span>The Ohio State University · Columbus, Ohio</span>
     </div>
@@ -1380,26 +661,16 @@ footer p{font-size:.85rem;line-height:1.7;max-width:60ch}
 </footer>
 
 <script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  document.querySelectorAll('[data-page]').forEach(b=>{
-    b.classList.toggle('active',b.dataset.page===id);
-  });
+function showPg(id){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('active'));
+  document.getElementById('pg-'+id).classList.add('active');
+  document.querySelectorAll('[data-p]').forEach(b=>b.classList.toggle('active',b.dataset.p===id));
   window.scrollTo({top:0,behavior:'instant'});
   history.replaceState(null,'','#'+id);
 }
-
-function toggleMenu(){
-  const m=document.getElementById('mobile-menu');
-  const b=document.getElementById('ham-btn');
-  const open=m.classList.toggle('open');
-  b.setAttribute('aria-expanded',open);
-}
-
-const hash=location.hash.replace('#','');
-if(hash&&['home','team','apply'].includes(hash))showPage(hash);
+function toggleMob(){document.getElementById('mob').classList.toggle('open')}
+const h=location.hash.replace('#','');
+if(h&&['home','team','apply'].includes(h))showPg(h);
 </script>
-
 </body>
 </html>
