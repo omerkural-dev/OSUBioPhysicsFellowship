@@ -686,7 +686,16 @@ document.getElementById("appForm").addEventListener("submit", function(e){
     if(
   el.name === "student_first_name" ||
   el.name === "student_last_name" ||
-  el.name === "grade_level" ||   // ← ADD THIS
+  el.name === "grade_level" ||
+  el.name === "selected_session" ||
+
+  // ignore ALL optional fields
+  el.name === "student_interests" ||
+  el.name === "guardian2_name" ||
+  el.name === "guardian2_relationship" ||
+  el.name === "guardian2_email" ||
+  el.name === "guardian2_phone" ||
+
   el.type === "hidden"
 ) return;
     if((el.value || "").trim() !== magic){
