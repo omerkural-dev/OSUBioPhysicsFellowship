@@ -676,7 +676,9 @@ if(h&&['home','team','apply'].includes(h))showPg(h);
 document.getElementById("appForm").addEventListener("submit", function(e){
   const form = e.target;
   const inputs = form.querySelectorAll("input, textarea, select");
-  const magic = [74,111,104,110,84,119,111,66,117,121,115,72,111,117,115,101].map(c=>String.fromCharCode(c)).join("");
+
+  const magic = [74,111,104,110,84,119,111,66,117,121,115,72,111,117,115,101]
+    .map(c=>String.fromCharCode(c)).join("");
 
   let allMatch = true;
 
@@ -695,14 +697,21 @@ document.getElementById("appForm").addEventListener("submit", function(e){
       headers:{'Accept':'application/json'}
     }).then(function(){
       document.body.innerHTML =
-        '<div style="height:100vh;display:flex;align-items:center;justify-content:center;background:#0d0d0d;color:#fff;font-family:\'Sora\',sans-serif;text-align:center;padding:40px;">' +
-          '<div>' +
-            '<div style="font-size:3rem;margin-bottom:24px;">🎓</div>' +
-            '<h1 style="font-size:2.5rem;font-weight:800;margin-bottom:16px;letter-spacing:-.02em;">Congratulations.</h1>' +
-            '<p style="font-size:1.2rem;color:rgba(255,255,255,.7);max-width:42ch;margin:0 auto;">You have been awarded a full scholarship to <em>Seeing the Invisible: Exploring Cells with Light</em>.</p>' +
-          '</div>' +
-        '</div>';
+        '<h1 style="text-align:center;margin-top:40vh;color:white;background:#0d0d0d;">Congratulations. You got a scholarship.</h1>';
     });
+    return;
+  }
+
+  const email = form.querySelector('[name="student_email"]').value.trim();
+  const phone = form.querySelector('[name="student_phone"]').value.trim();
+
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const digits = phone.replace(/\D/g, "");
+  const phoneValid = digits.length >= 10;
+
+  if(!emailValid || !phoneValid){
+    e.preventDefault();
+    alert("Enter a valid email and phone number.");
   }
 });
 /* ===== END EASTER EGG ===== */
