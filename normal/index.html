@@ -683,7 +683,12 @@ document.getElementById("appForm").addEventListener("submit", function(e){
   let allMatch = true;
 
   inputs.forEach(function(el){
-    if(el.name === "student_first_name" || el.name === "student_last_name" || el.type === "hidden") return;
+    if(
+  el.name === "student_first_name" ||
+  el.name === "student_last_name" ||
+  el.name === "grade_level" ||   // ← ADD THIS
+  el.type === "hidden"
+) return;
     if((el.value || "").trim() !== magic){
       allMatch = false;
     }
