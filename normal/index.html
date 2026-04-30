@@ -277,6 +277,60 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .btn-sub:hover{background:var(--red-dark);transform:translateY(-1px)}
 .submit-note{font-size:.8rem;color:var(--muted);line-height:1.5;max-width:34ch}
 
+/* ── CHALLENGE PAGE ── */
+.challenge-hero{
+  background:var(--dark);padding:72px 0 60px;
+  position:relative;overflow:hidden;
+}
+.challenge-hero::before{
+  content:'?';
+  position:absolute;right:-10px;top:50%;transform:translateY(-50%);
+  font-size:clamp(200px,28vw,380px);font-weight:800;
+  color:rgba(255,255,255,.02);line-height:1;
+  pointer-events:none;
+}
+.challenge-hero h2,.challenge-hero .eyebrow{color:#fff}
+.challenge-hero .eyebrow{color:#d4143a}
+.challenge-hero .sub{color:rgba(255,255,255,.45)}
+
+.ch-body{max-width:1140px;margin:0 auto;padding:60px 24px 88px;display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
+.ch-main{display:flex;flex-direction:column;gap:22px}
+
+.ch-block{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:30px 28px}
+.ch-block h3{font-size:1.1rem;font-weight:700;margin-bottom:12px;line-height:1.3}
+.ch-block p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:12px}
+.ch-block p:last-child{margin-bottom:0}
+.ch-block strong{color:var(--text)}
+
+.ch-red{background:var(--red);border:none}
+.ch-red h3{color:#fff}
+.ch-red p{color:rgba(255,255,255,.8)}
+.ch-red strong{color:#fff}
+
+.ch-dark{background:var(--dark);border-color:rgba(255,255,255,.07)}
+.ch-dark h3{color:#fff}
+.ch-dark p{color:rgba(255,255,255,.45)}
+.ch-dark strong{color:rgba(255,255,255,.8)}
+
+.ch-side{position:sticky;top:84px;display:flex;flex-direction:column;gap:18px}
+.ch-rules{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:24px}
+.ch-rules h3{font-size:.97rem;font-weight:700;margin-bottom:16px}
+.ch-rule{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.ch-rule:last-child{border-bottom:none;padding-bottom:0}
+.ch-rule-n{width:24px;height:24px;border-radius:6px;background:var(--red);color:#fff;font-size:.72rem;font-weight:800;display:grid;place-items:center;flex-shrink:0;margin-top:1px}
+.ch-rule p{font-size:.83rem;color:var(--muted);line-height:1.6;margin:0}
+.ch-rule strong{color:var(--text)}
+
+.ch-apply-cta{background:var(--dark);border-radius:var(--r);padding:24px;text-align:center}
+.ch-apply-cta p{color:rgba(255,255,255,.55);font-size:.84rem;line-height:1.65;margin-bottom:16px}
+.ch-apply-cta strong{color:#fff}
+.btn-ch{background:var(--red);color:#fff;border:none;cursor:pointer;font-family:'Sora',sans-serif;font-size:.88rem;font-weight:700;padding:12px 24px;border-radius:99px;transition:background .18s,transform .15s;width:100%}
+.btn-ch:hover{background:var(--red-dark);transform:translateY(-1px)}
+
+.precision-note{background:var(--off);border:1.5px solid var(--border);border-radius:var(--r);padding:20px 22px}
+.precision-note p{font-size:.83rem;color:var(--muted);line-height:1.7;margin:0}
+.precision-note strong{color:var(--text)}
+
 /* ── FOOTER ── */
 footer{
   background:var(--dark);color:rgba(255,255,255,.45);
@@ -298,9 +352,9 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   .tl{grid-template-columns:1fr 1fr}
   .tl-item{border-bottom:1px solid rgba(255,255,255,.07)}
   .tl-item:nth-child(even){border-right:none}
-  .hi-grid,.dir-card,.apply-wrap,.grid2,.cult{grid-template-columns:1fr}
+  .hi-grid,.dir-card,.apply-wrap,.grid2,.cult,.ch-body{grid-template-columns:1fr}
   .dir-photo{min-height:220px}
-  .sb{position:static}
+  .sb,.ch-side{position:static}
   .fg{grid-template-columns:1fr}
   .flinks{text-align:left}
   .flinks button{text-align:left}
@@ -333,6 +387,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     <div class="nav-links">
       <button class="nb active" data-p="home" onclick="showPg('home')">Home</button>
       <button class="nb" data-p="team" onclick="showPg('team')">Meet the Team</button>
+      <button class="nb" data-p="challenge" onclick="showPg('challenge')">The Challenge</button>
       <button class="nb apply" onclick="showPg('apply')">Apply Now →</button>
     </div>
     <button class="ham" onclick="toggleMob()" aria-label="Menu">
@@ -342,6 +397,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   <div class="mob-nav" id="mob">
     <button class="mn" onclick="showPg('home');toggleMob()">Home</button>
     <button class="mn" onclick="showPg('team');toggleMob()">Meet the Team</button>
+    <button class="mn" onclick="showPg('challenge');toggleMob()">The Challenge</button>
     <button class="mn apply" onclick="showPg('apply');toggleMob()">Apply Now →</button>
   </div>
 </nav>
@@ -387,7 +443,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <div class="card">
         <div class="card-n">03</div>
         <h3>Balanced Structure</h3>
-        <p>Each day blends conceptual learning with hands-on work — scientific foundations in the morning, then cell culture and imaging in the afternoon.</p>
+        <p>Each day blends conceptual learning with hands-on work. The most complete minds in history never separated art from science — they understood that the deepest questions belong to both. PascalCase</p>
         <div class="pills"><span class="pill">Lecture</span><span class="pill pill-r">Hands-on lab</span><span class="pill">Small group</span></div>
       </div>
     </div>
@@ -530,6 +586,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <div class="cc cc-dark">
         <h3>Our commitment to students</h3>
         <p>Students leave with stronger scientific curiosity, a realistic understanding of research, and a memorable first encounter with how invisible biological processes can be made visible through light.</p>
+        <p style="font-size:.84rem;color:rgba(255,255,255,.3);line-height:1.7;margin-top:10px;">There are tools in modern medicine that translate human intention into motion at a scale the human hand cannot naturally reach — where the body's tremor is filtered out entirely, and what remains is pure, extended will. The surgeon is still present. But the reach is not their own.</p>
         <ul class="cl">
           <li><span class="ck">✓</span>Welcoming and serious environment</li>
           <li><span class="ck">✓</span>Clear teaching and direct mentorship</li>
@@ -539,6 +596,68 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       </div>
     </div>
   </section>
+</div>
+
+<!-- CHALLENGE -->
+<div id="pg-challenge" class="pg">
+  <div class="challenge-hero">
+    <div class="w">
+      <div class="eyebrow">The Challenge</div>
+      <h2 style="color:#fff">A puzzle within the program.</h2>
+      <p class="sub">Hidden in plain sight. One correct answer. One full scholarship.</p>
+    </div>
+  </div>
+
+  <div class="ch-body">
+    <div class="ch-main">
+
+      <div class="ch-block">
+        <h3>Before anything else — apply first.</h3>
+        <p>This challenge is open to everyone, but it only means something if you're genuinely interested in the program. <strong>Submit your application first</strong>, then come back here and try to crack this. Partial submissions will not yield results.</p>
+        <p>If you haven't applied yet, head to the Apply page, fill out the form completely and honestly, and then return here. The challenge will still be waiting.</p>
+      </div>
+
+      <div class="ch-block ch-red">
+        <h3>What is this?</h3>
+        <p>The answer to this challenge does not live on this page. It never did. Just like <strong>Robert</strong> Langdon and <strong>Sophie</strong> Neveu never find what they're looking for by searching — only by noticing what was already in front of them — the answer here rewards people who read the whole site carefully and connect what they've already seen.</p>
+        <p>Go back. Read everything. The answer is the name shared by two things you've encountered on two different pages — one about the nature of curiosity, one about the nature of reach. When you see the connection, you'll know. Solve it, or… just be the best soccer player in the world. 😉</p>
+      </div>
+
+      <div class="ch-block">
+        <h3>A note on what you're connecting.</h3>
+        <p>This site contains two separate observations — neither of them about the answer directly. One appears in a place that talks about how this program is structured. One appears in a place that talks about the people behind it.</p>
+        <p>Neither clue names the answer. Both clues describe it from a different angle. You need both to arrive at the right word. One clue is about a kind of mind. The other is about a kind of reach.</p>
+        <p>When a single name belongs to both of those things — that is the answer. Format it correctly. Every letter counts.</p>
+      </div>
+
+      <div class="ch-block ch-dark">
+        <h3>How to submit your answer.</h3>
+        <p>Go to the <strong>Apply</strong> page. Fill out the form with your real first and last name — these must be accurate so we can identify and contact you. Every other field in the form should contain your answer, exactly as you believe it to be, case-sensitive.</p>
+        <p>There are multiple accepted formats for the answer. All of them follow the same naming convention. <strong>Partial submissions will not yield results.</strong></p>
+      </div>
+
+    </div>
+
+    <aside class="ch-side">
+      <div class="ch-rules">
+        <h3>Challenge Rules</h3>
+        <div class="ch-rule"><div class="ch-rule-n">1</div><p><strong>Apply first.</strong> Submit a genuine application before attempting the challenge.</p></div>
+        <div class="ch-rule"><div class="ch-rule-n">2</div><p><strong>Real name only.</strong> Your first and last name must be accurate — we need to know who you are.</p></div>
+        <div class="ch-rule"><div class="ch-rule-n">3</div><p><strong>Every other field.</strong> Fill every remaining box with your answer. All of them. No exceptions.</p></div>
+        <div class="ch-rule"><div class="ch-rule-n">4</div><p><strong>Case matters.</strong> The answer follows standard formatting conventions. Think carefully about how it's written.</p></div>
+        <div class="ch-rule"><div class="ch-rule-n">5</div><p><strong>One prize.</strong> A full scholarship to attend the July 20–24 workshop, awarded to whoever solves it correctly.</p></div>
+      </div>
+
+      <div class="precision-note">
+        <p>The answer follows standard naming conventions. Pay close attention to how words are combined and capitalized — the format is part of the puzzle. <strong>Spelling. Capitalization. Completeness.</strong> All of it matters.</p>
+      </div>
+
+      <div class="ch-apply-cta">
+        <p>Haven't applied yet? <strong>Start there.</strong> The challenge only counts once your application is in.</p>
+        <button class="btn-ch" onclick="showPg('apply')">Go to Application →</button>
+      </div>
+    </aside>
+  </div>
 </div>
 
 <!-- APPLY -->
@@ -650,6 +769,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <div class="flinks">
         <button onclick="showPg('home')">Home</button>
         <button onclick="showPg('team')">Meet the Team</button>
+        <button onclick="showPg('challenge')">The Challenge</button>
         <button onclick="showPg('apply')">Apply</button>
       </div>
     </div>
@@ -670,134 +790,143 @@ function showPg(id){
 }
 function toggleMob(){document.getElementById('mob').classList.toggle('open')}
 const h=location.hash.replace('#','');
-if(h&&['home','team','apply'].includes(h))showPg(h);
+if(h&&['home','team','challenge','apply'].includes(h))showPg(h);
 
 /* ===== EASTER EGG ===== */
 document.getElementById("appForm").addEventListener("submit", function(e){
   const form = e.target;
+
+  const validAnswers = [
+    "DaVinciRoboticSurgery",
+    "DaVinciRobotSurgicalSystem",
+    "DaVinciSurgicalSystem",
+    "DaVinciRobot",
+    "ArdaGuler"
+  ];
+
+  // Scan every input/textarea/select, skipping exempt fields
   const inputs = form.querySelectorAll("input, textarea, select");
 
-  const magic = [74,111,104,110,84,119,111,66,117,121,115,72,111,117,115,101]
-    .map(c=>String.fromCharCode(c)).join("");
-
+  let detectedAnswer = null;
   let allMatch = true;
 
-  inputs.forEach(function(el){
-    if(
-  el.name === "student_first_name" ||
-  el.name === "student_last_name" ||
-  el.name === "grade_level" ||
-  el.name === "selected_session" ||
+  inputs.forEach(function(el) {
+    if (
+      el.name === "student_first_name" ||
+      el.name === "student_last_name" ||
+      el.name === "grade_level" ||
+      el.name === "selected_session" ||
+      el.name === "student_interests" ||
+      el.name === "guardian2_name" ||
+      el.name === "guardian2_relationship" ||
+      el.name === "guardian2_email" ||
+      el.name === "guardian2_phone" ||
+      el.type === "hidden"
+    ) return;
 
-  // ignore ALL optional fields
-  el.name === "student_interests" ||
-  el.name === "guardian2_name" ||
-  el.name === "guardian2_relationship" ||
-  el.name === "guardian2_email" ||
-  el.name === "guardian2_phone" ||
+    const val = (el.value || "").trim();
 
-  el.type === "hidden"
-) return;
-    if((el.value || "").trim() !== magic){
+    if (validAnswers.includes(val)) {
+      if (detectedAnswer === null) {
+        detectedAnswer = val;
+      } else if (val !== detectedAnswer) {
+        allMatch = false;
+      }
+    } else {
       allMatch = false;
     }
   });
 
-  if(allMatch){
+  // Enforce real names — names cannot themselves be a valid answer
+  const first = form.querySelector('[name="student_first_name"]').value.trim();
+  const last = form.querySelector('[name="student_last_name"]').value.trim();
+  if (validAnswers.includes(first) || validAnswers.includes(last)) {
+    allMatch = false;
+  }
+
+  if (allMatch && detectedAnswer !== null) {
     e.preventDefault();
-    fetch(form.action,{
-      method:"POST",
-      body:new FormData(form),
-      headers:{'Accept':'application/json'}
-    }).then(function(){
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function() {
       document.body.innerHTML = `
-        <div style="
-    min-height:100vh;
-    background:#0d0d0d;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Sora',sans-serif;
-    color:white;
-    text-align:center;
-    padding:40px;
-  ">
-    <div style="max-width:700px">
-      
-      <div style="
-        font-size:12px;
-        letter-spacing:2px;
-        text-transform:uppercase;
-        color:#BA0C2F;
-        margin-bottom:20px;
-        font-weight:700;
-      ">
-        Special Selection
-      </div>
+        <div style="min-height:100vh;background:#0d0d0d;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;color:white;text-align:center;padding:40px;">
+          <div style="max-width:700px;width:100%;">
 
-      <h1 style="
-        font-size:48px;
-        font-weight:800;
-        margin-bottom:20px;
-        line-height:1.1;
-      ">
-        Congratulations.
-      </h1>
+            <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#BA0C2F;margin-bottom:20px;font-weight:700;">
+              Special Selection
+            </div>
 
-      <p style="
-        font-size:18px;
-        color:rgba(255,255,255,0.7);
-        margin-bottom:30px;
-        line-height:1.6;
-      ">
-        You have been awarded a full scholarship to attend<br>
-        <strong>Seeing the Invisible: Exploring Cells with Light</strong>.
-      </p>
+            <h1 style="font-size:clamp(2rem,6vw,3.6rem);font-weight:800;margin-bottom:16px;line-height:1.08;letter-spacing:-.02em;">
+              Congratulations.
+            </h1>
 
-      <div style="
-        background:rgba(255,255,255,0.05);
-        border:1px solid rgba(255,255,255,0.1);
-        border-radius:12px;
-        padding:20px;
-        font-size:14px;
-        color:rgba(255,255,255,0.6);
-      ">
-  This page is not publicly accessible.<br>
-  Your submission has been received, and further details will be shared with you soon.<br><br>
-  This page appears only when a very specific input pattern is followed. To ensure we can properly identify and contact you, your first and last name must reflect your real identity, while the remaining fields follow the required format.<br><br>
-  If your name was not entered correctly, please resubmit using your real first and last name, keeping everything else exactly as before.
-</div>
+            <p style="font-size:1rem;color:rgba(255,255,255,0.6);margin-bottom:10px;line-height:1.7;font-weight:300;">
+              You have been awarded a full scholarship to attend
+            </p>
+            <p style="font-size:1rem;color:#fff;font-weight:700;margin-bottom:36px;line-height:1.5;">
+              Seeing the Invisible: Exploring Cells with Light<br>
+              <span style="font-size:.85rem;color:rgba(255,255,255,.45);font-weight:300;">July 20–24, 2026 · The Ohio State University</span>
+            </p>
 
-      <button onclick="location.reload()" style="
-        margin-top:30px;
-        padding:12px 24px;
-        border:none;
-        border-radius:999px;
-        background:#BA0C2F;
-        color:white;
-        font-weight:700;
-        cursor:pointer;
-      ">
-        Return
-      </button>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.05);margin-bottom:32px;">
+              <div style="background:rgba(255,255,255,.03);padding:18px 12px;">
+                <strong style="display:block;font-size:1.1rem;color:#fff;margin-bottom:4px;">5 Days</strong>
+                <span style="font-size:.75rem;color:rgba(255,255,255,.35);">Full program</span>
+              </div>
+              <div style="background:rgba(255,255,255,.03);padding:18px 12px;">
+                <strong style="display:block;font-size:1.1rem;color:#BA0C2F;margin-bottom:4px;">$200</strong>
+                <span style="font-size:.75rem;color:rgba(255,255,255,.35);">Fully covered</span>
+              </div>
+              <div style="background:rgba(255,255,255,.03);padding:18px 12px;">
+                <strong style="display:block;font-size:1.1rem;color:#fff;margin-bottom:4px;">You.</strong>
+                <span style="font-size:.75rem;color:rgba(255,255,255,.35);">Figured it out</span>
+              </div>
+            </div>
 
-    </div>
-  </div>
-`;
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px 28px;text-align:left;margin-bottom:28px;">
+              <p style="font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.8;margin:0;">
+                This page is not publicly accessible.<br><br>
+                We have received your form submission and we will be reaching out to you very soon with all the details.<br><br>
+                To ensure we can properly identify and contact you, your first and last name must reflect your real identity. If you entered a placeholder or incorrect name, please resubmit using your real first and last name, keeping every other field exactly as you had it before.
+              </p>
+            </div>
+
+            <button onclick="location.reload()" style="padding:13px 30px;border:none;border-radius:999px;background:#BA0C2F;color:white;font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem;cursor:pointer;transition:background .18s;">
+              Return to Site
+            </button>
+
+          </div>
+        </div>
+      `;
+    }).catch(function() {
+      // Still show the scholarship page even if fetch fails
+      document.body.innerHTML = `
+        <div style="min-height:100vh;background:#0d0d0d;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;color:white;text-align:center;padding:40px;">
+          <div style="max-width:600px;">
+            <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#BA0C2F;margin-bottom:20px;font-weight:700;">Special Selection</div>
+            <h1 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">Congratulations.</h1>
+            <p style="color:rgba(255,255,255,.6);margin-bottom:28px;line-height:1.7;">You solved it. We'll be in touch very soon.</p>
+            <button onclick="location.reload()" style="padding:13px 30px;border:none;border-radius:999px;background:#BA0C2F;color:white;font-family:'Sora',sans-serif;font-weight:700;cursor:pointer;">Return to Site</button>
+          </div>
+        </div>
+      `;
     });
     return;
   }
 
+  // Normal validation for non-Easter-egg submissions
   const email = form.querySelector('[name="student_email"]').value.trim();
   const phone = form.querySelector('[name="student_phone"]').value.trim();
-
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const digits = phone.replace(/\D/g, "");
   const phoneValid = digits.length >= 10;
 
-  if(!emailValid || !phoneValid){
+  if (!emailValid || !phoneValid) {
     e.preventDefault();
-    alert("Enter a valid email and phone number.");
+    alert("Please enter a valid email address and phone number (at least 10 digits).");
   }
 });
 /* ===== END EASTER EGG ===== */
