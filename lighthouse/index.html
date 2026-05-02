@@ -166,6 +166,7 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
   transition:border-color .18s,box-shadow .18s;outline:none;
 }
 .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(197,2,39,.08);background:#fff}
+.f input.invalid,.f select.invalid,.f textarea.invalid{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.1)}
 .f textarea{min-height:140px;resize:vertical;line-height:1.65}
 .note{font-size:.77rem;color:var(--muted);margin-top:5px}
 .check-row{display:flex;align-items:flex-start;gap:11px;margin-top:5px}
@@ -253,7 +254,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
 
 <main>
 
-<!-- HOME -->
+<!-- HOME PAGE -->
 <div id="pg-home" class="pg active">
   <div class="hero">
     <div class="w">
@@ -323,7 +324,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
   </div>
 </div>
 
-<!-- APPLY -->
+<!-- APPLY PAGE -->
 <div id="pg-apply" class="pg">
   <section style="padding:60px 0 88px;background:var(--off)">
     <div class="w">
@@ -333,14 +334,14 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
           <p>This application is for The Lighthouse Schools student version. Accepted students attend at no cost.</p>
         </div>
         <div class="form-body">
-          <form id="lighthouseForm" action="https://formspree.io/f/xnjoppqk" method="POST">
+          <form id="lighthouseForm" action="https://formspree.io/f/xnjoppqk" method="POST" novalidate>
             <div class="fs">
               <h3>Student information</h3>
               <div class="fr">
-                <div class="f"><label>First name</label><input name="Student First Name" required/></div>
-                <div class="f"><label>Last name</label><input name="Student Last Name" required/></div>
-                <div class="f"><label>Student email</label><input type="email" name="Student Email" required/></div>
-                <div class="f"><label>Student phone</label><input type="tel" name="Student Phone"/></div>
+                <div class="f"><label>First name</label><input name="Student First Name" required placeholder="Jane"/></div>
+                <div class="f"><label>Last name</label><input name="Student Last Name" required placeholder="Smith"/></div>
+                <div class="f"><label>Student email</label><input type="email" name="Student Email" required placeholder="jane@email.com"/></div>
+                <div class="f"><label>Student phone</label><input type="tel" name="Student Phone" required placeholder="563-555-0100"/></div>
                 <div class="f"><label>Current grade</label>
                   <select name="Current Grade" required>
                     <option value="">Select grade</option>
@@ -361,20 +362,20 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
               <h3>Parent or guardian information</h3>
               <div class="fr">
                 <div class="f"><label>Parent or guardian name</label><input name="Parent or Guardian Name" required/></div>
-                <div class="f"><label>Relation to student</label><input name="Relation to Student" required/></div>
-                <div class="f"><label>Email</label><input type="email" name="Parent or Guardian Email" required/></div>
-                <div class="f"><label>Phone</label><input type="tel" name="Parent or Guardian Phone" required/></div>
+                <div class="f"><label>Relation to student</label><input name="Relation to Student" required placeholder="Parent, Guardian…"/></div>
+                <div class="f"><label>Email</label><input type="email" name="Parent or Guardian Email" required placeholder="parent@email.com"/></div>
+                <div class="f"><label>Phone</label><input type="tel" name="Parent or Guardian Phone" required placeholder="563-555-0101"/></div>
               </div>
             </div>
             <div class="fs">
               <h3>Student response</h3>
               <div class="f full"><label>In 300 words or less, why are you interested in attending this workshop?</label><textarea name="Student Essay" maxlength="2000" required placeholder="Write your response here"></textarea></div>
-              <div class="f full"><label>What do you hope to gain from this experience? (optional)</label><textarea name="Workshop Goals" placeholder="Optional"></textarea></div>
+              <div class="f full"><label>What do you hope to gain from this experience? <span style="font-weight:400;color:var(--muted)">(optional)</span></label><textarea name="Workshop Goals" placeholder="Optional"></textarea></div>
             </div>
             <div class="fs">
               <h3>Confirmation</h3>
-              <div class="check-row"><input type="checkbox" name="Information Confirmed" required/><label>I confirm that the information in this application is accurate.</label></div>
-              <div class="check-row" style="margin-top:10px"><input type="checkbox" name="Understands No Fee Track" required/><label>I understand that this Lighthouse Schools track has no participation fee for accepted students.</label></div>
+              <div class="check-row"><input type="checkbox" id="confirmInfo" name="Information Confirmed" required/><label for="confirmInfo">I confirm that the information in this application is accurate.</label></div>
+              <div class="check-row" style="margin-top:10px"><input type="checkbox" id="confirmFee" name="Understands No Fee Track" required/><label for="confirmFee">I understand that this Lighthouse Schools track has no participation fee for accepted students.</label></div>
             </div>
             <button type="submit" class="btn-sub">Submit Application</button>
           </form>
@@ -436,33 +437,94 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
 
 <script>
 function showPg(id){
-  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('active')});
   document.getElementById('pg-'+id).classList.add('active');
-  document.querySelectorAll('[data-p]').forEach(b=>b.classList.toggle('active',b.dataset.p===id));
+  document.querySelectorAll('[data-p]').forEach(function(b){b.classList.toggle('active',b.dataset.p===id)});
   window.scrollTo({top:0,behavior:'instant'});
   history.replaceState(null,'','#'+id);
 }
 function toggleMob(){document.getElementById('mob').classList.toggle('open')}
-const h=location.hash.replace('#','');
+var h=location.hash.replace('#','');
 if(h&&['home','apply'].includes(h))showPg(h);
 
-// Form submission with custom thank-you message
-document.getElementById('lighthouseForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var form = this;
-  var msg = document.getElementById('thankYouMsg');
-  fetch(form.action, {
-    method: 'POST',
-    body: new FormData(form),
-    headers: { Accept: 'application/json' }
-  }).then(function(){
-    form.style.display = 'none';
-    msg.classList.add('show');
-  }).catch(function(){
-    form.style.display = 'none';
-    msg.classList.add('show');
+var lhForm=document.getElementById('lighthouseForm');
+if(lhForm){
+  lhForm.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    // Clear previous invalid states
+    lhForm.querySelectorAll('.invalid').forEach(function(el){el.classList.remove('invalid')});
+
+    var valid=true;
+
+    // Check all required fields
+    var required=lhForm.querySelectorAll('[required]');
+    required.forEach(function(field){
+      if(field.type==='checkbox'){
+        if(!field.checked){
+          field.style.outline='2px solid #c0392b';
+          valid=false;
+        } else {
+          field.style.outline='';
+        }
+      } else if(field.tagName==='SELECT'){
+        if(!field.value||field.value===''){
+          field.classList.add('invalid');
+          valid=false;
+        }
+      } else {
+        if(!field.value||field.value.trim()===''){
+          field.classList.add('invalid');
+          valid=false;
+        }
+      }
+    });
+
+    // Validate email fields
+    var emailFields=lhForm.querySelectorAll('input[type="email"]');
+    emailFields.forEach(function(ef){
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ef.value.trim())){
+        ef.classList.add('invalid');
+        valid=false;
+      }
+    });
+
+    // Validate phone fields
+    var phoneFields=lhForm.querySelectorAll('input[type="tel"]');
+    phoneFields.forEach(function(pf){
+      var digits=pf.value.replace(/\D/g,'');
+      if(digits.length<7){
+        pf.classList.add('invalid');
+        valid=false;
+      }
+    });
+
+    if(!valid){
+      var firstInvalid=lhForm.querySelector('.invalid');
+      if(firstInvalid){firstInvalid.focus();firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});}
+      return;
+    }
+
+    var msg=document.getElementById('thankYouMsg');
+    fetch(lhForm.action,{
+      method:'POST',
+      body:new FormData(lhForm),
+      headers:{Accept:'application/json'}
+    }).then(function(){
+      lhForm.style.display='none';
+      msg.classList.add('show');
+    }).catch(function(){
+      lhForm.style.display='none';
+      msg.classList.add('show');
+    });
   });
-});
+
+  // Remove invalid class on input
+  lhForm.querySelectorAll('input,select,textarea').forEach(function(el){
+    el.addEventListener('input',function(){el.classList.remove('invalid');el.style.outline='';});
+    el.addEventListener('change',function(){el.classList.remove('invalid');el.style.outline='';});
+  });
+}
 </script>
 </body>
 </html>
