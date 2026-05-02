@@ -99,15 +99,6 @@ h1 em{color:#d4143a;font-style:italic}
 .btn-r:hover{background:var(--red-dark);transform:translateY(-1px)}
 .btn-g{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
 .btn-g:hover{background:rgba(255,255,255,.18)}
-.stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;border:1px solid rgba(255,255,255,.1);
-  border-radius:12px;overflow:hidden;background:rgba(255,255,255,.07);
-  max-width:480px;
-}
-.stat{background:rgba(255,255,255,.04);padding:18px 16px}
-.stat strong{display:block;font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:3px}
-.stat span{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.4}
 
 .sec{padding:72px 0 0}
 .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);font-weight:700;margin-bottom:10px}
@@ -149,6 +140,7 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .hi-ico{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.07);display:grid;place-items:center;flex-shrink:0;font-size:1rem}
 .hi-row strong{display:block;font-size:.88rem;color:#fff;font-weight:700}
 .hi-row span{font-size:.78rem;color:rgba(255,255,255,.4)}
+.hi-row span a{color:rgba(255,255,255,.55);text-decoration:underline}
 
 .gal-sec{padding:72px 0 88px}
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
@@ -179,10 +171,6 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .si-icon{width:30px;height:30px;border-radius:7px;background:rgba(186,12,47,.08);display:grid;place-items:center;flex-shrink:0;font-size:.85rem}
 .si-t strong{display:block;font-size:.84rem;font-weight:700;margin-bottom:1px}
 .si-t span{font-size:.78rem;color:var(--muted)}
-.sc-dark{background:var(--dark)}
-.sc-dark h3{color:#fff}
-.sc-dark p{color:rgba(255,255,255,.45);font-size:.84rem;line-height:1.7}
-.sc-dark strong{color:rgba(255,255,255,.8)}
 
 .fc{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:36px}
 .fs{margin-bottom:30px}
@@ -201,6 +189,7 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
   transition:border-color .18s,box-shadow .18s;outline:none;
 }
 .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(186,12,47,.09);background:#fff}
+.f input.invalid,.f select.invalid,.f textarea.invalid{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.1)}
 .f textarea{min-height:140px;resize:vertical;line-height:1.65}
 .submit-r{margin-top:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .btn-sub{
@@ -251,7 +240,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   .nav-links{display:none}
   .ham{display:block}
   .grid3{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr}
   .fr{grid-template-columns:1fr}
   .fc{padding:22px}
   .gallery{grid-template-columns:1fr}
@@ -286,20 +274,15 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 
 <main>
 
-<!-- HOME -->
+<!-- HOME PAGE -->
 <div id="pg-home" class="pg active">
   <div class="hero">
     <div class="w">
       <div class="tag"><span class="tag-dot"></span>Ohio State University · July 20–24, 2026</div>
       <h1>Seeing the Invisible:<br>Exploring Cells<br><em>with Light</em></h1>
-      <p class="hero-sub">A week-long live-cell imaging bootcamp at The Ohio State <a href="https://www.asc.ohio-state.edu/kural.1/index.htm?_gl=1*3pcbv8*_gcl_au*MTM2MjU4Mzk0My4xNzU3MzQxMjk5*_ga*NzY2OTMwMTYuMTc1NzM0MTI5OA..*_ga_09WC99HMPE*czE3NjIxOTc1NTckbzE2MyRnMSR0MTc2MjE5Nzc4MyRqMzAkbDAkaDA." target="_blank" rel="noopener"><strong>Intracellular Dynamics Laboratory</strong></a>. High school students discover how living cells sense, move, and reorganize using advanced microscopy.</p>
+      <p class="hero-sub">A week-long live-cell imaging bootcamp at The Ohio State University <a href="https://www.asc.ohio-state.edu/kural.1/index.htm?_gl=1*3pcbv8*_gcl_au*MTM2MjU4Mzk0My4xNzU3MzQxMjk5*_ga*NzY2OTMwMTYuMTc1NzM0MTI5OA..*_ga_09WC99HMPE*czE3NjIxOTc1NTckbzE2MyRnMSR0MTc2MjE5Nzc4MyRqMzAkbDAkaDA." target="_blank" rel="noopener"><strong>Intracellular Dynamics Laboratory</strong></a>. High school students discover how living cells sense, move, and reorganize using advanced microscopy.</p>
       <div class="btns">
         <button class="btn btn-r" onclick="showPg('apply')">Apply for July 20–24 →</button>
-      </div>
-      <div class="stats">
-        <div class="stat"><strong>5 Days</strong><span>July 20–24, 2026</span></div>
-        <div class="stat"><strong>$200</strong><span>Per student</span></div>
-        <div class="stat"><strong>OSU</strong><span>Ohio State University</span></div>
       </div>
     </div>
   </div>
@@ -350,9 +333,14 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
           <p>Rather than overwhelming students with a huge program, this workshop keeps the schedule focused and deeply connected to one compelling scientific theme.</p>
         </div>
         <div class="hi-dark">
-          <div class="hi-row"><div class="hi-ico">💵</div><div><strong>Accessible pricing</strong><span>$200 for the full week</span></div></div>
           <div class="hi-row"><div class="hi-ico">🔎</div><div><strong>One strong theme</strong><span>Cells, light, imaging, discovery</span></div></div>
-          <div class="hi-row"><div class="hi-ico">🏛️</div><div><strong>Real lab setting</strong><span>The Ohio State University</span></div></div>
+          <div class="hi-row">
+            <div class="hi-ico">🏛️</div>
+            <div>
+              <strong>Real lab setting</strong>
+              <span><a href="https://www.asc.ohio-state.edu/kural.1/index.htm?_gl=1*3pcbv8*_gcl_au*MTM2MjU4Mzk0My4xNzU3MzQxMjk5*_ga*NzY2OTMwMTYuMTc1NzM0MTI5OA..*_ga_09WC99HMPE*czE3NjIxOTc1NTckbzE2MyRnMSR0MTc2MjE5Nzc4MyRqMzAkbDAkaDA." target="_blank" rel="noopener">The Ohio State University Intracellular Dynamics Laboratory</a></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -375,7 +363,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   </section>
 </div>
 
-<!-- APPLY -->
+<!-- APPLY PAGE -->
 <div id="pg-apply" class="pg">
   <div class="pg-hero">
     <div class="w">
@@ -390,12 +378,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <div class="sc">
         <h3>Workshop Details</h3>
         <div class="si"><div class="si-icon">📅</div><div class="si-t"><strong>Dates</strong><span>July 20–24, 2026</span></div></div>
-        <div class="si"><div class="si-icon">💰</div><div class="si-t"><strong>Program Fee</strong><span>$200 per student</span></div></div>
-        <div class="si"><div class="si-icon">🏛️</div><div class="si-t"><strong>Location</strong><span>The Ohio State University</span></div></div>
-      </div>
-      <div class="sc sc-dark">
-        <h3>About</h3>
-        <p>A week-long live-cell imaging workshop at The Ohio State <strong>Intracellular Dynamics Laboratory</strong> with biophysics lectures by Prof. Comert Kural.</p>
+        <div class="si"><div class="si-icon">🏛️</div><div class="si-t"><strong>Location</strong><span>The Ohio State University Intracellular Dynamics Laboratory</span></div></div>
       </div>
     </aside>
 
@@ -409,8 +392,8 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
             <div class="f"><label for="s_last">Last name</label><input id="s_last" name="student_last_name" placeholder="Smith" required/></div>
           </div>
           <div class="fr">
-            <div class="f"><label for="s_email">Email</label><input type="email" id="s_email" name="student_email" required/></div>
-            <div class="f"><label for="s_phone">Phone</label><input type="tel" id="s_phone" name="student_phone" required/></div>
+            <div class="f"><label for="s_email">Email</label><input type="email" id="s_email" name="student_email" placeholder="jane@email.com" required/></div>
+            <div class="f"><label for="s_phone">Phone</label><input type="tel" id="s_phone" name="student_phone" placeholder="614-555-0100" required/></div>
           </div>
           <div class="fr">
             <div class="f"><label for="s_school">Current school</label><input id="s_school" name="student_school" required/></div>
@@ -449,7 +432,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
           <p class="submit-note">Applications will be reviewed by the workshop team after submission.</p>
         </div>
       </form>
-      <div id="thankYouMsg" class="thank-you-msg">Thank, the form has been sent.</div>
+      <div id="thankYouMsg" class="thank-you-msg">Thank you, your application has been submitted.</div>
     </div>
   </div>
 </div>
@@ -488,28 +471,82 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     history.replaceState(null,'','#'+id);
   }
   window.showPg=showPg;
+
   function toggleMob(){document.getElementById('mob').classList.toggle('open')}
   window.toggleMob=toggleMob;
+
   var _h=location.hash.replace('#','');
   if(_h&&['home','apply'].includes(_h))showPg(_h);
 
-  // Form submission with custom thank-you message
-  var form = document.getElementById('appForm');
+  var form=document.getElementById('appForm');
   if(form){
-    form.addEventListener('submit', function(e){
+    form.addEventListener('submit',function(e){
       e.preventDefault();
-      var msg = document.getElementById('thankYouMsg');
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
+
+      // Clear previous invalid states
+      form.querySelectorAll('.invalid').forEach(function(el){el.classList.remove('invalid')});
+
+      var valid=true;
+
+      // Check all required fields
+      var required=form.querySelectorAll('[required]');
+      required.forEach(function(field){
+        if(field.tagName==='SELECT'){
+          if(!field.value||field.value===''){
+            field.classList.add('invalid');
+            valid=false;
+          }
+        } else {
+          if(!field.value||field.value.trim()===''){
+            field.classList.add('invalid');
+            valid=false;
+          }
+        }
+      });
+
+      // Validate email fields
+      var emailFields=form.querySelectorAll('input[type="email"]');
+      emailFields.forEach(function(ef){
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ef.value.trim())){
+          ef.classList.add('invalid');
+          valid=false;
+        }
+      });
+
+      // Validate phone fields
+      var phoneFields=form.querySelectorAll('input[type="tel"]');
+      phoneFields.forEach(function(pf){
+        var digits=pf.value.replace(/\D/g,'');
+        if(digits.length<7){
+          pf.classList.add('invalid');
+          valid=false;
+        }
+      });
+
+      if(!valid){
+        var firstInvalid=form.querySelector('.invalid');
+        if(firstInvalid){firstInvalid.focus();firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});}
+        return;
+      }
+
+      var msg=document.getElementById('thankYouMsg');
+      fetch(form.action,{
+        method:'POST',
+        body:new FormData(form),
+        headers:{Accept:'application/json'}
       }).then(function(){
-        form.style.display = 'none';
+        form.style.display='none';
         msg.classList.add('show');
       }).catch(function(){
-        form.style.display = 'none';
+        form.style.display='none';
         msg.classList.add('show');
       });
+    });
+
+    // Remove invalid class on input
+    form.querySelectorAll('input,select,textarea').forEach(function(el){
+      el.addEventListener('input',function(){el.classList.remove('invalid')});
+      el.addEventListener('change',function(){el.classList.remove('invalid')});
     });
   }
 })();
