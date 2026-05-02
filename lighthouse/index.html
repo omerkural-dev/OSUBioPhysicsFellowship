@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Lighthouse Research Workshop | The Lighthouse Schools</title>
-<meta name="description" content="A Lighthouse Schools research workshop, led by Hermes Hermes with physics lectures by Comert Kural. No participation fee for accepted students."/>
+<meta name="description" content="A Lighthouse Schools research workshop with biophysics lectures by Comert Kural. No participation fee for accepted students."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
@@ -87,7 +87,7 @@ h1{font-size:clamp(2.4rem,6vw,5rem);font-weight:800;line-height:1;text-transform
 .btn-r:hover{background:var(--red-dark);transform:translateY(-1px)}
 .btn-g{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
 .btn-g:hover{background:rgba(255,255,255,.18)}
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:800px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:800px}
 .fact{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:16px 14px;backdrop-filter:blur(8px)}
 .fact-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.55);font-weight:600;margin-bottom:5px}
 .fact-val{font-size:.97rem;font-weight:700;line-height:1.3}
@@ -145,32 +145,6 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .stat strong{display:block;font-size:2.4rem;font-weight:800;line-height:1;margin-bottom:7px}
 .stat span{color:rgba(255,255,255,.55);font-size:.85rem}
 
-/* ── TEAM PAGE ── */
-.pg-hero{background:var(--dark);padding:68px 0 56px;position:relative;overflow:hidden}
-.pg-hero::after{content:'';position:absolute;right:-50px;top:-30px;width:300px;height:300px;background:radial-gradient(circle,rgba(197,2,39,.15) 0%,transparent 70%);pointer-events:none}
-.pg-hero h2{color:#fff}
-.pg-hero .eyebrow,.pg-hero .sub{color:rgba(255,255,255,.5)}
-.pg-hero .eyebrow{color:#d4143a}
-.team-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.05)}
-.team-photo{aspect-ratio:1/1;background:linear-gradient(135deg,#f7d7dd,#f0f0f0);display:grid;place-items:center;color:var(--red-dark);font-size:2.4rem;font-weight:800}
-.team-body{padding:22px}
-.team-role{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--red);font-weight:700;margin-bottom:6px}
-.team-name{font-size:1.4rem;font-weight:800;color:#111;margin-bottom:8px;line-height:1.1}
-.team-body p{font-size:.87rem;color:var(--muted);line-height:1.65}
-
-.cult{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-.cc{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:28px}
-.cc-dark{background:var(--dark)}
-.cc h3{font-size:1.1rem;font-weight:700;margin-bottom:12px;color:#111}
-.cc-dark h3{color:#fff}
-.cc p{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:12px}
-.cc-dark p{color:rgba(255,255,255,.45)}
-.cl{list-style:none;display:flex;flex-direction:column;gap:8px}
-.cl li{display:flex;gap:10px;align-items:center;font-size:.88rem}
-.cc-dark .cl li{color:rgba(255,255,255,.65)}
-.ck{width:20px;height:20px;border-radius:5px;background:rgba(197,2,39,.1);display:grid;place-items:center;flex-shrink:0;color:var(--red);font-size:.72rem;font-weight:900}
-.cc-dark .ck{background:rgba(197,2,39,.25);color:#d4143a}
-
 /* ── APPLY PAGE ── */
 .form-shell{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.07)}
 .form-head{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;padding:28px}
@@ -200,6 +174,20 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .btn-sub{background:var(--red);color:#fff;border:none;cursor:pointer;font-family:'Sora',sans-serif;font-size:.97rem;font-weight:700;padding:14px 34px;border-radius:4px;transition:background .18s,transform .15s;margin-top:24px}
 .btn-sub:hover{background:var(--red-dark);transform:translateY(-1px)}
 
+.thank-you-msg{
+  display:none;
+  background:#f0fdf4;
+  border:1.5px solid #86efac;
+  color:#166534;
+  padding:20px 24px;
+  border-radius:var(--r);
+  font-size:1rem;
+  font-weight:600;
+  text-align:center;
+  margin-top:20px;
+}
+.thank-you-msg.show{display:block}
+
 /* ── FAQ ── */
 .faqs{display:flex;flex-direction:column;gap:14px;margin-top:36px}
 details{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:17px 20px}
@@ -216,15 +204,10 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
 .fg-inner ul{list-style:none;display:flex;flex-direction:column;gap:7px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:.76rem}
 
-/* ── FLASH OVERLAY ── */
-#__omk{position:fixed;inset:0;z-index:99999;background:#0d0d0d;display:none;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
-#__omk.show{display:flex}
-.omk-text{font-family:'Sora',sans-serif;font-size:clamp(1rem,3vw,2.2rem);font-weight:800;color:#fff;line-height:1.5;text-align:center;padding:20px;word-break:break-word;width:100%;height:100%;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:6px 12px;overflow:hidden;}
-
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   .hband,.grid4,.stats-g{grid-template-columns:1fr 1fr}
-  .grid3,.grid2,.team-g,.cult,.fg-inner{grid-template-columns:1fr}
+  .grid3,.grid2,.fg-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:640px){
@@ -256,7 +239,6 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
     </div>
     <div class="nav-links">
       <button class="nb active" data-p="home" onclick="showPg('home')">Home</button>
-      <button class="nb" data-p="team" onclick="showPg('team')">Meet the Team</button>
       <button class="nb apply" onclick="showPg('apply')">Apply Now</button>
     </div>
     <button class="ham" onclick="toggleMob()" aria-label="Menu">
@@ -265,7 +247,6 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
   </div>
   <div class="mob-nav" id="mob">
     <button class="mn" onclick="showPg('home');toggleMob()">Home</button>
-    <button class="mn" onclick="showPg('team');toggleMob()">Meet the Team</button>
     <button class="mn apply" onclick="showPg('apply');toggleMob()">Apply Now</button>
   </div>
 </nav>
@@ -278,15 +259,13 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
     <div class="w">
       <div class="hero-kicker">For Lighthouse students</div>
       <h1>Research Workshop<br>Applications Open</h1>
-      <p class="hero-sub">A summer academic experience for Lighthouse Schools students, led by Hermes Hermes, with physics lectures by Comert Kural. No participation fee for accepted students.</p>
+      <p class="hero-sub">A summer academic experience for Lighthouse Schools students, with biophysics lectures by Comert Kural. No participation fee for accepted students.</p>
       <div class="btns">
         <button class="btn btn-r" onclick="showPg('apply')">Apply Now</button>
-        <button class="btn btn-g" onclick="showPg('team')">Meet the Team</button>
       </div>
       <div class="facts">
         <div class="fact"><div class="fact-label">Program Type</div><div class="fact-val">Lighthouse student workshop</div></div>
-        <div class="fact"><div class="fact-label">Lead Instructor</div><div class="fact-val">Hermes Hermes</div></div>
-        <div class="fact"><div class="fact-label">Physics Lectures</div><div class="fact-val">Comert Kural</div></div>
+        <div class="fact"><div class="fact-label">Biophysics Lectures</div><div class="fact-val">Comert Kural</div></div>
         <div class="fact"><div class="fact-label">Cost</div><div class="fact-val">No charge</div></div>
       </div>
     </div>
@@ -306,7 +285,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
       <div class="card card-top"><h3>Application only</h3><p>Students submit an application reviewed based on interest, readiness, and fit for the workshop.</p></div>
       <div class="card card-top"><h3>No participation fee</h3><p>Accepted Lighthouse students attend at no cost — the application focuses on commitment and motivation.</p></div>
       <div class="card card-top"><h3>Research exposure</h3><p>Students gain early exposure to scientific thinking, communication, and analytical habits.</p></div>
-      <div class="card card-top"><h3>Mentorship and lectures</h3><p>Direct instruction, guided activities, and physics lectures from Comert Kural.</p></div>
+      <div class="card card-top"><h3>Mentorship and lectures</h3><p>Direct instruction, guided activities, and biophysics lectures from Comert Kural.</p></div>
     </div>
   </section>
 
@@ -316,8 +295,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
         <h3>Program overview</h3>
         <p style="font-size:.9rem;color:var(--muted);line-height:1.7">A summer opportunity for students who want a more serious academic experience centered on scientific curiosity, structured learning, and exposure to advanced ideas.</p>
         <div class="blist">
-          <div class="bi"><span class="bd"></span><span>Lead instruction by Hermes Hermes.</span></div>
-          <div class="bi"><span class="bd"></span><span>Physics lectures by Comert Kural.</span></div>
+          <div class="bi"><span class="bd"></span><span>Biophysics lectures by Comert Kural.</span></div>
           <div class="bi"><span class="bd"></span><span>Same daily times as the main workshop structure.</span></div>
           <div class="bi"><span class="bd"></span><span>Separate Lighthouse Schools dates.</span></div>
           <div class="bi"><span class="bd"></span><span>No charge for accepted Lighthouse students.</span></div>
@@ -329,7 +307,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
           <div class="tl-item"><h4>Who can apply</h4><p>Current Lighthouse Schools students interested in science, research, or advanced summer learning.</p></div>
           <div class="tl-item"><h4>Selection basis</h4><p>Applications are reviewed based on seriousness, interest, and the written response.</p></div>
           <div class="tl-item"><h4>Cost</h4><p>No participation cost for the Lighthouse Schools student track.</p></div>
-          <div class="tl-item"><h4>Dates</h4><p>Update session dates below to the Lighthouse-specific summer dates you want to use.</p></div>
+          <div class="tl-item"><h4>Dates</h4><p>July 13–17, 2026.</p></div>
         </div>
       </div>
     </div>
@@ -337,92 +315,12 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
 
   <div class="stats-sec">
     <div class="w stats-g">
-      <div class="stat"><strong>2</strong><span>Instructors and lecture leaders highlighted</span></div>
+      <div class="stat"><strong>1</strong><span>Lecture leader highlighted</span></div>
       <div class="stat"><strong>1</strong><span>Lighthouse student-only application track</span></div>
       <div class="stat"><strong>$0</strong><span>For accepted Lighthouse students</span></div>
       <div class="stat"><strong>100%</strong><span>Focused on academic growth and readiness</span></div>
     </div>
   </div>
-</div>
-
-<!-- TEAM -->
-<div id="pg-team" class="pg">
-  <div class="pg-hero">
-    <div class="w">
-      <div class="eyebrow">Meet the Team</div>
-      <h2>The people behind the workshop.</h2>
-      <p class="sub">Instruction, subject exposure, and mentorship in a format designed for motivated students.</p>
-    </div>
-  </div>
-
-  <section class="sec w">
-    <div class="grid3">
-      <div class="team-card">
-        <div class="team-photo">HH</div>
-        <div class="team-body">
-          <div class="team-role">Lead Instructor</div>
-          <div class="team-name">Hermes Hermes</div>
-          <p>Primary instructor for the Lighthouse student track, guiding the core workshop experience and student learning throughout the program.</p>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-photo">CK</div>
-        <div class="team-body">
-          <div class="team-role">Physics Lecturer</div>
-          <div class="team-name">Comert Kural</div>
-          <p>Delivers physics lectures giving students exposure to high-level scientific ideas and deeper conceptual understanding.</p>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-photo">TLS</div>
-        <div class="team-body">
-          <div class="team-role">Host Institution</div>
-          <div class="team-name">The Lighthouse Schools</div>
-          <p>Structured for Lighthouse students in a format that fits the school's academic identity, disciplined environment, and high expectations.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec w" style="padding-bottom:88px">
-    <div class="grid2">
-      <div class="panel">
-        <h3>What students should expect</h3>
-        <div class="blist">
-          <div class="bi"><span class="bd"></span><span>Academic sessions emphasizing scientific thinking and organized inquiry.</span></div>
-          <div class="bi"><span class="bd"></span><span>Structured workshop leadership under Hermes Hermes.</span></div>
-          <div class="bi"><span class="bd"></span><span>Physics exposure through dedicated lectures by Comert Kural.</span></div>
-          <div class="bi"><span class="bd"></span><span>A selective environment focused on serious participation.</span></div>
-        </div>
-      </div>
-      <div class="panel">
-        <h3>Ideal applicant</h3>
-        <p style="font-size:.9rem;color:var(--muted);line-height:1.7">The strongest applicants are genuinely curious, open to challenge, ready to work carefully, and interested in using summer time for something intellectually meaningful.</p>
-      </div>
-    </div>
-    <div class="cult" style="margin-top:18px">
-      <div class="cc">
-        <h3>What students will experience</h3>
-        <p>Academic sessions that feel serious, clear, and exciting without being overwhelming.</p>
-        <ul class="cl">
-          <li><span class="ck">✓</span>Structured physics lectures</li>
-          <li><span class="ck">✓</span>Guided activities and hands-on work</li>
-          <li><span class="ck">✓</span>Small-group attention and discussion</li>
-          <li><span class="ck">✓</span>Focus on scientific thinking and communication</li>
-        </ul>
-      </div>
-      <div class="cc cc-dark">
-        <h3>Our commitment to students</h3>
-        <p>We want students to leave with stronger scientific curiosity, a more realistic understanding of research, and a memorable first encounter with advanced scientific ideas.</p>
-        <ul class="cl">
-          <li><span class="ck">✓</span>Welcoming and serious environment</li>
-          <li><span class="ck">✓</span>Clear teaching and direct mentorship</li>
-          <li><span class="ck">✓</span>Lighthouse Schools values throughout</li>
-          <li><span class="ck">✓</span>No cost for accepted students</li>
-        </ul>
-      </div>
-    </div>
-  </section>
 </div>
 
 <!-- APPLY -->
@@ -435,7 +333,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
           <p>This application is for The Lighthouse Schools student version. Accepted students attend at no cost.</p>
         </div>
         <div class="form-body">
-          <form action="https://formspree.io/f/xnjoppqk" method="POST">
+          <form id="lighthouseForm" action="https://formspree.io/f/xnjoppqk" method="POST">
             <div class="fs">
               <h3>Student information</h3>
               <div class="fr">
@@ -456,7 +354,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
                     <option>Incoming Lighthouse student</option>
                   </select>
                 </div>
-                <div class="f full"><label>Academic interests</label><input name="Academic Interests" placeholder="Physics, biology, engineering, math, research, etc."/></div>
+                <div class="f full"><label>Career Interests</label><input name="Career Interests" placeholder="Physics, biology, engineering, math, research, etc." required/></div>
               </div>
             </div>
             <div class="fs">
@@ -467,19 +365,6 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
                 <div class="f"><label>Email</label><input type="email" name="Parent or Guardian Email" required/></div>
                 <div class="f"><label>Phone</label><input type="tel" name="Parent or Guardian Phone" required/></div>
               </div>
-            </div>
-            <div class="fs">
-              <h3>Session selection</h3>
-              <div class="f full">
-                <label>Preferred session</label>
-                <select name="Preferred Session" required>
-                  <option value="">Select a session</option>
-                  <option>Session 1 | Replace with Lighthouse date range</option>
-                  <option>Session 2 | Replace with Lighthouse date range</option>
-                </select>
-                <div class="note">Replace the placeholder date text with your Lighthouse-specific dates.</div>
-              </div>
-              <div class="f full"><label>Anything we should know about scheduling or attendance?</label><input name="Scheduling Notes" placeholder="Optional"/></div>
             </div>
             <div class="fs">
               <h3>Student response</h3>
@@ -493,6 +378,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
             </div>
             <button type="submit" class="btn-sub">Submit Application</button>
           </form>
+          <div id="thankYouMsg" class="thank-you-msg">Thank you, the form has been sent.</div>
         </div>
       </div>
 
@@ -501,7 +387,7 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
         <div class="faqs" style="margin-top:24px">
           <details open><summary>Who is this application for?</summary><p>This application is for The Lighthouse Schools student version of the workshop.</p></details>
           <details><summary>Is there a cost?</summary><p>No. There is no charge for accepted Lighthouse students in this track.</p></details>
-          <details><summary>Who leads the program?</summary><p>Hermes Hermes is the lead instructor, and Comert Kural provides physics lectures.</p></details>
+          <details><summary>Who leads the program?</summary><p>Comert Kural provides biophysics lectures.</p></details>
           <details><summary>Are the times the same as the main workshop?</summary><p>Yes. The daily times remain the same. Only the date ranges are different for the Lighthouse student version.</p></details>
         </div>
       </section>
@@ -522,23 +408,21 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
         <h4>Workshop</h4>
         <ul>
           <li><a href="#" onclick="showPg('home')">Home</a></li>
-          <li><a href="#" onclick="showPg('team')">Meet the Team</a></li>
           <li><a href="#" onclick="showPg('apply')">Apply</a></li>
         </ul>
       </div>
       <div>
         <h4>Program</h4>
         <ul>
-          <li>Lead Instructor: Hermes Hermes</li>
-          <li>Physics Lectures: Comert Kural</li>
+          <li>Biophysics Lectures: Comert Kural</li>
           <li>No-charge student track</li>
+          <li>July 13–17, 2026</li>
         </ul>
       </div>
       <div>
         <h4>Notes</h4>
         <ul>
-          <li>Update the session date placeholders</li>
-          <li>Keep the daily times the same</li>
+          <li>July 13–17, 2026</li>
           <li>Form is ready to receive submissions</li>
         </ul>
       </div>
@@ -550,9 +434,6 @@ footer{background:#111;color:rgba(255,255,255,.45);padding:44px 0 28px;border-to
   </div>
 </footer>
 
-<!-- FLASH OVERLAY -->
-<div id="__omk"><div class="omk-text"></div></div>
-
 <script>
 function showPg(id){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('active'));
@@ -563,22 +444,25 @@ function showPg(id){
 }
 function toggleMob(){document.getElementById('mob').classList.toggle('open')}
 const h=location.hash.replace('#','');
-if(h&&['home','team','apply'].includes(h))showPg(h);
+if(h&&['home','apply'].includes(h))showPg(h);
 
-// Flash overlay
-(function(){
-  var el=document.getElementById('__omk');
-  var txt=el.querySelector('.omk-text');
-  var s='Made by Omer Kural ';
-  var r='';for(var i=0;i<600;i++)r+=s;
-  txt.textContent=r;
-  var tm;
-  document.addEventListener('click',function(){
-    clearTimeout(tm);
-    el.style.display='flex';
-    tm=setTimeout(function(){el.style.display='none';},125);
-  },{capture:true,passive:true});
-})();
+// Form submission with custom thank-you message
+document.getElementById('lighthouseForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var form = this;
+  var msg = document.getElementById('thankYouMsg');
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { Accept: 'application/json' }
+  }).then(function(){
+    form.style.display = 'none';
+    msg.classList.add('show');
+  }).catch(function(){
+    form.style.display = 'none';
+    msg.classList.add('show');
+  });
+});
 </script>
 </body>
 </html>
