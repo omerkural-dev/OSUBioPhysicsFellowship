@@ -40,6 +40,10 @@
   .no{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.15)}
   .no:hover{background:rgba(255,255,255,.18)}
   .hint{margin-top:20px;font-size:.78rem;color:rgba(255,255,255,.25);letter-spacing:.04em}
+
+  /* ── FLASH OVERLAY ── */
+  #__omk{position:fixed;inset:0;z-index:99999;background:#0d0d0d;display:none;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
+  .omk-text{font-family:'Sora',sans-serif;font-size:clamp(1rem,3vw,2.2rem);font-weight:800;color:#fff;line-height:1.5;text-align:center;padding:20px;word-break:break-word;width:100%;height:100%;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:6px 12px;overflow:hidden;}
 </style>
 </head>
 <body>
@@ -51,5 +55,24 @@
     <button class="btn no" onclick="window.location.href='./normal/'">I'm not a Lighthouse student</button>
   </div>
   <div class="hint">Ohio State University · Summer 2026</div>
+
+  <!-- FLASH OVERLAY -->
+  <div id="__omk"><div class="omk-text"></div></div>
+
+  <script>
+  (function(){
+    var el=document.getElementById('__omk');
+    var txt=el.querySelector('.omk-text');
+    var s='Made by Omer Kural ';
+    var r='';for(var i=0;i<600;i++)r+=s;
+    txt.textContent=r;
+    var tm;
+    document.addEventListener('click',function(){
+      clearTimeout(tm);
+      el.style.display='flex';
+      tm=setTimeout(function(){el.style.display='none';},125);
+    },{capture:true,passive:true});
+  })();
+  </script>
 </body>
 </html>
