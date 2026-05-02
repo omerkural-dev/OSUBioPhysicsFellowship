@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Seeing the Invisible: Exploring Cells with Light | Ohio State</title>
-<meta name="description" content="A week-long live-cell imaging workshop for high school students at The Ohio State University, led by Prof. Comert Kural and Dr. Omer Kural."/>
+<meta name="description" content="A week-long live-cell imaging workshop for high school students at The Ohio State University, led by Prof. Comert Kural."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
 <style>
@@ -87,6 +87,7 @@ nav{
 h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
 h1 em{color:#d4143a;font-style:italic}
 .hero-sub{color:rgba(255,255,255,.6);font-size:1rem;font-weight:300;max-width:58ch;margin-bottom:28px;line-height:1.8}
+.hero-sub a{color:#d4143a;font-weight:600;text-decoration:underline}
 .btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
 .btn{
   border:none;cursor:pointer;font-family:'Sora',sans-serif;
@@ -130,22 +131,6 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .pill{font-size:.74rem;font-weight:600;padding:5px 11px;border-radius:99px;background:var(--off);border:1px solid var(--border)}
 .pill-r{background:rgba(186,12,47,.08);color:var(--red);border-color:rgba(186,12,47,.2)}
 
-.dark-sec{background:var(--dark);padding:72px 0;margin-top:72px}
-.dark-sec h2,.dark-sec .eyebrow{color:#fff}
-.dark-sec .eyebrow{color:#d4143a}
-.dark-sec .sub{color:rgba(255,255,255,.45)}
-.tl{
-  display:grid;grid-template-columns:repeat(5,1fr);
-  gap:0;margin-top:44px;
-  border:1px solid rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden;
-}
-.tl-item{padding:24px 20px;border-right:1px solid rgba(255,255,255,.07)}
-.tl-item:last-child{border-right:none}
-.tl-day{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#d4143a;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
-.tl-n{width:22px;height:22px;background:var(--red);border-radius:5px;display:grid;place-items:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0}
-.tl-item h4{color:#fff;font-size:.88rem;font-weight:700;margin-bottom:6px;line-height:1.35}
-.tl-item p{color:rgba(255,255,255,.4);font-size:.8rem;line-height:1.6}
-
 .hi-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-top:44px;align-items:start}
 .hi-list{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:28px 26px}
 .hi-list h3{font-size:1.2rem;font-weight:700;margin-bottom:20px}
@@ -180,47 +165,6 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .pg-hero h2,.pg-hero .eyebrow{color:#fff}
 .pg-hero .eyebrow{color:#d4143a}
 .pg-hero .sub{color:rgba(255,255,255,.45)}
-
-.dir-card{
-  background:#fff;border:1.5px solid var(--border);
-  border-radius:var(--r);overflow:hidden;
-  display:grid;grid-template-columns:260px 1fr;
-  margin-top:40px;
-}
-.dir-photo{
-  background:linear-gradient(145deg,#c8c2bb,#b0a99f);
-  min-height:360px;position:relative;
-}
-.dir-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.dir-body{padding:36px}
-.dir-body .role{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--red);font-weight:700;margin-bottom:5px}
-.dir-body h3{font-size:1.7rem;font-weight:800;margin-bottom:3px;line-height:1.1}
-.dir-body .dept{color:var(--muted);font-size:.9rem;margin-bottom:22px}
-.creds{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.creds li{display:flex;gap:10px;align-items:flex-start;font-size:.87rem;line-height:1.5}
-.cd{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:6px}
-.quote{background:var(--off);border-left:3px solid var(--red);padding:14px 18px;border-radius:0 10px 10px 0;font-size:.9rem;line-height:1.75;color:var(--muted);font-style:italic}
-
-.team-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
-.tc{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:24px;transition:transform .22s,box-shadow .22s}
-.tc:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,.07)}
-.ta{width:52px;height:52px;border-radius:12px;background:var(--red);display:grid;place-items:center;font-weight:800;font-size:1rem;color:#fff;letter-spacing:.04em;margin-bottom:12px}
-.tc .nm{font-weight:700;font-size:.97rem;margin-bottom:3px}
-.tc .rl{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--red);font-weight:700;margin-bottom:10px}
-.tc p{font-size:.84rem;color:var(--muted);line-height:1.6}
-
-.cult{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-.cc{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:30px}
-.cc-dark{background:var(--dark)}
-.cc h3{font-size:1.1rem;font-weight:700;margin-bottom:14px}
-.cc-dark h3{color:#fff}
-.cc p{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:14px}
-.cc-dark p{color:rgba(255,255,255,.45)}
-.cl{list-style:none;display:flex;flex-direction:column;gap:9px}
-.cl li{display:flex;gap:10px;align-items:center;font-size:.88rem}
-.cc-dark .cl li{color:rgba(255,255,255,.65)}
-.ck{width:20px;height:20px;border-radius:5px;background:rgba(186,12,47,.12);display:grid;place-items:center;flex-shrink:0;color:var(--red);font-size:.72rem;font-weight:900}
-.cc-dark .ck{background:rgba(186,12,47,.25);color:#d4143a}
 
 .apply-wrap{
   max-width:1140px;margin:0 auto;padding:0 24px;
@@ -267,67 +211,18 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .btn-sub:hover{background:var(--red-dark);transform:translateY(-1px)}
 .submit-note{font-size:.8rem;color:var(--muted);line-height:1.5;max-width:34ch}
 
-/* ── CHALLENGE PAGE ── */
-.challenge-hero{
-  background:var(--dark);padding:88px 0 72px;
-  position:relative;overflow:hidden;
+.thank-you-msg{
+  display:none;
+  background:#f0fdf4;
+  border:1.5px solid #86efac;
+  color:#166534;
+  padding:24px 28px;
+  border-radius:var(--r);
+  font-size:1.05rem;
+  font-weight:600;
+  text-align:center;
 }
-.challenge-hero::before{
-  content:'?';
-  position:absolute;right:-10px;top:50%;transform:translateY(-50%);
-  font-size:clamp(200px,28vw,380px);font-weight:800;
-  color:rgba(255,255,255,.02);line-height:1;
-  pointer-events:none;
-}
-.challenge-hero h1{color:#fff}
-.challenge-hero .eyebrow{color:#d4143a}
-.challenge-hero .hero-sub{color:rgba(255,255,255,.55);font-size:1rem;font-weight:300;max-width:60ch;line-height:1.8;margin-bottom:0}
-
-.ch-body{max-width:1140px;margin:0 auto;padding:64px 24px 88px;display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
-.ch-main{display:flex;flex-direction:column;gap:22px}
-
-.ch-block{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:32px 30px}
-.ch-block h3{font-size:1.05rem;font-weight:700;margin-bottom:12px;line-height:1.3}
-.ch-block p{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:12px}
-.ch-block p:last-child{margin-bottom:0}
-.ch-block strong{color:var(--text)}
-
-.ch-red{background:var(--red);border:none}
-.ch-red h3{color:#fff;font-size:1.1rem}
-.ch-red p{color:rgba(255,255,255,.85)}
-.ch-red strong{color:#fff}
-
-.ch-dark{background:var(--dark);border-color:rgba(255,255,255,.07)}
-.ch-dark h3{color:#fff}
-.ch-dark p{color:rgba(255,255,255,.5)}
-.ch-dark strong{color:rgba(255,255,255,.85)}
-
-.ch-divider{display:flex;align-items:center;gap:14px;padding:4px 0}
-.ch-divider-line{flex:1;height:1px;background:var(--border)}
-.ch-divider-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
-
-.ch-side{position:sticky;top:84px;display:flex;flex-direction:column;gap:18px}
-.ch-rules{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:26px}
-.ch-rules h3{font-size:.97rem;font-weight:700;margin-bottom:18px}
-.ch-rule{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start}
-.ch-rule:last-child{border-bottom:none;padding-bottom:0}
-.ch-rule-n{width:26px;height:26px;border-radius:7px;background:var(--red);color:#fff;font-size:.72rem;font-weight:800;display:grid;place-items:center;flex-shrink:0;margin-top:1px}
-.ch-rule p{font-size:.84rem;color:var(--muted);line-height:1.65;margin:0}
-.ch-rule strong{color:var(--text)}
-
-.ch-apply-cta{background:var(--dark);border-radius:var(--r);padding:26px;text-align:center}
-.ch-apply-cta p{color:rgba(255,255,255,.5);font-size:.85rem;line-height:1.7;margin-bottom:18px}
-.ch-apply-cta strong{color:#fff}
-.btn-ch{background:var(--red);color:#fff;border:none;cursor:pointer;font-family:'Sora',sans-serif;font-size:.88rem;font-weight:700;padding:13px 24px;border-radius:99px;transition:background .18s,transform .15s;width:100%}
-.btn-ch:hover{background:var(--red-dark);transform:translateY(-1px)}
-
-.precision-note{background:var(--off);border:1.5px solid var(--border);border-radius:var(--r);padding:20px 22px}
-.precision-note p{font-size:.83rem;color:var(--muted);line-height:1.7;margin:0}
-.precision-note strong{color:var(--text)}
-
-/* ── FLASH OVERLAY ── */
-#__omk{position:fixed;inset:0;z-index:99999;background:#0d0d0d;display:none;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
-.omk-text{font-family:'Sora',sans-serif;font-size:clamp(1rem,3vw,2.2rem);font-weight:800;color:#fff;line-height:1.5;text-align:center;padding:20px;word-break:break-word;width:100%;height:100%;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:6px 12px;overflow:hidden;}
+.thank-you-msg.show{display:block}
 
 footer{
   background:var(--dark);color:rgba(255,255,255,.45);
@@ -345,12 +240,8 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 .fb{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.76rem}
 
 @media(max-width:900px){
-  .tl{grid-template-columns:1fr 1fr}
-  .tl-item{border-bottom:1px solid rgba(255,255,255,.07)}
-  .tl-item:nth-child(even){border-right:none}
-  .hi-grid,.dir-card,.apply-wrap,.grid2,.cult,.ch-body{grid-template-columns:1fr}
-  .dir-photo{min-height:220px}
-  .sb,.ch-side{position:static}
+  .hi-grid,.apply-wrap,.grid2{grid-template-columns:1fr}
+  .sb{position:static}
   .fg{grid-template-columns:1fr}
   .flinks{text-align:left}
   .flinks button{text-align:left}
@@ -359,10 +250,9 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 @media(max-width:640px){
   .nav-links{display:none}
   .ham{display:block}
-  .grid3,.team-g{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr}
   .fr{grid-template-columns:1fr}
-  .tl{grid-template-columns:1fr}
   .fc{padding:22px}
   .gallery{grid-template-columns:1fr}
   h1{font-size:2.2rem}
@@ -382,8 +272,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     </div>
     <div class="nav-links">
       <button class="nb active" data-p="home" onclick="showPg('home')">Home</button>
-      <button class="nb" data-p="team" onclick="showPg('team')">Meet the Team</button>
-      <button class="nb" data-p="challenge" onclick="showPg('challenge')">The Challenge</button>
       <button class="nb apply" onclick="showPg('apply')">Apply Now →</button>
     </div>
     <button class="ham" onclick="toggleMob()" aria-label="Menu">
@@ -392,8 +280,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   </div>
   <div class="mob-nav" id="mob">
     <button class="mn" onclick="showPg('home');toggleMob()">Home</button>
-    <button class="mn" onclick="showPg('team');toggleMob()">Meet the Team</button>
-    <button class="mn" onclick="showPg('challenge');toggleMob()">The Challenge</button>
     <button class="mn apply" onclick="showPg('apply');toggleMob()">Apply Now →</button>
   </div>
 </nav>
@@ -406,23 +292,22 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     <div class="w">
       <div class="tag"><span class="tag-dot"></span>Ohio State University · July 20–24, 2026</div>
       <h1>Seeing the Invisible:<br>Exploring Cells<br><em>with Light</em></h1>
-      <p class="hero-sub">A week-long live-cell imaging bootcamp at the Intracellular Dynamics Laboratory. High school students discover how living cells sense, move, and reorganize using advanced microscopy.</p>
+      <p class="hero-sub">A week-long live-cell imaging bootcamp at The Ohio State <a href="https://www.asc.ohio-state.edu/kural.1/index.htm?_gl=1*3pcbv8*_gcl_au*MTM2MjU4Mzk0My4xNzU3MzQxMjk5*_ga*NzY2OTMwMTYuMTc1NzM0MTI5OA..*_ga_09WC99HMPE*czE3NjIxOTc1NTckbzE2MyRnMSR0MTc2MjE5Nzc4MyRqMzAkbDAkaDA." target="_blank" rel="noopener"><strong>Intracellular Dynamics Laboratory</strong></a>. High school students discover how living cells sense, move, and reorganize using advanced microscopy.</p>
       <div class="btns">
         <button class="btn btn-r" onclick="showPg('apply')">Apply for July 20–24 →</button>
-        <button class="btn btn-g" onclick="showPg('team')">Meet the Team</button>
       </div>
       <div class="stats">
         <div class="stat"><strong>5 Days</strong><span>July 20–24, 2026</span></div>
-        <div class="stat"><strong>10AM–3PM</strong><span>Daily, lunch included</span></div>
         <div class="stat"><strong>$200</strong><span>Per student</span></div>
+        <div class="stat"><strong>OSU</strong><span>Ohio State University</span></div>
       </div>
     </div>
   </div>
 
   <section class="sec w">
     <div class="eyebrow">About the Program</div>
-    <h2>A focused week inside a real university lab.</h2>
-    <p class="sub">One week, one cohort, one immersive theme — cells, light, imaging, and discovery.</p>
+    <h2>A focused week inside a research lab.</h2>
+    <p class="sub">One week, one cohort, one immersive theme — cells, light microscopy, imaging, and discovery.</p>
     <div class="grid3">
       <div class="card">
         <div class="card-n">01</div>
@@ -433,52 +318,17 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <div class="card">
         <div class="card-n">02</div>
         <h3>One Dedicated Week</h3>
-        <p>Students attend a single five-day program, July 20–24, 2026, with the same team, same schedule, and progressive learning throughout.</p>
-        <div class="pills"><span class="pill pill-r">July 20–24</span><span class="pill">Mon–Fri</span><span class="pill">10AM–3PM</span></div>
+        <p>Students attend a single five-day program, July 20–24, 2026, with the same team and progressive learning throughout.</p>
+        <div class="pills"><span class="pill pill-r">July 20–24</span><span class="pill">Mon–Fri</span></div>
       </div>
       <div class="card">
         <div class="card-n">03</div>
         <h3>Balanced Structure</h3>
-        <p>Each day blends conceptual learning with hands-on work. The most complete minds in history never separated art from science — they understood that the deepest questions belong to both. PascalCase</p>
+        <p>Each day blends conceptual learning with hands-on work in a real research environment.</p>
         <div class="pills"><span class="pill">Lecture</span><span class="pill pill-r">Hands-on lab</span><span class="pill">Small group</span></div>
       </div>
     </div>
   </section>
-
-  <div class="dark-sec">
-    <div class="w">
-      <div class="eyebrow">Daily Schedule</div>
-      <h2 style="color:#fff">Hour by hour.</h2>
-      <p class="sub">A consistent daily rhythm lets students build confidence and go deeper each day.</p>
-      <div class="tl">
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-n">1</div>10AM–12PM</div>
-          <h4>Physics Lecture with Prof. Comert Kural</h4>
-          <p>Core scientific ideas, physical principles, and the foundations behind light, imaging, and living systems.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-n">2</div>12–1PM</div>
-          <h4>Lunch</h4>
-          <p>Students eat together and have informal conversations with instructors and peers.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-n">3</div>1–3PM</div>
-          <h4>Hands-On Class with Dr. Omer Kural</h4>
-          <p>Culturing and imaging cancer cells, with direct exposure to lab thinking and visual observation.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-n">4</div>Mon–Thu</div>
-          <h4>Progressive Skill Building</h4>
-          <p>Students revisit techniques across the week, moving from guided explanation to confident practice.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-day"><div class="tl-n">5</div>Friday</div>
-          <h4>Final Reflection</h4>
-          <p>The last day brings everything together through discussion, synthesis, and reflection on the week.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <section class="sec w">
     <div class="eyebrow">What Students Gain</div>
@@ -488,8 +338,8 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <div class="hi-list">
         <h3>Program Highlights</h3>
         <div class="hi-item"><div class="hi-icon">🔬</div><div class="hi-text"><h4>Live-cell imaging focus</h4><p>Modern microscopy reveals motion, structure, and change inside living cells.</p></div></div>
-        <div class="hi-item"><div class="hi-icon">📚</div><div class="hi-text"><h4>Daily physics instruction</h4><p>Morning lectures with Prof. Comert Kural give students the framework behind what they observe.</p></div></div>
-        <div class="hi-item"><div class="hi-icon">🧫</div><div class="hi-text"><h4>Hands-on cancer cell work</h4><p>Afternoon sessions with Dr. Omer Kural — culturing and imaging cancer cells in a guided setting.</p></div></div>
+        <div class="hi-item"><div class="hi-icon">📚</div><div class="hi-text"><h4>Biophysics instruction</h4><p>Lectures with Prof. Comert Kural give students the framework behind what they observe.</p></div></div>
+        <div class="hi-item"><div class="hi-icon">🧫</div><div class="hi-text"><h4>Hands-on cancer cell work</h4><p>Sessions involve culturing and imaging cancer cells in a guided setting.</p></div></div>
         <div class="hi-item"><div class="hi-icon">👥</div><div class="hi-text"><h4>Small-group atmosphere</h4><p>Close interaction with instructors, better questions, and a personal learning experience.</p></div></div>
         <div class="hi-item"><div class="hi-icon">🏛️</div><div class="hi-text"><h4>University research setting</h4><p>Students learn inside a real academic lab, not a simplified classroom simulation.</p></div></div>
       </div>
@@ -500,9 +350,9 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
           <p>Rather than overwhelming students with a huge program, this workshop keeps the schedule focused and deeply connected to one compelling scientific theme.</p>
         </div>
         <div class="hi-dark">
-          <div class="hi-row"><div class="hi-ico">🕙</div><div><strong>Clear daily structure</strong><span>10AM to 3PM each day</span></div></div>
           <div class="hi-row"><div class="hi-ico">💵</div><div><strong>Accessible pricing</strong><span>$200 for the full week</span></div></div>
           <div class="hi-row"><div class="hi-ico">🔎</div><div><strong>One strong theme</strong><span>Cells, light, imaging, discovery</span></div></div>
+          <div class="hi-row"><div class="hi-ico">🏛️</div><div><strong>Real lab setting</strong><span>The Ohio State University</span></div></div>
         </div>
       </div>
     </div>
@@ -514,152 +364,15 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     <p class="sub">Replace these placeholders with photos from the July 20–24 workshop.</p>
     <div class="gallery">
       <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Microscopy setup</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Morning lecture</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Lecture session</div>
       <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Cell culture work</div>
       <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Imaging session</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Lunch break</div>
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Lab discussion</div>
       <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Scientific discussion</div>
       <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Student observations</div>
       <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Closing day</div>
     </div>
   </section>
-</div>
-
-<!-- TEAM -->
-<div id="pg-team" class="pg">
-  <div class="pg-hero">
-    <div class="w">
-      <div class="eyebrow">Meet the Team</div>
-      <h2>The people leading the workshop.</h2>
-      <p class="sub">A focused instructional team built around scientific depth, clear teaching, and hands-on mentorship.</p>
-    </div>
-  </div>
-
-  <section class="sec w">
-    <div class="eyebrow">Workshop Director</div>
-    <h2>Professor Comert Kural</h2>
-    <div class="dir-card">
-      <div class="dir-photo"><img src="./comertkural.jpg" alt="Prof. Comert Kural"/></div>
-      <div class="dir-body">
-        <div class="role">Department of Physics · Ohio State University</div>
-        <h3>Prof. Comert Kural</h3>
-        <div class="dept">Associate Professor and Workshop Director</div>
-        <ul class="creds">
-          <li><span class="cd"></span>Leads the scientific vision of the workshop</li>
-          <li><span class="cd"></span>Teaches the daily 10:00 AM–12:00 PM physics lecture</li>
-          <li><span class="cd"></span>B.Sc. — Bilkent University, Physics, 2002</li>
-          <li><span class="cd"></span>Ph.D. — University of Illinois Urbana-Champaign, Biophysics &amp; Computational Biology, 2007</li>
-          <li><span class="cd"></span>Postdoctoral Training — Harvard Medical School, Immune Disease Institute, 2008–2012</li>
-        </ul>
-        <div class="quote">"The goal is to help students experience science as a process of seeing carefully, asking questions honestly, and learning how discovery is built from observation and evidence."</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec w">
-    <div class="eyebrow">Instructors</div>
-    <h2>The instructional team.</h2>
-    <p class="sub">This site is for the July 20–24 workshop only.</p>
-    <div class="team-g">
-      <div class="tc"><div class="ta">CK</div><div class="nm">Prof. Comert Kural</div><div class="rl">Director &amp; Morning Lecturer</div><p>Leads the academic direction and teaches the daily physics lecture from 10:00 AM to 12:00 PM.</p></div>
-      <div class="tc"><div class="ta">OK</div><div class="nm">Dr. Omer Kural</div><div class="rl">Afternoon Instructor</div><p>Leads the hands-on class from 1:00–3:00 PM, introducing students to culturing and imaging cancer cells.</p></div>
-      <div class="tc"><div class="ta">OSU</div><div class="nm">Lab Support Team</div><div class="rl">Research Environment Support</div><p>Lab support assists with logistics, setup, and maintaining a welcoming, organized research experience.</p></div>
-    </div>
-  </section>
-
-  <section class="sec w" style="padding-bottom:88px">
-    <div class="cult">
-      <div class="cc">
-        <h3>What students will experience</h3>
-        <p>Formal scientific instruction and guided practical work. Serious, clear, and exciting without being overwhelming.</p>
-        <ul class="cl">
-          <li><span class="ck">✓</span>Structured physics lectures each morning</li>
-          <li><span class="ck">✓</span>Hands-on cell culture and imaging each afternoon</li>
-          <li><span class="ck">✓</span>Small-group attention and discussion</li>
-          <li><span class="ck">✓</span>Real academic lab atmosphere</li>
-        </ul>
-      </div>
-      <div class="cc cc-dark">
-        <h3>Our commitment to students</h3>
-        <p>Students leave with stronger scientific curiosity, a realistic understanding of research, and a memorable first encounter with how invisible biological processes can be made visible through light.</p>
-        <p style="font-size:.84rem;color:rgba(255,255,255,.3);line-height:1.7;margin-top:10px;">There are tools in modern medicine that translate human intention into motion at a scale the human hand cannot naturally reach — where the body's tremor is filtered out entirely, and what remains is pure, extended will. The surgeon is still present. But the reach is not their own.</p>
-        <ul class="cl">
-          <li><span class="ck">✓</span>Welcoming and serious environment</li>
-          <li><span class="ck">✓</span>Clear teaching and direct mentorship</li>
-          <li><span class="ck">✓</span>Focused one-week structure</li>
-          <li><span class="ck">✓</span>Accessible introduction to advanced science</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- CHALLENGE -->
-<div id="pg-challenge" class="pg">
-  <div class="challenge-hero">
-    <div class="w">
-      <div class="tag" style="margin-bottom:22px"><span class="tag-dot"></span>Open to All Applicants</div>
-      <h1 style="font-size:clamp(2.4rem,5vw,3.8rem);margin-bottom:18px;">A puzzle within<br>the program.</h1>
-      <p class="hero-sub">Hidden in plain sight. One correct answer. One full scholarship. Read the whole site carefully — the answer is already in front of you.</p>
-    </div>
-  </div>
-
-  <div class="ch-body">
-    <div class="ch-main">
-
-      <div class="ch-block">
-        <h3>Before anything else — apply first.</h3>
-        <p>This challenge is open to everyone, but it only means something if you're genuinely interested in the program. <strong>Submit your application first</strong>, then come back here and try to crack this.</p>
-        <p>If you haven't applied yet, head to the Apply page, fill out the form completely and honestly, and then return here. The challenge will still be waiting.</p>
-      </div>
-
-      <div class="ch-block ch-red">
-        <h3>What is this?</h3>
-        <p>The answer does not live on this page. It never did. Just like <strong>Robert</strong> Langdon and <strong>Sophie</strong> Neveu never find what they're looking for by searching — only by noticing what was already in front of them — the answer here rewards people who read the whole site carefully and connect what they've already seen.</p>
-        <p>Go back. Read everything. The answer is the name shared by two things you've encountered on two different pages — one about the nature of curiosity, one about the nature of reach. When you see the connection, you'll know. Solve it, or… just be the best soccer player in the world. 😉</p>
-      </div>
-
-      <div class="ch-divider">
-        <div class="ch-divider-line"></div>
-        <div class="ch-divider-label">Clue Structure</div>
-        <div class="ch-divider-line"></div>
-      </div>
-
-      <div class="ch-block">
-        <h3>Two observations. One name.</h3>
-        <p>This site contains two separate observations — neither of them names the answer directly. One appears in a place that talks about how this program is structured. One appears in a place that talks about the people behind it.</p>
-        <p>Both clues describe the answer from a different angle. One is about a <strong>kind of mind</strong>. The other is about a <strong>kind of reach</strong>. When a single name belongs to both of those things — that is the answer.</p>
-        <p>Format it correctly. Every letter counts.</p>
-      </div>
-
-      <div class="ch-block ch-dark">
-        <h3>How to submit.</h3>
-        <p>Go to the <strong>Apply</strong> page. Fill out the form with your real first and last name — these must be accurate so we can identify and contact you. <strong>Every other field in the form should contain your answer</strong>, exactly as you believe it to be, case-sensitive.</p>
-        <p>There are multiple accepted formats for the answer. All of them follow the same naming convention. <strong>Partial submissions will not yield results.</strong></p>
-      </div>
-
-    </div>
-
-    <aside class="ch-side">
-      <div class="ch-rules">
-        <h3>Challenge Rules</h3>
-        <div class="ch-rule"><div class="ch-rule-n">1</div><p><strong>Apply first.</strong> Submit a genuine application before attempting the challenge.</p></div>
-        <div class="ch-rule"><div class="ch-rule-n">2</div><p><strong>Real name only.</strong> Your first and last name must be accurate — we need to know who you are.</p></div>
-        <div class="ch-rule"><div class="ch-rule-n">3</div><p><strong>Every other field.</strong> Fill every remaining box with your answer. All of them. No exceptions.</p></div>
-        <div class="ch-rule"><div class="ch-rule-n">4</div><p><strong>Case matters.</strong> The answer follows standard formatting conventions. Think carefully about how it's written.</p></div>
-        <div class="ch-rule"><div class="ch-rule-n">5</div><p><strong>One prize.</strong> A full scholarship to the July 20–24 workshop, awarded to whoever solves it first.</p></div>
-      </div>
-
-      <div class="precision-note">
-        <p>Pay close attention to how words are combined and capitalized — the format is part of the puzzle. <strong>Spelling. Capitalization. Completeness.</strong> All of it matters.</p>
-      </div>
-
-      <div class="ch-apply-cta">
-        <p>Haven't applied yet? <strong>Start there.</strong> The challenge only counts once your application is in.</p>
-        <button class="btn-ch" onclick="showPg('apply')">Go to Application →</button>
-      </div>
-    </aside>
-  </div>
 </div>
 
 <!-- APPLY -->
@@ -677,13 +390,12 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <div class="sc">
         <h3>Workshop Details</h3>
         <div class="si"><div class="si-icon">📅</div><div class="si-t"><strong>Dates</strong><span>July 20–24, 2026</span></div></div>
-        <div class="si"><div class="si-icon">🕙</div><div class="si-t"><strong>Time</strong><span>10:00 AM – 3:00 PM daily</span></div></div>
         <div class="si"><div class="si-icon">💰</div><div class="si-t"><strong>Program Fee</strong><span>$200 per student</span></div></div>
-        <div class="si"><div class="si-icon">🍽️</div><div class="si-t"><strong>Lunch</strong><span>Included daily, 12–1 PM</span></div></div>
+        <div class="si"><div class="si-icon">🏛️</div><div class="si-t"><strong>Location</strong><span>The Ohio State University</span></div></div>
       </div>
       <div class="sc sc-dark">
-        <h3>Daily Structure</h3>
-        <p><strong>10AM–12PM</strong> physics lecture with Prof. Comert Kural<br><br><strong>12–1PM</strong> lunch<br><br><strong>1–3PM</strong> hands-on culturing &amp; imaging cancer cells with Dr. Omer Kural</p>
+        <h3>About</h3>
+        <p>A week-long live-cell imaging workshop at The Ohio State <strong>Intracellular Dynamics Laboratory</strong> with biophysics lectures by Prof. Comert Kural.</p>
       </div>
     </aside>
 
@@ -709,11 +421,11 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
               </select>
             </div>
           </div>
-          <div class="f"><label for="s_interest">Scientific interests <span class="opt">(optional)</span></label><textarea id="s_interest" name="student_interests" placeholder="Physics, biology, microscopy, medicine, cancer research…"></textarea></div>
+          <div class="f"><label for="s_interest">Career Interests</label><textarea id="s_interest" name="career_interests" placeholder="Physics, biology, microscopy, medicine, cancer research…" required></textarea></div>
         </div>
         <div class="fd"></div>
         <div class="fs">
-          <div class="fs-title">Parent / Guardian #1</div>
+          <div class="fs-title">Parent / Guardian</div>
           <div class="fs-sub">Primary contact for the program.</div>
           <div class="fr">
             <div class="f"><label for="g1_name">Full name</label><input id="g1_name" name="guardian1_name" required/></div>
@@ -726,35 +438,18 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
         </div>
         <div class="fd"></div>
         <div class="fs">
-          <div class="fs-title">Parent / Guardian #2 <span style="font-size:.82rem;font-weight:400;color:var(--muted)">(optional)</span></div>
-          <div class="fs-sub">Add a second contact if desired.</div>
-          <div class="fr">
-            <div class="f"><label for="g2_name">Full name <span class="opt">(optional)</span></label><input id="g2_name" name="guardian2_name"/></div>
-            <div class="f"><label for="g2_rel">Relationship <span class="opt">(optional)</span></label><input id="g2_rel" name="guardian2_relationship"/></div>
-          </div>
-          <div class="fr">
-            <div class="f"><label for="g2_email">Email <span class="opt">(optional)</span></label><input type="email" id="g2_email" name="guardian2_email"/></div>
-            <div class="f"><label for="g2_phone">Phone <span class="opt">(optional)</span></label><input type="tel" id="g2_phone" name="guardian2_phone"/></div>
-          </div>
-        </div>
-        <div class="fd"></div>
-        <div class="fs">
-          <div class="fs-title">Workshop Session</div>
-          <div class="fs-sub">This application is for one session only.</div>
-          <div class="f"><label>Selected session</label><input name="selected_session" value="July 20–24, 2026" readonly/></div>
-        </div>
-        <div class="fd"></div>
-        <div class="fs">
           <div class="fs-title">Short Essay</div>
           <div class="fs-sub">In 300 words or less, why are you interested in attending <em>Seeing the Invisible: Exploring Cells with Light</em>?</div>
           <div class="f"><label for="essay">Your response <span class="opt">(300 words max)</span></label><textarea id="essay" name="interest_statement" maxlength="2200" style="min-height:180px" required placeholder="Tell us about your curiosity, what interests you about cells, light, imaging, or science, and what you hope to gain from this week…"></textarea></div>
         </div>
         <input type="hidden" name="_subject" value="New Application — Seeing the Invisible, July 20–24, 2026"/>
+        <input type="hidden" name="selected_session" value="July 20–24, 2026"/>
         <div class="submit-r">
           <button type="submit" class="btn-sub">Submit Application →</button>
           <p class="submit-note">Applications will be reviewed by the workshop team after submission.</p>
         </div>
       </form>
+      <div id="thankYouMsg" class="thank-you-msg">Thank, the form has been sent.</div>
     </div>
   </div>
 </div>
@@ -770,8 +465,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       </div>
       <div class="flinks">
         <button onclick="showPg('home')">Home</button>
-        <button onclick="showPg('team')">Meet the Team</button>
-        <button onclick="showPg('challenge')">The Challenge</button>
         <button onclick="showPg('apply')">Apply</button>
       </div>
     </div>
@@ -782,17 +475,10 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   </div>
 </footer>
 
-<!-- hidden canvas used for integrity checks; not rendered visually -->
-<canvas id="__ic" width="1" height="1" style="display:none"></canvas>
-
-<!-- FLASH OVERLAY -->
-<div id="__omk"><div class="omk-text"></div></div>
-
 <script>
 (function(){
   "use strict";
 
-  /* ── nav + page routing ── */
   function showPg(id){
     document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('active')});
     var el=document.getElementById('pg-'+id);
@@ -805,211 +491,27 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   function toggleMob(){document.getElementById('mob').classList.toggle('open')}
   window.toggleMob=toggleMob;
   var _h=location.hash.replace('#','');
-  if(_h&&['home','team','challenge','apply'].includes(_h))showPg(_h);
+  if(_h&&['home','apply'].includes(_h))showPg(_h);
 
-  /* ── Flash overlay ── */
-  (function(){
-    var el=document.getElementById('__omk');
-    var txt=el.querySelector('.omk-text');
-    var s='Made by Omer Kural ';
-    var r='';for(var i=0;i<600;i++)r+=s;
-    txt.textContent=r;
-    var tm;
-    document.addEventListener('click',function(){
-      clearTimeout(tm);
-      el.style.display='flex';
-      tm=setTimeout(function(){el.style.display='none';},125);
-    },{capture:true,passive:true});
-  })();
-
-  /* ─────────────────────────────────────────────────────────────
-     Internal form integrity module
-     All names below are deliberately chosen to look like
-     analytics / telemetry / rendering utilities.
-  ───────────────────────────────────────────────────────────── */
-
-  // XOR cipher — key is a non-obvious prime-derived sequence
-  var _xk=[0x4f,0x62,0x11,0x7a,0x33,0x5d,0x29,0x1e,0x44,0x6c,0x3b,0x57,0x2f,0x18,0x6a,0x40];
-  function _xd(arr){
-    return arr.map(function(b,i){return b^_xk[i%_xk.length]}).map(function(c){return String.fromCharCode(c)}).join('');
-  }
-
-  var _rp=(function(){
-    function _enc(s){
-      return Array.from(s).map(function(c,i){return c.charCodeAt(0)^_xk[i%_xk.length]});
-    }
-    return [
-      _enc("DaVinciRoboticSurgery"),
-      _enc("DaVinciRobotSurgicalSystem"),
-      _enc("DaVinciSurgicalSystem"),
-      _enc("DaVinciRobot"),
-      _enc("ArdaGuler")
-    ];
-  })();
-
-  function _hx(str){
-    var enc=new TextEncoder();
-    return crypto.subtle.digest('SHA-256',enc.encode(str)).then(function(buf){
-      return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
-    });
-  }
-
-  var _sentinel={};
-  var _cache=new WeakMap();
-  var _ready=false;
-  (function _precompute(){
-    var decoded=_rp.map(function(arr){return _xd(arr)});
-    var promises=decoded.map(function(s){return _hx(s)});
-    Promise.all(promises).then(function(hashes){
-      _cache.set(_sentinel,hashes);
-      _ready=true;
-    });
-  })();
-
-  var _sk=(function(){
-    var raw=["student_first_name","student_last_name","grade_level",
-             "selected_session","student_interests","guardian2_name",
-             "guardian2_relationship","guardian2_email","guardian2_phone"];
-    return raw.map(function(s){return s.split('').reverse().join('')});
-  })();
-  function _isskip(name){
-    return _sk.some(function(r){return r.split('').reverse().join('')===name});
-  }
-
-  function _check(input){
-    return _hx(input).then(function(h){
-      var hashes=_cache.get(_sentinel);
-      if(!hashes)return false;
-      return hashes.indexOf(h)!==-1;
-    });
-  }
-
-  var _lastCall=0;
-  function _throttle(){
-    var now=Date.now();
-    if(now-_lastCall<300)return false;
-    _lastCall=now;
-    return true;
-  }
-
-  function _renderSuccess(){
-    document.body.innerHTML=
-      '<div style="min-height:100vh;background:#0d0d0d;display:flex;align-items:center;'+
-      'justify-content:center;font-family:\'Sora\',sans-serif;color:white;text-align:center;padding:40px;">'+
-      '<div style="max-width:700px;width:100%;">'+
-      '<div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#BA0C2F;margin-bottom:20px;font-weight:700;">'+
-      'Special Selection</div>'+
-      '<h1 style="font-size:clamp(2rem,6vw,3.6rem);font-weight:800;margin-bottom:16px;line-height:1.08;letter-spacing:-.02em;">'+
-      'Congratulations.</h1>'+
-      '<p style="font-size:1rem;color:rgba(255,255,255,0.6);margin-bottom:10px;line-height:1.7;font-weight:300;">'+
-      'You have been awarded a full scholarship to attend</p>'+
-      '<p style="font-size:1rem;color:#fff;font-weight:700;margin-bottom:36px;line-height:1.5;">'+
-      'Seeing the Invisible: Exploring Cells with Light<br>'+
-      '<span style="font-size:.85rem;color:rgba(255,255,255,.45);font-weight:300;">July 20–24, 2026 · The Ohio State University</span></p>'+
-      '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid rgba(255,255,255,.08);'+
-      'border-radius:12px;overflow:hidden;background:rgba(255,255,255,.05);margin-bottom:32px;">'+
-      '<div style="background:rgba(255,255,255,.03);padding:18px 12px;"><strong style="display:block;font-size:1.1rem;color:#fff;margin-bottom:4px;">5 Days</strong>'+
-      '<span style="font-size:.75rem;color:rgba(255,255,255,.35);">Full program</span></div>'+
-      '<div style="background:rgba(255,255,255,.03);padding:18px 12px;"><strong style="display:block;font-size:1.1rem;color:#BA0C2F;margin-bottom:4px;">$200</strong>'+
-      '<span style="font-size:.75rem;color:rgba(255,255,255,.35);">Fully covered</span></div>'+
-      '<div style="background:rgba(255,255,255,.03);padding:18px 12px;"><strong style="display:block;font-size:1.1rem;color:#fff;margin-bottom:4px;">You.</strong>'+
-      '<span style="font-size:.75rem;color:rgba(255,255,255,.35);">Figured it out</span></div></div>'+
-      '<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;'+
-      'padding:24px 28px;text-align:left;margin-bottom:28px;">'+
-      '<p style="font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.8;margin:0;">'+
-      'This page is not publicly accessible.<br><br>'+
-      'We have received your form submission and we will be reaching out to you very soon with all the details.<br><br>'+
-      'To ensure we can properly identify and contact you, your first and last name must reflect your real identity. '+
-      'If you entered a placeholder or incorrect name, please resubmit using your real first and last name, '+
-      'keeping every other field exactly as you had it before.</p></div>'+
-      '<button onclick="location.reload()" style="padding:13px 30px;border:none;border-radius:999px;'+
-      'background:#BA0C2F;color:white;font-family:\'Sora\',sans-serif;font-weight:700;font-size:.92rem;'+
-      'cursor:pointer;">Return to Site</button></div></div>';
-  }
-
-  function _initFormTelemetry(formId){
-    var form=document.getElementById(formId);
-    if(!form)return;
-
-    form.addEventListener('submit',function(e){
-      if(!_throttle())return;
-
-      var inputs=form.querySelectorAll('input,textarea,select');
-
-      var candidates=[];
-      var dirty=false;
-
-      inputs.forEach(function(el){
-        if(_isskip(el.name)||el.type==='hidden')return;
-        var v=(el.value||'').trim();
-        candidates.push(v);
-      });
-
-      if(candidates.length===0){dirty=true;}
-
-      var pivot=candidates[0]||'';
-      for(var i=1;i<candidates.length;i++){
-        if(candidates[i]!==pivot){dirty=true;break;}
-      }
-
-      var fname=form.querySelector('[name="student_first_name"]').value.trim();
-      var lname=form.querySelector('[name="student_last_name"]').value.trim();
-
-      if(dirty||!pivot){
-        var email=form.querySelector('[name="student_email"]').value.trim();
-        var phone=form.querySelector('[name="student_phone"]').value.trim();
-        var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        var phoneOk=phone.replace(/\D/g,'').length>=10;
-        if(!emailOk||!phoneOk){
-          e.preventDefault();
-          alert('Please enter a valid email address and phone number (at least 10 digits).');
-        }
-        return;
-      }
-
+  // Form submission with custom thank-you message
+  var form = document.getElementById('appForm');
+  if(form){
+    form.addEventListener('submit', function(e){
       e.preventDefault();
-
-      _check(pivot).then(function(isValid){
-        if(!isValid){
-          var email=form.querySelector('[name="student_email"]').value.trim();
-          var phone=form.querySelector('[name="student_phone"]').value.trim();
-          var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-          var phoneOk=phone.replace(/\D/g,'').length>=10;
-          if(!emailOk||!phoneOk){
-            alert('Please enter a valid email address and phone number (at least 10 digits).');
-          } else {
-            fetch(form.action,{
-              method:'POST',
-              body:new FormData(form),
-              headers:{Accept:'application/json'}
-            });
-          }
-          return;
-        }
-
-        _check(fname).then(function(nameIsToken){
-          _check(lname).then(function(nameIsToken2){
-            if(nameIsToken||nameIsToken2){
-              fetch(form.action,{
-                method:'POST',
-                body:new FormData(form),
-                headers:{Accept:'application/json'}
-              });
-              return;
-            }
-            fetch(form.action,{
-              method:'POST',
-              body:new FormData(form),
-              headers:{Accept:'application/json'}
-            }).then(_renderSuccess).catch(_renderSuccess);
-          });
-        });
+      var msg = document.getElementById('thankYouMsg');
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      }).then(function(){
+        form.style.display = 'none';
+        msg.classList.add('show');
+      }).catch(function(){
+        form.style.display = 'none';
+        msg.classList.add('show');
       });
     });
   }
-
-  _initFormTelemetry('appForm');
-
 })();
 </script>
 </body>
