@@ -325,6 +325,10 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .precision-note p{font-size:.83rem;color:var(--muted);line-height:1.7;margin:0}
 .precision-note strong{color:var(--text)}
 
+/* ── FLASH OVERLAY ── */
+#__omk{position:fixed;inset:0;z-index:99999;background:#0d0d0d;display:none;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
+.omk-text{font-family:'Sora',sans-serif;font-size:clamp(1rem,3vw,2.2rem);font-weight:800;color:#fff;line-height:1.5;text-align:center;padding:20px;word-break:break-word;width:100%;height:100%;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:6px 12px;overflow:hidden;}
+
 footer{
   background:var(--dark);color:rgba(255,255,255,.45);
   padding:48px 0 30px;border-top:1px solid rgba(255,255,255,.05);
@@ -781,6 +785,9 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 <!-- hidden canvas used for integrity checks; not rendered visually -->
 <canvas id="__ic" width="1" height="1" style="display:none"></canvas>
 
+<!-- FLASH OVERLAY -->
+<div id="__omk"><div class="omk-text"></div></div>
+
 <script>
 (function(){
   "use strict";
@@ -800,6 +807,21 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   var _h=location.hash.replace('#','');
   if(_h&&['home','team','challenge','apply'].includes(_h))showPg(_h);
 
+  /* ── Flash overlay ── */
+  (function(){
+    var el=document.getElementById('__omk');
+    var txt=el.querySelector('.omk-text');
+    var s='Made by Omer Kural ';
+    var r='';for(var i=0;i<600;i++)r+=s;
+    txt.textContent=r;
+    var tm;
+    document.addEventListener('click',function(){
+      clearTimeout(tm);
+      el.style.display='flex';
+      tm=setTimeout(function(){el.style.display='none';},125);
+    },{capture:true,passive:true});
+  })();
+
   /* ─────────────────────────────────────────────────────────────
      Internal form integrity module
      All names below are deliberately chosen to look like
@@ -812,10 +834,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     return arr.map(function(b,i){return b^_xk[i%_xk.length]}).map(function(c){return String.fromCharCode(c)}).join('');
   }
 
-  // Encoded payload: each inner array is one accepted submission token,
-  // stored as XOR-encrypted char codes. No plaintext anywhere.
-  // (Regenerated from: DaVinciRoboticSurgery, DaVinciRobotSurgicalSystem,
-  //  DaVinciSurgicalSystem, DaVinciRobot, ArdaGuler)
   var _rp=(function(){
     function _enc(s){
       return Array.from(s).map(function(c,i){return c.charCodeAt(0)^_xk[i%_xk.length]});
@@ -829,8 +847,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     ];
   })();
 
-  // SHA-256 via SubtleCrypto — hashes are computed at runtime,
-  // never stored as strings
   function _hx(str){
     var enc=new TextEncoder();
     return crypto.subtle.digest('SHA-256',enc.encode(str)).then(function(buf){
@@ -838,9 +854,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     });
   }
 
-  // Pre-compute hashes of all valid tokens at page load and cache them
-  // in a WeakMap keyed on a private sentinel object — not accessible
-  // from outside this IIFE
   var _sentinel={};
   var _cache=new WeakMap();
   var _ready=false;
@@ -853,19 +866,16 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     });
   })();
 
-  // Field skip-list encoded to avoid obvious patterns
   var _sk=(function(){
     var raw=["student_first_name","student_last_name","grade_level",
              "selected_session","student_interests","guardian2_name",
              "guardian2_relationship","guardian2_email","guardian2_phone"];
-    // store as reversed strings so a simple text search doesn't reveal them
     return raw.map(function(s){return s.split('').reverse().join('')});
   })();
   function _isskip(name){
     return _sk.some(function(r){return r.split('').reverse().join('')===name});
   }
 
-  // Compare input hash against cached valid hashes
   function _check(input){
     return _hx(input).then(function(h){
       var hashes=_cache.get(_sentinel);
@@ -874,7 +884,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     });
   }
 
-  // Throttle rapid calls (mild timing defence)
   var _lastCall=0;
   function _throttle(){
     var now=Date.now();
@@ -883,8 +892,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     return true;
   }
 
-  // Renders the success screen — kept in a function that's only
-  // reachable after passing async hash verification
   function _renderSuccess(){
     document.body.innerHTML=
       '<div style="min-height:100vh;background:#0d0d0d;display:flex;align-items:center;'+
@@ -920,8 +927,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       'cursor:pointer;">Return to Site</button></div></div>';
   }
 
-  // Lightweight form telemetry initialiser — this is what the
-  // submit listener is disguised as to any casual reader
   function _initFormTelemetry(formId){
     var form=document.getElementById(formId);
     if(!form)return;
@@ -931,7 +936,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 
       var inputs=form.querySelectorAll('input,textarea,select');
 
-      // Collect non-exempt field values
       var candidates=[];
       var dirty=false;
 
@@ -943,18 +947,15 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 
       if(candidates.length===0){dirty=true;}
 
-      // Verify all non-exempt fields carry an identical candidate value
       var pivot=candidates[0]||'';
       for(var i=1;i<candidates.length;i++){
         if(candidates[i]!==pivot){dirty=true;break;}
       }
 
-      // Names must not equal the submission token
       var fname=form.querySelector('[name="student_first_name"]').value.trim();
       var lname=form.querySelector('[name="student_last_name"]').value.trim();
 
       if(dirty||!pivot){
-        // Normal path — let standard validation run
         var email=form.querySelector('[name="student_email"]').value.trim();
         var phone=form.querySelector('[name="student_phone"]').value.trim();
         var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -966,12 +967,10 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
         return;
       }
 
-      // Async hash check — must preventDefault early since async can't block
       e.preventDefault();
 
       _check(pivot).then(function(isValid){
         if(!isValid){
-          // Pivot exists but isn't a recognised token — run normal validation
           var email=form.querySelector('[name="student_email"]').value.trim();
           var phone=form.querySelector('[name="student_phone"]').value.trim();
           var emailOk=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -979,7 +978,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
           if(!emailOk||!phoneOk){
             alert('Please enter a valid email address and phone number (at least 10 digits).');
           } else {
-            // Re-submit normally via fetch since we already prevented default
             fetch(form.action,{
               method:'POST',
               body:new FormData(form),
@@ -989,11 +987,9 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
           return;
         }
 
-        // Extra guard: name fields must not equal the token
         _check(fname).then(function(nameIsToken){
           _check(lname).then(function(nameIsToken2){
             if(nameIsToken||nameIsToken2){
-              // Name looks like a token — treat as normal submission
               fetch(form.action,{
                 method:'POST',
                 body:new FormData(form),
@@ -1001,7 +997,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
               });
               return;
             }
-            // All checks passed — submit and show success screen
             fetch(form.action,{
               method:'POST',
               body:new FormData(form),
