@@ -143,14 +143,18 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .hi-row span a{color:rgba(255,255,255,.55);text-decoration:underline}
 
 .gal-sec{padding:72px 0 88px}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
 .gph{
-  border-radius:12px;background:linear-gradient(135deg,#d9d4ce,#c8c2ba);
-  aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:7px;font-size:.78rem;font-weight:600;color:#999;
-  border:1.5px dashed #bbb;
+  border-radius:12px;overflow:hidden;
+  aspect-ratio:4/3;
+  background:#d0ccc6;
 }
-.gph svg{width:26px;height:26px;opacity:.35}
+.gph img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
 .pg-hero{background:var(--dark);padding:72px 0 60px;position:relative;overflow:hidden}
 .pg-hero::after{content:'';position:absolute;right:-60px;top:-40px;width:320px;height:320px;background:radial-gradient(circle,rgba(186,12,47,.16) 0%,transparent 70%);pointer-events:none}
@@ -215,7 +219,7 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 
 footer{
   background:var(--dark);color:rgba(255,255,255,.45);
-  padding:48px 0 30px;border-top:1px solid rgba(255,255,255,.05);
+  padding:48px 0 0;border-top:1px solid rgba(255,255,255,.05);
 }
 .foot{max-width:1140px;margin:0 auto;padding:0 24px}
 .fg{display:grid;grid-template-columns:1fr auto;gap:28px;margin-bottom:32px;align-items:start}
@@ -226,7 +230,15 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 .flinks{display:flex;flex-direction:column;gap:8px;text-align:right}
 .flinks button{background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-family:'Sora',sans-serif;font-size:.85rem;transition:color .18s;text-align:right}
 .flinks button:hover{color:#fff}
-.fb{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.76rem}
+.fb{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;padding-bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.76rem}
+.site-credit{
+  border-top:1px solid rgba(255,255,255,.05);
+  padding:12px 0 20px;
+  text-align:center;
+  font-size:.71rem;
+  color:rgba(255,255,255,.17);
+  letter-spacing:.02em;
+}
 
 @media(max-width:900px){
   .hi-grid,.apply-wrap,.grid2{grid-template-columns:1fr}
@@ -349,16 +361,10 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   <section class="gal-sec w">
     <div class="eyebrow">Program Photos</div>
     <h2>From the lab floor.</h2>
-    <p class="sub">Replace these placeholders with photos from the July 20–24 workshop.</p>
     <div class="gallery">
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Microscopy setup</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Lecture session</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Cell culture work</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Imaging session</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Lab discussion</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Scientific discussion</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Student observations</div>
-      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Closing day</div>
+      <div class="gph"><img src="../img1.png" alt="Workshop photo"/></div>
+      <div class="gph"><img src="../img2.png" alt="Workshop photo"/></div>
+      <div class="gph"><img src="../chriswomerimg.png" alt="Workshop photo"/></div>
     </div>
   </section>
 </div>
@@ -456,6 +462,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <span>© 2026 Seeing the Invisible: Exploring Cells with Light</span>
       <span>The Ohio State University · Columbus, Ohio</span>
     </div>
+    <div class="site-credit">Website made by Omer Y. Kural</div>
   </div>
 </footer>
 
@@ -483,68 +490,35 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   if(form){
     form.addEventListener('submit',function(e){
       e.preventDefault();
-
-      // Clear previous invalid states
       form.querySelectorAll('.invalid').forEach(function(el){el.classList.remove('invalid')});
-
       var valid=true;
-
-      // Check all required fields
       var required=form.querySelectorAll('[required]');
       required.forEach(function(field){
         if(field.tagName==='SELECT'){
-          if(!field.value||field.value===''){
-            field.classList.add('invalid');
-            valid=false;
-          }
+          if(!field.value||field.value===''){field.classList.add('invalid');valid=false;}
         } else {
-          if(!field.value||field.value.trim()===''){
-            field.classList.add('invalid');
-            valid=false;
-          }
+          if(!field.value||field.value.trim()===''){field.classList.add('invalid');valid=false;}
         }
       });
-
-      // Validate email fields
       var emailFields=form.querySelectorAll('input[type="email"]');
       emailFields.forEach(function(ef){
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ef.value.trim())){
-          ef.classList.add('invalid');
-          valid=false;
-        }
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ef.value.trim())){ef.classList.add('invalid');valid=false;}
       });
-
-      // Validate phone fields
       var phoneFields=form.querySelectorAll('input[type="tel"]');
       phoneFields.forEach(function(pf){
         var digits=pf.value.replace(/\D/g,'');
-        if(digits.length<7){
-          pf.classList.add('invalid');
-          valid=false;
-        }
+        if(digits.length<7){pf.classList.add('invalid');valid=false;}
       });
-
       if(!valid){
         var firstInvalid=form.querySelector('.invalid');
         if(firstInvalid){firstInvalid.focus();firstInvalid.scrollIntoView({behavior:'smooth',block:'center'});}
         return;
       }
-
       var msg=document.getElementById('thankYouMsg');
-      fetch(form.action,{
-        method:'POST',
-        body:new FormData(form),
-        headers:{Accept:'application/json'}
-      }).then(function(){
-        form.style.display='none';
-        msg.classList.add('show');
-      }).catch(function(){
-        form.style.display='none';
-        msg.classList.add('show');
-      });
+      fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}
+      }).then(function(){form.style.display='none';msg.classList.add('show');
+      }).catch(function(){form.style.display='none';msg.classList.add('show');});
     });
-
-    // Remove invalid class on input
     form.querySelectorAll('input,select,textarea').forEach(function(el){
       el.addEventListener('input',function(){el.classList.remove('invalid')});
       el.addEventListener('change',function(){el.classList.remove('invalid')});
