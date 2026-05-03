@@ -231,13 +231,33 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 .flinks button{background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-family:'Sora',sans-serif;font-size:.85rem;transition:color .18s;text-align:right}
 .flinks button:hover{color:#fff}
 .fb{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;padding-bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.76rem}
+
 .site-credit{
-  border-top:1px solid rgba(255,255,255,.05);
-  padding:12px 0 20px;
+  border-top:1px solid rgba(255,255,255,.12);
+  padding:20px 0 24px;
   text-align:center;
-  font-size:.71rem;
-  color:rgba(255,255,255,.17);
-  letter-spacing:.02em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.site-credit-icon{
+  width:28px;height:28px;border-radius:6px;
+  background:rgba(186,12,47,.35);
+  display:inline-grid;place-items:center;
+  font-size:.75rem;font-weight:800;color:#fff;
+  flex-shrink:0;
+}
+.site-credit-text{
+  font-size:.82rem;
+  color:rgba(255,255,255,.38);
+  letter-spacing:.01em;
+}
+.site-credit-name{
+  font-size:.82rem;
+  font-weight:700;
+  color:rgba(255,255,255,.75);
+  letter-spacing:.01em;
 }
 
 @media(max-width:900px){
@@ -462,7 +482,11 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <span>© 2026 Seeing the Invisible: Exploring Cells with Light</span>
       <span>The Ohio State University · Columbus, Ohio</span>
     </div>
-    <div class="site-credit">Website made by Omer Y. Kural</div>
+    <div class="site-credit">
+      <div class="site-credit-icon">✦</div>
+      <span class="site-credit-text">Website designed &amp; built by</span>
+      <span class="site-credit-name">Omer Y. Kural</span>
+    </div>
   </div>
 </footer>
 
