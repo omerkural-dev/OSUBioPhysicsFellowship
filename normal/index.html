@@ -149,12 +149,7 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
   aspect-ratio:4/3;
   background:#d0ccc6;
 }
-.gph img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
+.gph img{width:100%;height:100%;object-fit:cover;display:block;}
 
 .pg-hero{background:var(--dark);padding:72px 0 60px;position:relative;overflow:hidden}
 .pg-hero::after{content:'';position:absolute;right:-60px;top:-40px;width:320px;height:320px;background:radial-gradient(circle,rgba(186,12,47,.16) 0%,transparent 70%);pointer-events:none}
@@ -205,15 +200,8 @@ h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.02em;line
 .submit-note{font-size:.8rem;color:var(--muted);line-height:1.5;max-width:34ch}
 
 .thank-you-msg{
-  display:none;
-  background:#f0fdf4;
-  border:1.5px solid #86efac;
-  color:#166534;
-  padding:24px 28px;
-  border-radius:var(--r);
-  font-size:1.05rem;
-  font-weight:600;
-  text-align:center;
+  display:none;background:#f0fdf4;border:1.5px solid #86efac;color:#166534;
+  padding:24px 28px;border-radius:var(--r);font-size:1.05rem;font-weight:600;text-align:center;
 }
 .thank-you-msg.show{display:block}
 
@@ -232,32 +220,34 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
 .flinks button:hover{color:#fff}
 .fb{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;padding-bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.76rem}
 
+/* ── CREDIT BAND ── */
 .site-credit{
-  border-top:1px solid rgba(255,255,255,.12);
-  padding:20px 0 24px;
-  text-align:center;
+  margin-top:0;
+  background:var(--red);
+  padding:22px 24px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
+  gap:14px;
+  flex-wrap:wrap;
 }
-.site-credit-icon{
-  width:28px;height:28px;border-radius:6px;
-  background:rgba(186,12,47,.35);
-  display:inline-grid;place-items:center;
-  font-size:.75rem;font-weight:800;color:#fff;
-  flex-shrink:0;
-}
-.site-credit-text{
-  font-size:.82rem;
-  color:rgba(255,255,255,.38);
-  letter-spacing:.01em;
+.site-credit-label{
+  font-size:.78rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  color:rgba(255,255,255,.6);
 }
 .site-credit-name{
-  font-size:.82rem;
-  font-weight:700;
-  color:rgba(255,255,255,.75);
-  letter-spacing:.01em;
+  font-size:1.25rem;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:-.01em;
+}
+.site-credit-divider{
+  width:1px;height:28px;
+  background:rgba(255,255,255,.25);
+  flex-shrink:0;
 }
 
 @media(max-width:900px){
@@ -276,6 +266,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   .fc{padding:22px}
   .gallery{grid-template-columns:1fr}
   h1{font-size:2.2rem}
+  .site-credit-divider{display:none}
 }
 </style>
 </head>
@@ -482,11 +473,11 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
       <span>© 2026 Seeing the Invisible: Exploring Cells with Light</span>
       <span>The Ohio State University · Columbus, Ohio</span>
     </div>
-    <div class="site-credit">
-      <div class="site-credit-icon">✦</div>
-      <span class="site-credit-text">Website designed &amp; built by</span>
-      <span class="site-credit-name">Omer Y. Kural</span>
-    </div>
+  </div>
+  <div class="site-credit">
+    <span class="site-credit-label">Website designed &amp; built by</span>
+    <div class="site-credit-divider"></div>
+    <span class="site-credit-name">Omer Y. Kural</span>
   </div>
 </footer>
 
