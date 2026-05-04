@@ -226,28 +226,22 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   background:var(--red);
   padding:22px 24px;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
+  gap:6px;
 }
-.site-credit-label{
-  font-size:.78rem;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:.13em;
-  color:rgba(255,255,255,.6);
+.site-credit-sig{
+  height:44px;
+  width:auto;
+  display:block;
 }
 .site-credit-name{
-  font-size:1.25rem;
-  font-weight:800;
-  color:#fff;
-  letter-spacing:-.01em;
-}
-.site-credit-divider{
-  width:1px;height:28px;
-  background:rgba(255,255,255,.25);
-  flex-shrink:0;
+  font-size:.72rem;
+  color:rgba(255,255,255,.55);
+  font-family:'Sora',sans-serif;
+  font-weight:400;
+  letter-spacing:.04em;
 }
 
 @media(max-width:900px){
@@ -266,7 +260,6 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
   .fc{padding:22px}
   .gallery{grid-template-columns:1fr}
   h1{font-size:2.2rem}
-  .site-credit-divider{display:none}
 }
 </style>
 </head>
@@ -475,8 +468,7 @@ footer p{font-size:.84rem;line-height:1.7;max-width:58ch}
     </div>
   </div>
   <div class="site-credit">
-    <span class="site-credit-label">Website designed &amp; built by</span>
-    <div class="site-credit-divider"></div>
+    <img src="Signature.png" alt="Omer Y. Kural signature" class="site-credit-sig"/>
     <span class="site-credit-name">Omer Y. Kural</span>
   </div>
 </footer>
